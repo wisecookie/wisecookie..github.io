@@ -219,7 +219,7 @@ typedef long long ll;
 const int maxn = 5e4+5;
 int far, n, m; 
 int len[maxn];
- 
+
 bool check(int mid)&#123;
     int c = 0; 
     int num = 0; 
@@ -420,7 +420,7 @@ int main()&#123;
         cout&lt;&lt;c[i];
     &#125;
 
-    
+
 &#125;
 </code></pre>
 <p>模拟与高精度</p>
@@ -448,7 +448,7 @@ int main()&#123;
     for(int i=1;i&lt;num+1;i++)&#123;
         a[i]=s[num-i]-&#39;0&#39;;
     &#125;
-    
+
 
     //计算N/2，保存在b[]
     int b[N];
@@ -465,7 +465,7 @@ int main()&#123;
     for(int i=1;i&lt;num+1;i++)&#123;
         c[i+1]=(a[i]+c[i])/10;
         c[i]=(a[i]+c[i])%10;
-        
+
     &#125;
     if(c[num+1]==1)num1=num+1;
     else num1=num;
@@ -491,7 +491,7 @@ int main()&#123;
     for(int i=num;i&gt;=2;i--)&#123;
         cout&lt;&lt;d[i];
     &#125;
-    
+
 
 
 
