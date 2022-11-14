@@ -464,7 +464,9 @@ int main()&#123;
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>数据保证，$1 \leq n \leq 10^6$，$0 \leq a_i,q \leq 10^9$，$1 \leq m \leq 10^5$</p>
 <p>本题输入输出量较大，请使用较快的 IO 方式。</p>
 <p>More info: <a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2249">P2249 【深基13.例1】查找 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></a></p>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>include &lt;iostream&gt;
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>二分答案应该是在一个单调闭区间上进行的。也就是说，二分答案最后得到的答案应该是一个确定值，而不是像搜索那样会出现多解。二分一般用来解决最优解问题。刚才我们说单调性，那么这个单调性应该体现在哪里呢？</p>
+<p>可以这样想，在一个区间上，有很多数，这些数可能是我们这些问题的解，换句话说，这里有很多不合法的解，也有很多合法的解。我们只考虑合法解，并称之为可行解。考虑所有可行解，我们肯定是要从这些可行解中找到一个最好的作为我们的答案， 这个答案我们称之为最优解。</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>include &lt;iostream&gt;
 #include &lt;iomanip&gt;
 
 using namespace std;
@@ -514,7 +516,8 @@ int main() &#123;
 <h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1824">P1824 进击的奶牛 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></a></p>
-<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><p>与第一题同样的思路，二分即可</p>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
 int n,c,a[1000000],l,m,r;
@@ -571,6 +574,7 @@ int main()
 <h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><h3 id="输入输出样例-1-说明"><a href="#输入输出样例-1-说明" class="headerlink" title="输入输出样例 1 说明"></a>输入输出样例 1 说明</h3><p>将与起点距离为 $2$和 $14$ 的两个岩石移走后,最短的跳跃距离为 $4$(从与起点距离 $17$ 的岩石跳到距离 $21$ 的岩石,或者从距离 $21$ 的岩石跳到终点)。</p>
 <h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于 $20%$的数据，$0 \le M \le N \le 10$。<br>对于 $50%$ 的数据，$0 \le M \le N \le 100$。<br>对于 $100%$的数据，$0 \le M \le N \le 50000,1 \le L<br> \le 10^9$。</p>
 <p>More info:<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2678">P2678 [NOIP2015 提高组] 跳石头 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
+<h3 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h3><p>从位置的小到大扫遍所有石头，用一个变量存储上一个跳到的点。第一个与这上一个点的距离大于等于x的石头即是下一个跳到的点。这里用了一点贪心的思想：因为如果不跳到第一个符合条件的点上，那么整个队列的稀疏度就会提高，最终需要删除的石头也会更多。因为我们要取最优状态，所以要保证跳过的石头数最少</p>
 <h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
@@ -667,7 +671,8 @@ WWLWE
 2:1
 </code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704">题目详情 - 7-1 h0094. 乒乓球 (pintia.cn)</a></p>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>在 11 分制下，与21分分别计算，直到分差大于或者等于 2，才一局结束。</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;math.h&gt;
 using namespace std;
 int main()&#123;
@@ -727,7 +732,8 @@ int main()&#123;
 <h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><pre><code>135
 </code></pre>
 <p>More info:<a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759453123485696">题目详情 - 7-2 高精度加法 (pintia.cn)</a></p>
-<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><p>高精度加法时用c[]数组来存，考虑进位的问题， 为什么要在a[i] + b[i] 再加上 c[i], 这是因为a[i] + b[i]可能会超过10，会有进位，进位我们都是往前面加的，所以就是加到c[i+1] 上，所以c[i] 上原来可能会有值</p>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;string.h&gt;
 using namespace std;
 int main()&#123;
@@ -791,7 +797,11 @@ int main()&#123;
 <pre><code>55
 </code></pre>
 <p>More info:<a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759453123485696"><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584762843446525952">题目详情 - 7-3 高精度求累加和 (pintia.cn)</a></a></p>
-<h3 id="Analyse：-2"><a href="#Analyse：-2" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+<h3 id="Analyse：-2"><a href="#Analyse：-2" class="headerlink" title="Analyse："></a>Analyse：</h3><p>输入N，保存在a[]</p>
+<p>&#x2F;&#x2F;计算N&#x2F;2，保存在b[]</p>
+<p>&#x2F;计算N+1，保存在c[]</p>
+<p> &#x2F;&#x2F;算最终的值    使用高精度乘法，交叉相乘，两个循环</p>
+<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;string.h&gt;
 int N=100000;
 using namespace std;
