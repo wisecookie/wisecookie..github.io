@@ -339,7 +339,8 @@ int main() &#123;
 
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>$\text{upd 2022.7.26}$：新增加一组 Hack 数据。</p>
 <p>More info: <a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3613">P3613 【深基15.例2】寄包柜 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></a></p>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>就是用一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84&spm=1001.2101.3001.7020">二维数组</a>存储第i个柜子和第j个格子。个人认为用二维数组过于浪费空间，所以用STL中的map来存储。</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 map&lt;int,int&gt;a1[100001];
 int n,q;
@@ -393,6 +394,9 @@ int main()
 
 <h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于全部的测试点，保证 $s$ 的长度不超过 100，且只含  <code>(</code>，<code>)</code>，<code>[</code>，<code>]</code> 四个字符。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1241">P1241 括号序列 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
+<h3 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h3><p>①关于括号序列合法性：对于一段括号序列，从左往右起，对于每一段小的括号序列 –‘(’– 数量 大于等于 –‘)’– 数量，那么整个括号序列就合法。</p>
+<p>②关于 –‘(’– 和 –’)’– 的添加可以分开来讨论：括号是被添加到原序列的括号与括号之间的空隙里的，假如左括号和右括号加入的是不同的空隙，如果加入的是同一个空隙，那么右括号的添加必然在左括号之前，否则括号配对，添加无意义</p>
+<p>&#x2F;我们需要的就是长度为len添加括号的合法情况，而从前往后遍历出现的第一个有可能的情况就是需要括号数最少的情况，因为左括号可以加很多个，我们仅需添加最少的情况</p>
 <h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;string.h&gt;
 #include &lt;algorithm&gt;
@@ -457,6 +461,9 @@ int main()&#123;
 
 <h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>数据保证，$1 \leq |s| \leq 50$，答案和计算过程中的每一个值的绝对值不超过 $10^9$。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1241"><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1449">P1449 后缀表达式 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></a></p>
+<h3 id="Anlyse"><a href="#Anlyse" class="headerlink" title="Anlyse"></a>Anlyse</h3><h5 id="后缀表达式从左到右遍历"><a href="#后缀表达式从左到右遍历" class="headerlink" title="后缀表达式从左到右遍历"></a>后缀表达式从左到右遍历</h5><p><strong>1，是数字直接写上</strong></p>
+<p><strong>2，是任何运算符号</strong></p>
+<p><strong>①右括号—-） 和优先级 不高于 栈顶元素 则 栈顶元素依次输出 并当前符号进栈（括号直接消失）</strong></p>
 <h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;cstdio&gt;
@@ -528,26 +535,29 @@ int main()
 <h2 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h2><p>$1$ 行，包含最多 $N$ 个空格隔开的正整数，表示了队列从左到右所有同学的编号，行末换行且无空格。</p>
 <h2 id="样例-1-3"><a href="#样例-1-3" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-3"><a href="#样例输入-1-3" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 0</span><br><span class="line">2 1</span><br><span class="line">1 0</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
 
-<h3 id="样例输出-1-3"><a href="#样例输出-1-3" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 4 1</span><br></pre></td></tr></table></figure>
+<h3 id="样例输出-1-3"><a href="#样例输出-1-3" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 4 1 </span><br></pre></td></tr></table></figure>
 
-<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>样例解释：</p>
-<p>将同学 $2$ 插入至同学 $1$ 左边，此时队列为：</p>
-<p><code>2 1</code></p>
-<p>将同学 $3$ 插入至同学 $2$ 右边，此时队列为：</p>
-<p><code>2 3 1</code>  </p>
-<p>将同学 $4$ 插入至同学 $1$ 左边，此时队列为：</p>
-<p><code>2 3 4 1</code>  </p>
-<p>将同学 $3$ 从队列中移出，此时队列为：</p>
-<p><code>2 4 1</code>  </p>
-<p>同学 $3$ 已经不在队列中，忽略最后一条指令</p>
-<p>最终队列：</p>
-<p><code>2 4 1</code>  </p>
 <p>数据范围</p>
 <p>对于 $20%$ 的数据，有 $1\leq N\leq 10$；</p>
 <p>对于 $40%$ 的数据，有 $1\leq N\leq 1000$；</p>
 <p>对于 $100%$ 的数据，有 $1\leq N,M\leq100000$。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1160">P1160 队列安排 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
-<pre><code>#include&lt;cstdio&gt;
+<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>将同学2插入至同学1左边，此时队列为：</p>
+<p>2 1</p>
+<p>将同学3插入至同学2右边，此时队列为：</p>
+<p>2 3 1</p>
+<p>将同学4插入至同学1左边，此时队列为：</p>
+<p>2 3 4 1</p>
+<p>将同学3从队列中移出，此时队列为：</p>
+<p>2 4 1</p>
+<p>同学3已经不在队列中，忽略最后一条指令</p>
+<p>最终队列：</p>
+<p>2 4 1</p>
+<ul>
+<li>初始化第一个同学前后都没有人</li>
+<li>插入时，将当前人物的前后分别指向要插入k的前后，再将k前的人的next改到当前人数i,将k后的人pre指向i，右操作类似；</li>
+</ul>
+<h2 id="Code："><a href="#Code：" class="headerlink" title="Code："></a>Code：</h2><pre><code>#include&lt;cstdio&gt;
 struct node&#123;
     int n;//保存节点的值
     node *left,*right;//左边右边各一个
