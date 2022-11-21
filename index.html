@@ -93,7 +93,237 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>This is the first week.</p>
+<h2 id="P1443-马的遍历"><a href="#P1443-马的遍历" class="headerlink" title="P1443 马的遍历"></a>P1443 马的遍历</h2><h4 id="马的遍历"><a href="#马的遍历" class="headerlink" title="# 马的遍历"></a># 马的遍历</h4><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有一个 $n \times m$ 的棋盘，在某个点 $(x, y)$ 上有一个马，要求你计算出马到达棋盘上任意一个点最少要走几步。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入只有一行四个整数，分别为 $n, m, x, y$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个 $n \times m$ 的矩阵，代表马到达某个点最少要走几步（不能到达则输出 $-1$）。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 3 1 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0    3    2    </span><br><span class="line">3    -1   1    </span><br><span class="line">2    1    4</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于全部的测试点，保证 $1 \leq x \leq n \leq 400$，$1 \leq y \leq m \leq 400$。</p>
+<p>More info:<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1443">P1443 马的遍历 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a>](<a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704">https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704</a>)</p>
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>题目中，马走的是<strong>日字形</strong>。有八个方向</p>
+<p>用了queue:</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/queue/4511093">queue</a>：先进先出的线性表。</p>
+<p>需要<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%A4%B4%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">头文件</a> <code>#include&lt;queue&gt;</code></p>
+<p>定义 <code>queue &lt;int&gt; q;</code></p>
+<p>入队 <code>q.push(x);</code></p>
+<p>出队 <code>q.pop();</code></p>
+<p>查询队列中元素个数 <code>q.size()</code></p>
+</li>
+</ol>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int dx[10] = &#123;-2, -2, 2, 2, 1, -1, 1, -1&#125;;
+const int dy[10] = &#123;-1, 1, -1, 1, 2, -2, -2, 2&#125;;
+
+const int N = 500;
+
+typedef pair&lt;int, int&gt; PII;
+
+int n, m, x, y;
+int d[N][N];  // 是否走过
+PII q[N * N]; // 存储数据队列
+
+void bfs(int x, int y)
+&#123;
+
+    memset(d, -1, sizeof d); 
+    d[x][y] = 0;           
+
+    queue&lt;pair&lt;int, int&gt;&gt; q;
+    q.push(&#123;x, y&#125;); // 起始点入队
+
+    while (q.size())
+    &#123;
+        PII t = q.front(); 
+        q.pop();           
+
+
+        for (int i = 0; i &lt; 8; i++)
+        &#123;
+            int A = t.first + dx[i], B = t.second + dy[i];                
+            if (A &gt;= 1 &amp;&amp; A &lt;= n &amp;&amp; B &gt;= 1 &amp;&amp; B &lt;= m &amp;&amp; d[A][B] == -1) 
+            &#123;
+                d[A][B] = d[t.first][t.second] + 1; 
+                q.push(&#123;A, B&#125;);                     
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y;
+
+    bfs(x, y);
+
+    for (int i = 1; i &lt;= n; i++)
+    &#123;
+        for (int j = 1; j &lt;= m; j++)
+            printf(&quot;%-5d&quot;, d[i][j]);
+        puts(&quot;&quot;);
+    &#125;
+
+
+    return 0;
+&#125;
+</code></pre>
+<p>模拟与高精度</p>
+<p>This is the first week.</p>
+<h2 id="P1443-马的遍历-1"><a href="#P1443-马的遍历-1" class="headerlink" title="P1443 马的遍历"></a>P1443 马的遍历</h2><h4 id="迷宫"><a href="#迷宫" class="headerlink" title="# 迷宫"></a># 迷宫</h4><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个 $N \times M$ 方格的迷宫，迷宫里有 $T$ 处障碍，障碍处不可通过。</p>
+<p>在迷宫中移动有上下左右四种方式，每次只能移动一个方格。数据保证起点上没有障碍。</p>
+<p>给定起点坐标和终点坐标，每个方格最多经过一次，问有多少种从起点坐标到终点坐标的方案。</p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行为三个正整数 $N,M,T$，分别表示迷宫的长宽和障碍总数。</p>
+<p>第二行为四个正整数 $SX,SY,FX,FY$，$SX,SY$ 代表起点坐标，$FX,FY$ 代表终点坐标。</p>
+<p>接下来 $T$ 行，每行两个正整数，表示障碍点的坐标。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出从起点坐标到终点坐标的方案总数。</p>
+<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 2 1</span><br><span class="line">1 1 2 2</span><br><span class="line">1 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>对于 $100%$ 的数据，$1 \le N,M \le 5$，$1 \le T \le 10$，$1 \le SX,FX \le n$，$1 \le SY,FY \le m$。</p>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><h3 id="数据规模与约定-1"><a href="#数据规模与约定-1" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于全部的测试点，保证 $1 \leq x \leq n \leq 400$，$1 \leq y \leq m \leq 400$。</p>
+<p>More info:<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1443">P1443 马的遍历 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a>](<a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704">https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704</a>)</p>
+<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><ol>
+<li><p>查询队列中元素个数 <code>q.size()</code>使用自动选择方向来代替4个if判断（<del>使代码更加简洁</del>长度变短）；</p>
+<p>如果没有障碍并且不是自己走过的，就进一步搜索，把自己走过的路打上标记，返回时，再将标记还原；</p>
+<p>###注意：有些同学可能觉得就在地图map数组上打标记（自己走过的路）比较简单，走过的路和障碍可能引起混淆，</p>
+<p>这一题一看就知道一定要用<strong>dfs回溯</strong>。因为我们要枚举走的步数，以及走错路时抑制住自己的愤怒回来换下一条路。</p>
+</li>
+</ol>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>This is the first week.
+
+## P1443 马的遍历
+
+#### # 马的遍历
+
+## 题目描述
+
+有一个 $n \times m$ 的棋盘，在某个点 $(x, y)$ 上有一个马，要求你计算出马到达棋盘上任意一个点最少要走几步。
+
+## 输入格式
+
+输入只有一行四个整数，分别为 $n, m, x, y$。
+
+## 输出格式
+
+一个 $n \times m$ 的矩阵，代表马到达某个点最少要走几步（不能到达则输出 $-1$）。
+
+## 样例 #1
+
+### 样例输入 #1
+
+    3 3 1 1
+
+### 样例输出 #1
+
+    0    3    2    
+    3    -1   1    
+    2    1    4
+
+## 提示
+
+### 数据规模与约定
+
+对于全部的测试点，保证 $1 \leq x \leq n \leq 400$，$1 \leq y \leq m \leq 400$。
+
+More info:[P1443 马的遍历 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1443)](https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704)
+
+### Analyse：
+
+题目中，马走的是**日字形**。有八个方向
+
+用了queue:
+
+1. [queue](https://baike.baidu.com/item/queue/4511093)：先进先出的线性表。
+  
+  需要[头文件](https://so.csdn.net/so/search?q=%E5%A4%B4%E6%96%87%E4%BB%B6&amp;spm=1001.2101.3001.7020) `#include&lt;queue&gt;`
+  
+  定义 `queue &lt;int&gt; q;`
+  
+  入队 `q.push(x);`
+  
+  出队 `q.pop();`
+  
+  查询队列中元素个数 `q.size()`
+  
+
+### My Code:
+
+    #include &lt;iostream&gt;
+    #include &lt;cstring&gt;
+    #include &lt;queue&gt;
+    #include &lt;algorithm&gt;
+    
+    using namespace std;
+    
+    const int dx[10] = &#123;-2, -2, 2, 2, 1, -1, 1, -1&#125;;
+    const int dy[10] = &#123;-1, 1, -1, 1, 2, -2, -2, 2&#125;;
+    
+    const int N = 500;
+    
+    typedef pair&lt;int, int&gt; PII;
+    
+    int n, m, x, y;
+    int d[N][N];  // 是否走过
+    PII q[N * N]; // 存储数据队列
+    
+    void bfs(int x, int y)
+    &#123;
+    
+        memset(d, -1, sizeof d); 
+        d[x][y] = 0;           
+    
+        queue&lt;pair&lt;int, int&gt;&gt; q;
+        q.push(&#123;x, y&#125;); // 起始点入队
+    
+        while (q.size())
+        &#123;
+            PII t = q.front(); 
+            q.pop();           
+    
+    
+            for (int i = 0; i &lt; 8; i++)
+            &#123;
+                int A = t.first + dx[i], B = t.second + dy[i];                
+                if (A &gt;= 1 &amp;&amp; A &lt;= n &amp;&amp; B &gt;= 1 &amp;&amp; B &lt;= m &amp;&amp; d[A][B] == -1) 
+                &#123;
+                    d[A][B] = d[t.first][t.second] + 1; 
+                    q.push(&#123;A, B&#125;);                     
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    
+    int main()
+    &#123;
+        cin &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y;
+    
+        bfs(x, y);
+    
+        for (int i = 1; i &lt;= n; i++)
+        &#123;
+            for (int j = 1; j &lt;= m; j++)
+                printf(&quot;%-5d&quot;, d[i][j]);
+            puts(&quot;&quot;);
+        &#125;
+    
+    
+        return 0;
+    &#125;
+
+模拟与高精度
+</code></pre>
+<p>模拟与高精度</p>
+
       
     </div>
     <footer class="article-footer">
