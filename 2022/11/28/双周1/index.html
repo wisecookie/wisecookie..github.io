@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png">
 <meta property="article:published_time" content="2022-11-28T13:35:31.000Z">
-<meta property="article:modified_time" content="2022-11-28T13:36:56.552Z">
+<meta property="article:modified_time" content="2022-11-28T14:04:31.488Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png">
@@ -116,6 +116,47 @@
 <h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
 <pre><code>C.L.C
 </code></pre>
+<p>输出样例:</p>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code>C.L.C
+</code></pre>
+<p>Analyse：</p>
+<p>先读入格子的状态</p>
+<p>再遍历每一个格子检测其相邻格子中是否有有百合&#96;</p>
+<ul>
+<li>}a[N];</li>
+</ul>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+    int n,m=1;
+    int A[1005]=&#123;0&#125;;  
+    char a[1005]=&#123;0&#125;;
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cin&gt;&gt;a[i]; 
+    &#125;
+    while(m&lt;=n)&#123;
+        if(a[m]==&#39;L&#39;)&#123;
+            A[i]=1;
+            A[i+1]=1;
+            A[i-1]=1;   
+        &#125;
+        m++;
+    &#125;
+
+    for(int i=1;i&lt;=n;i++)&#123;
+        if(A[i]!=1)&#123;
+            a[i]=&#39;C&#39;;  
+        &#125;
+    &#125;
+    for(int i=1;i&lt;=n;i++)&#123;
+        cout&lt;&lt;a[i];  
+    &#125;
+
+    return 0;
+&#125;
+</code></pre>
 <p>7-2 a * b</p>
 <p>分数 300</p>
 <p>全屏浏览题目</p>
@@ -129,8 +170,35 @@
 <pre><code>1BF52
 1D4B42
 </code></pre>
-<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
-<pre><code>332FCA5924
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>存储每个位置的数字时,我们要注意字母与数字的转化.同样,在输出时也要注意输出数字若大于等于10,就要转化成字母.</p>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><ul>
+<li>}a[N];</li>
+</ul>
+<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+map&lt;int,int&gt;a1[100001];
+int n,q;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=0;i&lt;q;i++)
+    &#123;
+        int a,b,c,d;
+        cin&gt;&gt;a;
+        if(a==1)
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+            a1[b][c]=d;  //用map数组记录k
+        &#125;
+        else
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c;
+            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+        &#125;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
 <p>7-3 山头狙击战</p>
 <p>分数 300</p>
@@ -152,6 +220,36 @@
 </code></pre>
 <p>样例输出</p>
 <pre><code>25
+</code></pre>
+<p>Analyse：</p>
+<p>敌人到射程才能开始开枪.</p>
+<p>需要一个一个的来进行模拟</p>
+<p>二分</p>
+<h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+map&lt;int,int&gt;a1[100001];
+int n,q;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=0;i&lt;q;i++)
+    &#123;
+        int a,b,c,d;
+        cin&gt;&gt;a;
+        if(a==1)
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+            a1[b][c]=d;  //用map数组记录k
+        &#125;
+        else
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c;
+            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+        &#125;
+    &#125;
+    return 0;
+&#125;
 </code></pre>
 <p>7-4 Reversing Linked List</p>
 <p>分数 300</p>
@@ -181,6 +279,35 @@
 99999 5 68237
 68237 6 -1
 </code></pre>
+<p>Analyse：</p>
+<p>就是用一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84&spm=1001.2101.3001.7020">二维数组</a>存储第i个柜子和第j个格子。个人认为用二维数组过于浪费空间，所以用STL中的map来存储。</p>
+<p>* </p>
+<h3 id="My-Code-4"><a href="#My-Code-4" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+map&lt;int,int&gt;a1[100001];
+int n,q;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=0;i&lt;q;i++)
+    &#123;
+        int a,b,c,d;
+        cin&gt;&gt;a;
+        if(a==1)
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+            a1[b][c]=d;  //用map数组记录k
+        &#125;
+        else
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c;
+            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>7-5 一元三次方程</p>
 <p>分数 300</p>
 <p>全屏浏览题目</p>
@@ -199,12 +326,67 @@
 <pre><code>1
 1.000000 -5.000000 -4.000000 20.000000 -10.000000 10.000000
 </code></pre>
-<h3 id="输出样例-2"><a href="#输出样例-2" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
+<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
 <pre><code>-2.000000 2.000000 5.000000
 </code></pre>
 <h3 id="提示1："><a href="#提示1：" class="headerlink" title="提示1："></a>提示1：</h3><p>样例所给方程的图像如下：</p>
 <p><img src="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png" alt="T4.png"></p>
-<h3 id="提示2："><a href="#提示2：" class="headerlink" title="提示2："></a>提示2：</h3><p>对于方程：ax2+bx+c&#x3D;0(Δ&#x3D;b2−4ac≥0)，它的两个根分别为：x1​&#x3D;2a−b−Δ​​,x2​&#x3D;2a−b+Δ​​</p>
+<h3 id="分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内"><a href="#分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内" class="headerlink" title="分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,"></a>分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,</h3><h3 id="My-Code-5"><a href="#My-Code-5" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;iomanip&gt;
+using namespace std;   
+double f(double x,double a,double b,double c,double d)&#123;  //求函数值
+    double f;
+    f=a*pow(x,3.0)+b*pow(x,2.0)+c*x+d;
+    return f;
+&#125;
+double findx(double l,double r,double a,double b,double c,double d)&#123;  //二分搜索
+    double mid;
+    while(abs(l-r)&gt;pow(10.0,-7.0))&#123;  //控制精度
+        mid=(l+r)/2.0;
+        if(f(mid,a,b,c,d)*f(l,a,b,c,d)&gt;0)&#123;
+            l=mid;
+        &#125;
+        else&#123;
+            r=mid;
+        &#125;
+    &#125;
+    return mid;
+&#125;
+void findm(double a,double b,double c,double d,double p,double q)&#123;
+    double x1,x2;
+    double ret1,ret2,ret3;
+    x1=((-2)*b+pow(4*b*b-12*a*c,0.5))/(6*a);
+    x2=((-2)*b-pow(4*b*b-12*a*c,0.5))/(6*a);   //求极值点的横坐标
+    if(x1&gt;x2)&#123;
+        ret3=findx(x1,q,a,b,c,d);
+        ret1=findx(p,x2,a,b,c,d);
+        ret2=findx(x2,x1,a,b,c,d);        //在x1&gt;x2状态下进行二分搜索
+    &#125;       
+    else&#123;
+        ret3=findx(x2,q,a,b,c,d);
+        ret1=findx(p,x1,a,b,c,d);
+        ret2=findx(x1,x2,a,b,c,d);      //在x2&gt;x1状态下进行二分搜索
+    &#125;
+    cout&lt;&lt;ret1&lt;&lt;&quot; &quot;&lt;&lt;ret2&lt;&lt;&quot; &quot;&lt;&lt;ret3&lt;&lt;endl;  //输出结果
+&#125;
+int main()&#123;
+    double arr[1005][6];  //用于存放每组输入的数据
+    cout&lt;&lt;fixed&lt;&lt;setprecision(9);  
+    int n;
+    cin&gt;&gt;n;
+    for(int i=0;i&lt;n;i++)&#123;
+        for(int j=0;j&lt;6;j++)&#123;
+            cin&gt;&gt;arr[i][j];  
+        &#125;
+    &#125;
+    for(int i=0;i&lt;n;i++)&#123;
+        findm(arr[i][0],arr[i][1],arr[i][2],arr[i][3],arr[i][4],arr[i][5]);  //进行计算
+    &#125;
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+</code></pre>
 
       
     </div>
