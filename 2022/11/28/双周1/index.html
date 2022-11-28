@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png">
 <meta property="article:published_time" content="2022-11-28T13:35:31.000Z">
-<meta property="article:modified_time" content="2022-11-28T14:05:26.185Z">
+<meta property="article:modified_time" content="2022-11-28T14:07:55.313Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png">
@@ -125,7 +125,35 @@
 <p>再遍历每一个格子检测其相邻格子中是否有有百合&#96;</p>
 <ul>
 <li><p>Code:</p>
-<p> #include<iostream><br> using namespace std;<br> int main(){<br> int n,m&#x3D;1;<br> int A[1005]&#x3D;{0};<br> char a[1005]&#x3D;{0};<br> cin&gt;&gt;n;<br> for(int i&#x3D;1;i&lt;&#x3D;n;i++){<br>     cin&gt;&gt;a[i];<br> }<br> while(m&lt;&#x3D;n){<br>     if(a[m]&#x3D;&#x3D;’L’){<br>         A[i]&#x3D;1;<br>         A[i+1]&#x3D;1;<br>         A[i-1]&#x3D;1;<br>     }<br>     m++;<br> }<br><br> for(int i&#x3D;1;i&lt;&#x3D;n;i++){<br>     if(A[i]!&#x3D;1){<br>         a[i]&#x3D;’C’;<br>     }<br> }<br> for(int i&#x3D;1;i&lt;&#x3D;n;i++){<br>     cout&lt;&lt;a[i];<br> }<br><br> return 0;<br> }</p>
+<p> #include<iostream><br> using namespace std;<br> int main(){</p>
+<pre><code> int n,m=1;
+ int A[1005]=&#123;0&#125;;  
+ char a[1005]=&#123;0&#125;;
+ cin&gt;&gt;n;
+ for(int i=1;i&lt;=n;i++)&#123;
+     cin&gt;&gt;a[i]; 
+ &#125;
+ while(m&lt;=n)&#123;
+     if(a[m]==&#39;L&#39;)&#123;
+         A[i]=1;
+         A[i+1]=1;
+         A[i-1]=1;   
+     &#125;
+     m++;
+ &#125;
+
+ for(int i=1;i&lt;=n;i++)&#123;
+     if(A[i]!=1)&#123;
+         a[i]=&#39;C&#39;;  
+     &#125;
+ &#125;
+ for(int i=1;i&lt;=n;i++)&#123;
+     cout&lt;&lt;a[i];  
+ &#125;
+
+ return 0;
+</code></pre>
+<p> }</p>
 </li>
 </ul>
 <p>7-2 a * b</p>
@@ -252,33 +280,30 @@ int main()
 </code></pre>
 <p>Analyse：</p>
 <p>就是用一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84&spm=1001.2101.3001.7020">二维数组</a>存储第i个柜子和第j个格子。个人认为用二维数组过于浪费空间，所以用STL中的map来存储。</p>
-<p>* </p>
-<h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-map&lt;int,int&gt;a1[100001];
-int n,q;
-int main()
-&#123;
-    cin&gt;&gt;n&gt;&gt;q;
-    for(int i=0;i&lt;q;i++)
-    &#123;
-        int a,b,c,d;
-        cin&gt;&gt;a;
-        if(a==1)
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-            a1[b][c]=d;  //用map数组记录k
-        &#125;
-        else
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c;
-            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+<ul>
+<li><h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><p>  #include&lt;bits&#x2F;stdc++.h&gt;<br>  using namespace std;<br>  map&lt;int,int&gt;a1[100001];<br>  int n,q;<br>  int main()<br>  {</p>
+<pre><code>  cin&gt;&gt;n&gt;&gt;q;
+  for(int i=0;i&lt;q;i++)
+  &#123;
+      int a,b,c,d;
+      cin&gt;&gt;a;
+      if(a==1)
+      &#123;
+          cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+          a1[b][c]=d;  //用map数组记录k
+      &#125;
+      else
+      &#123;
+          cin&gt;&gt;b&gt;&gt;c;
+          cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
 
-        &#125;
-    &#125;
-    return 0;
-&#125;
+      &#125;
+  &#125;
+  return 0;
 </code></pre>
+<p>  }</p>
+</li>
+</ul>
 <p>7-5 一元三次方程</p>
 <p>分数 300</p>
 <p>全屏浏览题目</p>
