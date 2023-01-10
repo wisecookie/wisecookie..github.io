@@ -71,6 +71,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0x3f3f3f3f" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/10/0x3f3f3f3f/" class="article-date">
+  <time class="dt-published" datetime="2023-01-10T04:28:40.000Z" itemprop="datePublished">2023-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/10/0x3f3f3f3f/">1061109567</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ACM中常用的无穷大常量——0x3f3f3f3f<br>最近做题看题解的时候发现在大佬的题解报告中常会出现这么一行：↓↓↓</p>
+<p>const int inf &#x3D; 0x3f3f3f3f;<br>然后我就去探索了一下，0x3f3f3f3f的十进制是1061109567，是10^9级别的，而一般场合下的数据都是小于10^9的，所以它可以作为无穷大使用而不致出现数据大于无穷大的情形。 </p>
+<p>一般dfs或者dp求最小值的问题中间会出现一些不存在的情况，我一般会采用一种方法就是返回一个很大的值，这样去最小的时候就不会取到这种情况了（不知道是不是专业做法），我一般在取这个“很大的值”的时候会选一个答案不可能的值，比如bfs求最短路一共是一个10000层的树，就取一个10005。</p>
+<p>而宏定义一个0x3f3f3f3f可以减少考虑的时间，一般情况下就可以当作是一个无穷大的数去用。</p>
+<p>引用一段别人的博客中的介绍：</p>
+<p>0x3f3f3f3f是一个很有用的数值，它是满足以下两个条件的最大整数。</p>
+<p>1、整数的两倍不超过 0x7f7f7f7f，即int能表示的最大正整数。</p>
+<p>2、整数的每8位（每个字节）都是相同的。</p>
+<p>我们在程序设计中经常需要使用 memset(a, val, sizeof a) 初始化一个数组a，该语句把数值 val（0x00~0xFF）填充到数组a 的每个字节上，所以用memset只能赋值出“每8位都相同”的 int。</p>
+<p>当需要把一个数组中的数值初始化成正无穷时，为了避免加法算术上溢出或者繁琐的判断，我们经常用 memset(a, 0x3f, sizeof(a)) 给数组赋 0x3f3f3f3f的值来代替。<br>————————————————<br>版权声明：本文为CSDN博主「我对算法一无所知」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31267769/article/details/88890612">https://blog.csdn.net/qq_31267769/article/details/88890612</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/10/0x3f3f3f3f/" data-id="clcpqq72f0001gkw16galdxsa" data-title="1061109567" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pair知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
@@ -125,7 +173,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpq4sg50005qcw1ev914yl9" data-title="pair知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpqq72k0006gkw18iks5cbx" data-title="pair知识点" class="article-share-link">Share</a>
       
       
       
@@ -169,7 +217,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpq4sge000eqcw13a6f8x4z" data-title="堆的知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpqq72r000fgkw10emle4hs" data-title="堆的知识点" class="article-share-link">Share</a>
       
       
       
@@ -207,7 +255,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week12/" data-id="clcpq4sg90008qcw1hewacvbc" data-title="week12" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week12/" data-id="clcpqq72l0008gkw1gywpd3rk" data-title="week12" class="article-share-link">Share</a>
       
       
       
@@ -241,11 +289,140 @@ for(int i=1;i&lt;=10;i++)&#123;
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="汤姆斯的天堂梦"><a href="#汤姆斯的天堂梦" class="headerlink" title="汤姆斯的天堂梦"></a>汤姆斯的天堂梦</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>汤姆斯生活在一个等级为 $0$ 的星球上。那里的环境极其恶劣，每天 $12$ 小时的工作和成堆的垃圾让人忍无可忍。他向往着等级为 $N$ 的星球上天堂般的生活。</p>
+<p>有一些航班将人从低等级的星球送上高一级的星球，有时需要向驾驶员支付一定金额的费用，有时却又可以得到一定的金钱。</p>
+<p>汤姆斯预先知道了从 $0$ 等级星球去 $N$ 等级星球所有的航线和需要支付（或者可以得到）的金钱，他想寻找一条价格最低（甚至获得金钱最多）的航线。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行一个正整数 $N$（$N \le 100$），接下来的数据可分为 $N$ 个段落，每段的第一行一个整数 $K_i$（$K_i \le 100$），表示等级为 $i$ 的星球有 $K_i$ 个。</p>
+<p>接下来的 $K_i$ 行中第 $j$ 行依次表示与等级为 $i$，编号为 $j$ 的星球相连的等级为 $i - 1$ 的星球的编号和此航线需要的费用（正数表示支出，负数表示收益，费用的绝对值不超过 $1000$）。</p>
+<p>每行以 $0$ 结束，每行的航线数 $\le 100$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出所需（或所得）费用。正数表示支出，负数表示收益。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">1 15 0</span><br><span class="line">1 5 0</span><br><span class="line">3</span><br><span class="line">1 -5 2 10 0</span><br><span class="line">1 3 0</span><br><span class="line">2 40 0</span><br><span class="line">2</span><br><span class="line">1 1 2 5 3 -5 0</span><br><span class="line">2 -19 3 -20 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 $100 %$ 的数据，$1 \le N \le 100$，$1 \le K_i \le 100$。</p>
+<p>样例解释：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/652.png"></p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="跑步"><a href="#跑步" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
+<p>为了有效地提高自己的体能，他决定每次跑的圈数都必须比上次跑的多。</p>
+<p>可以假设他刚开始跑了 $0$ 圈，那么请问他可以有多少种跑完这 $n$ 圈的方案？</p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>一行一个整数，代表 $n$。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个整数表示跑完这 $n$ 圈的方案数。</p>
+<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">212</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">995645335</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><h4 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><p>对于 $100%$ 的数据，保证 $5\le n\le 500$。</p>
+<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="跑步-1"><a href="#跑步-1" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
+<p>为了有效地提高自己的体能，他决定每次跑的圈数都必须比上次跑的多。</p>
+<p>可以假设他刚开始跑了 $0$ 圈，那么请问他可以有多少种跑完这 $n$ 圈的方案？</p>
+<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>一行一个整数，代表 $n$。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个整数表示跑完这 $n$ 圈的方案数。</p>
+<h2 id="样例-1-2"><a href="#样例-1-2" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">212</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">995645335</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><h4 id="数据规模与约定-1"><a href="#数据规模与约定-1" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><p>对于 $100%$ 的数据，保证 $5\le n\le 500$。</p>
+<h2 id="Analyse-2"><a href="#Analyse-2" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="蓝桥杯-2021-省-AB-砝码称重"><a href="#蓝桥杯-2021-省-AB-砝码称重" class="headerlink" title="[蓝桥杯 2021 省 AB] 砝码称重"></a>[蓝桥杯 2021 省 AB] 砝码称重</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>你有一架天平和 $N$ 个砝码, 这 $N$ 个砝码重量依次是 $W_{1}, W_{2}, \cdots, W_{N}$ 。 请你计算一共可以称出多少种不同的重量?</p>
+<p>注意砝码可以放在天平两边。</p>
+<h2 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含一个整数 $N$ 。</p>
+<p>第二行包含 $N$ 个整数: $W_{1}, W_{2}, W_{3}, \cdots, W_{N}$ 。</p>
+<h2 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一个整数代表答案。</p>
+<h2 id="样例-1-3"><a href="#样例-1-3" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-3"><a href="#样例输入-1-3" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 4 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-3"><a href="#样例输出-1-3" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p><strong>【样例说明】</strong></p>
+<p>能称出的 10 种重量是: $1 、 2 、 3 、 4 、 5 、 6 、 7 、 9 、 10 、 11$ 。</p>
+<p>$$<br>\begin{aligned}<br>&amp;1&#x3D;1 \<br>&amp;2&#x3D;6-4(\text { 天平一边放 } 6, \text { 另一边放 4) } \<br>&amp;3&#x3D;4-1 \<br>&amp;4&#x3D;4 \<br>&amp;5&#x3D;6-1 \<br>&amp;6&#x3D;6 \<br>&amp;7&#x3D;1+6 \<br>&amp;9&#x3D;4+6-1 \<br>&amp;10&#x3D;4+6 \<br>&amp;11&#x3D;1+4+6<br>\end{aligned}<br>$$</p>
+<p><strong>【评测用例规模与约定】</strong></p>
+<p>对于 $50 %$ 的评测用例, $1 \leq N \leq 15$ 。</p>
+<p>对于所有评测用例, $1 \leq N \leq 100, N$ 个砝码总重不超过 $10^5$。 </p>
+<p>蓝桥杯 2021 第一轮省赛 A 组 F 题（B 组 G 题）。</p>
+<h2 id="Analyse-3"><a href="#Analyse-3" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="遗址"><a href="#遗址" class="headerlink" title="遗址"></a>遗址</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>很久很久以前有一座寺庙，从上往下看寺庙的形状正好是一个正方形，由 $4$ 个角上竖立的圆柱搭建而成。现在圆柱都倒塌了，只在地上留下圆形的痕迹，可是现在地上有很多这样的痕迹，专家说一定是最大的那个。</p>
+<p>写一个程序，给出圆柱的坐标，找出由 $4$ 个圆柱构成的最大的正方形，因为这就是寺庙的位置，要求计算出最大的面积。注意正方形的边不一定平行于坐标轴。</p>
+<p>例如图有 $10$ 根柱子，其中 $(4,2),(5,2),(5,3),(4,3)$ 可以形成一个正方形，$(1,1),(4,0),(5,3),(2,4)$ 也可以，后者是其中最大的，面积为 $10$。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/869.png"></p>
+<h2 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含一个 $N(1\leq N\leq 3000)$，表示柱子的数量。</p>
+<p>接下来 $N$ 行，每行有两个空格隔开的整数表示柱子的坐标（坐标值在 $0$ 到 $5000$ 之间），柱子的位置互不相同。</p>
+<h2 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果存在正方形，输出最大的面积，否则输出 $0$。</p>
+<h2 id="样例-1-4"><a href="#样例-1-4" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-4"><a href="#样例输入-1-4" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line"> 9 4</span><br><span class="line"> 4 3</span><br><span class="line"> 1 1</span><br><span class="line"> 4 2</span><br><span class="line"> 2 4</span><br><span class="line"> 5 8</span><br><span class="line"> 4 0</span><br><span class="line"> 5 3</span><br><span class="line"> 0 5</span><br><span class="line"> 5 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-4"><a href="#样例输出-1-4" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h2><p>【数据范围】</p>
+<p>$30%$ 满足：$1\leq N \leq100$。</p>
+<p>$60%$ 满足：$1\leq N \leq500$。</p>
+<p>$100%$ 满足：$1\leq N \leq3000$。</p>
+<h2 id="Analyse-4"><a href="#Analyse-4" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="蓝桥杯-2022-国-A-环境治理"><a href="#蓝桥杯-2022-国-A-环境治理" class="headerlink" title="[蓝桥杯 2022 国 A] 环境治理"></a>[蓝桥杯 2022 国 A] 环境治理</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>LQ 国拥有 $n$ 个城市，从 $0$ 到 $n - 1$ 编号，这 $n$ 个城市两两之间都有且仅有一条双向道路连接，这意味着任意两个城市之间都是可达的。每条道路都有一个属性 $D$，表示这条道路的灰尘度。当从一个城市 A 前往另一个城市 B 时，可能存在多条路线，每条路线的灰尘度定义为这条路线所经过的所有道路的灰尘度之和，LQ 国的人都很讨厌灰尘，所以他们总会优先选择灰尘度最小的路线。</p>
+<p>LQ 国很看重居民的出行环境，他们用一个指标 $P$ 来衡量 LQ 国的出行环境，$P$ 定义为：</p>
+<p>$$P&#x3D;\sum \limits_{i&#x3D;0}^{n-1} \sum \limits_{j&#x3D;0}^{n-1} d(i,j)$$</p>
+<p>其中 $d(i,j)$ 表示城市 $i$ 到城市 $j$ 之间灰尘度最小的路线对应的灰尘度的值。</p>
+<p>为了改善出行环境，每个城市都要有所作为，当某个城市进行道路改善时，会将与这个城市直接相连的所有道路的灰尘度都减少 $1$，但每条道路都有一个灰尘度的下限值 $L$，当灰尘度达到道路的下限值时，无论再怎么改善，道路的灰尘度也不会再减小了。</p>
+<p>具体的计划是这样的：</p>
+<ul>
+<li>第 $1$ 天，$0$ 号城市对与其直接相连的道路环境进行改善；</li>
+<li>第 $2$ 天，$1$ 号城市对与其直接相连的道路环境进行改善；</li>
+</ul>
+<p>……</p>
+<ul>
+<li>第 $n$ 天，$n - 1$ 号城市对与其直接相连的道路环境进行改善；</li>
+<li>第 $n + 1$ 天，$0$ 号城市对与其直接相连的道路环境进行改善；</li>
+<li>第 $n + 2$ 天，$1$ 号城市对与其直接相连的道路环境进行改善；</li>
+</ul>
+<p>……</p>
+<p>LQ 国想要使得 $P$ 指标满足 $P \leq Q$。请问最少要经过多少天之后，$P$ 指标可以满足 $P \leq Q$。如果在初始时就已经满足条件，则输出 $0$；如果永远不可能满足，则输出 $-1$。</p>
+<h2 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含两个整数 $n, Q$，用一个空格分隔，分别表示城市个数和期望达到的 $P$ 指标。</p>
+<p>接下来 $n$ 行，每行包含 $n$ 个整数，相邻两个整数之间用一个空格分隔，其中第 $i$ 行第 $j$ 列的值 $D_{i,j} (D_{i,j}&#x3D;D_{j,i},D_{i,i} &#x3D; 0)$ 表示城市 $i$ 与城市 $j$ 之间直接相连的那条道路的灰尘度。</p>
+<p>接下来 $n$ 行，每行包含 $n$ 个整数，相邻两个整数之间用一个空格分隔，其中第 $i$ 行第 $j$ 列的值 $L_{i,j} (L_{i,j} &#x3D; L_{j,i}, L_{i,i} &#x3D; 0)$ 表示城市 $i$ 与城市 $j$ 之间直接相连的那条道路的灰尘度的下限值。</p>
+<h2 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行包含一个整数表示答案。</p>
+<h2 id="样例-1-5"><a href="#样例-1-5" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-5"><a href="#样例输入-1-5" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 10</span><br><span class="line">0 2 4</span><br><span class="line">2 0 1</span><br><span class="line">4 1 0</span><br><span class="line">0 2 2</span><br><span class="line">2 0 0</span><br><span class="line">2 0 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-5"><a href="#样例输出-1-5" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-5"><a href="#提示-5" class="headerlink" title="提示"></a>提示</h2><p><strong>【样例说明】</strong></p>
+<p>初始时的图如下所示，每条边上的数字表示这条道路的灰尘度：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/5lz6auke.png"></p>
+<p>此时每对顶点之间的灰尘度最小的路线对应的灰尘度为：</p>
+<ul>
+<li>$d(0, 0) &#x3D; 0, d(0, 1) &#x3D; 2, d(0, 2) &#x3D; 3$；</li>
+<li>$d(1, 0) &#x3D; 2, d(1, 1) &#x3D; 0, d(1, 2) &#x3D; 1$；</li>
+<li>$d(2, 0) &#x3D; 3, d(2, 1) &#x3D; 1, d(2, 2) &#x3D; 0$。</li>
+</ul>
+<p>初始时的 $P$ 指标为 $(2 + 3 + 1) \times 2 &#x3D; 12$，不满足 $P \leq Q &#x3D; 10$;</p>
+<p>第一天，$0$ 号城市进行道路改善，改善后的图示如下：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/mrhf5wx6.png"></p>
+<p>注意到边 $(0, 2)$ 的值减小了 $1$，但 $(0, 1)$ 并没有减小，因为 $L_{0,1} &#x3D; 2$ ，所以 $(0, 1)$ 的值不可以再减小了。此时每对顶点之间的灰尘度最小的路线对应的灰尘度为：</p>
+<ul>
+<li>$d(0, 0) &#x3D; 0, d(0, 1) &#x3D; 2, d(0, 2) &#x3D; 3$，</li>
+<li>$d(1, 0) &#x3D; 2, d(1, 1) &#x3D; 0, d(1, 2) &#x3D; 1$，</li>
+<li>$d(2, 0) &#x3D; 3, d(2, 1) &#x3D; 1, d(2, 2) &#x3D; 0$。</li>
+</ul>
+<p>此时 $P$ 仍为 $12$。</p>
+<p>第二天，1 号城市进行道路改善，改善后的图示如下：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/tjxis3yb.png"></p>
+<p>此时每对顶点之间的灰尘度最小的路线对应的灰尘度为：</p>
+<ul>
+<li>$d(0, 0) &#x3D; 0, d(0, 1) &#x3D; 2, d(0, 2) &#x3D; 2$，</li>
+<li>$d(1, 0) &#x3D; 2, d(1, 1) &#x3D; 0, d(1, 2) &#x3D; 0$，</li>
+<li>$d(2, 0) &#x3D; 2, d(2, 1) &#x3D; 0, d(2, 2) &#x3D; 0$。</li>
+</ul>
+<p>此时的 $P$ 指标为 $(2 + 2) \times 2 &#x3D; 8 &lt; Q$，此时已经满足条件。</p>
+<p>所以答案是 $2$。</p>
+<p><strong>【评测用例规模与约定】</strong></p>
+<ul>
+<li>对于 $30%$ 的评测用例，$1 \leq n \leq 10$，$0 \leq L_{i,j} \leq D_{i,j} \leq 10$；</li>
+<li>对于 $60%$ 的评测用例，$1 \leq n \leq 50$，$0 \leq L_{i,j} \leq D_{i,j} \leq 10^5$；</li>
+<li>对于所有评测用例，$1 \leq n \leq 100$，$0 \leq L_{i,j} \leq D_{i,j} \leq 10^5$，$0 \leq Q \leq 2^{31} - 1$。</li>
+</ul>
+<p>蓝桥杯 2022 国赛 A 组 F 题。</p>
+<h2 id="Analyse-5"><a href="#Analyse-5" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>P &#x3D; 任意两点之间的最短距离的和，可以用 Floyd 算法求，单次检查复杂度 O(n3)</p>
+<p>由于道路改善发生的次数越多，指标 P 越小。故根据这种单调性，可以采用二分，二分道路改善次数 x。已知道路改善次数的情况，我们可以很快的知道图上每一条边当下的边权，然后我们可以用 Floyd 算法计算一下指标 P，判断指标 P 是否小于等于 Q 即可，复杂度 O(n3logK)，其中 K 为最大的道路改善次数，设成 109 左右即可。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week11/" data-id="clcpq4sg80007qcw11sm0932i" data-title="week11" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week11/" data-id="clcpqq72k0007gkw18qy32h7t" data-title="week11" class="article-share-link">Share</a>
       
       
       
@@ -283,7 +460,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week10/" data-id="clcpq4sg70006qcw114e5erld" data-title="week10" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week10/" data-id="clcpqq72m0009gkw11sik57gy" data-title="week10" class="article-share-link">Share</a>
       
       
       
@@ -499,9 +676,9 @@ void dijkstra()
         if (!a2[x])
         &#123;
             a2[x] = 1;
-    
-    
-    
+
+
+
             for (int i = a3[x]; i; i = E[i].next)
                 if (a1[E[i].to] &gt; a1[x] + E[i].w)
                 &#123;
@@ -536,7 +713,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week9/" data-id="clcpq4sgb000aqcw15ohl865i" data-title="week9" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week9/" data-id="clcpqq72n000bgkw10klj6xsw" data-title="week9" class="article-share-link">Share</a>
       
       
       
@@ -813,7 +990,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/09/week8/" data-id="clcpq4sga0009qcw10sdr9v85" data-title="week8" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/09/week8/" data-id="clcpqq72m000agkw1betxg0ko" data-title="week8" class="article-share-link">Share</a>
       
       
       
@@ -1110,7 +1287,7 @@ int main(int argc, char **argv)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/12/19/Test-7/" data-id="clcpq4sg30003qcw1cfybakl1" data-title="Test 7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/12/19/Test-7/" data-id="clcpqq72h0003gkw12kl3emyw" data-title="Test 7" class="article-share-link">Share</a>
       
       
       
@@ -1289,331 +1466,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/12/05/Sixth/" data-id="clcpq4sg10001qcw15uboe43p" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-双周1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/11/28/%E5%8F%8C%E5%91%A81/" class="article-date">
-  <time class="dt-published" datetime="2022-11-28T13:35:31.000Z" itemprop="datePublished">2022-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/28/%E5%8F%8C%E5%91%A81/">双周1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>7-1 Lily</p>
-<p>分数 300</p>
-<p>全屏浏览题目</p>
-<p>切换布局</p>
-<p>作者 neuqAcmClub</p>
-<p>单位 东北大学秦皇岛分校</p>
-<p>百合花（Lily）是一种美丽的花。她通常一年只开一次花，所以如果你看到百合花盛开，它会非常珍贵。然而，她对猫有剧毒，所以你必须注意让好奇的猫远离可爱的百合花。</p>
-<p>你有n个网格的土壤土地排成一行，从1到n，其中一些是百合花。我们不想伤害百合，也不想伤害猫。你可以在网格上放一些猫粮，但对于任何有猫粮的网格i，在区域[i−1,i+1]不得含有百合花。你喜欢猫和百合，所以你想最大限度地增加有猫粮的格子。</p>
-<p>设计满足上述要求的计划。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>有一个整数n（1≤n≤1000）表示网格的数量。</p>
-<p>第二行包含仅由“L”和“.”组成的字符串R，表示有和没有百合花的格子。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出包含一行，字符串R′仅由“L”、“”组成和“C”，其中“C”表示在满足上述要求的同时分配给R中空网格的猫粮。</p>
-<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
-<pre><code>5
-..L..
-</code></pre>
-<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
-<pre><code>C.L.C
-</code></pre>
-<p>输出样例:</p>
-<p>在这里给出相应的输出。例如：</p>
-<pre><code>C.L.C
-</code></pre>
-<p>Analyse：</p>
-<p>先读入格子的状态</p>
-<p>再遍历每一个格子检测其相邻格子中是否有有百合&#96;</p>
-<ul>
-<li><p>Code:</p>
-<p> #include<iostream><br> using namespace std;<br> int main(){</p>
-<pre><code> int n,m=1;
- int A[1005]=&#123;0&#125;;  
- char a[1005]=&#123;0&#125;;
- cin&gt;&gt;n;
- for(int i=1;i&lt;=n;i++)&#123;
-     cin&gt;&gt;a[i]; 
- &#125;
- while(m&lt;=n)&#123;
-     if(a[m]==&#39;L&#39;)&#123;
-         A[i]=1;
-         A[i+1]=1;
-         A[i-1]=1;   
-     &#125;
-     m++;
- &#125;
-
- for(int i=1;i&lt;=n;i++)&#123;
-     if(A[i]!=1)&#123;
-         a[i]=&#39;C&#39;;  
-     &#125;
- &#125;
- for(int i=1;i&lt;=n;i++)&#123;
-     cout&lt;&lt;a[i];  
- &#125;
-
- return 0;
-</code></pre>
-<p> }</p>
-</li>
-</ul>
-<p>7-2 a * b</p>
-<p>分数 300</p>
-<p>全屏浏览题目</p>
-<p>切换布局</p>
-<p>作者 neuqAcmClub</p>
-<p>单位 东北大学秦皇岛分校</p>
-<p>给出两个不超过1000位的十六进制数a,b。<br>求a∗b的值</p>
-<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入共两行，两个十六进制的数</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出一行，表示a∗b</p>
-<h3 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
-<pre><code>1BF52
-1D4B42
-</code></pre>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>存储每个位置的数字时,我们要注意字母与数字的转化.同样,在输出时也要注意输出数字若大于等于10,就要转化成字母.</p>
-<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><ul>
-<li>}a[N];</li>
-</ul>
-<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-map&lt;int,int&gt;a1[100001];
-int n,q;
-int main()
-&#123;
-    cin&gt;&gt;n&gt;&gt;q;
-    for(int i=0;i&lt;q;i++)
-    &#123;
-        int a,b,c,d;
-        cin&gt;&gt;a;
-        if(a==1)
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-            a1[b][c]=d;  //用map数组记录k
-        &#125;
-        else
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c;
-            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
-
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<p>7-3 山头狙击战</p>
-<p>分数 300</p>
-<p>全屏浏览题目</p>
-<p>切换布局</p>
-<p>作者 neuqAcmClub</p>
-<p>单位 东北大学秦皇岛分校</p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小明为了掩护大部队，单枪匹马同敌人周旋，后来被敌人包围在某山头……等等，为什么怎么听怎么像狼牙山五壮士！不过不用着急，这次小明携带了足够的弹药，完全可以将涌上来的敌人一个一个干掉。小明是个神枪手，只要他的枪膛中有子弹，他就能将在他射程m（用从敌人位置到山头的直线距离算）以内的一个敌人瞬间射杀。但如果在射程内没有敌人，出于节约子弹考虑和面子问题，小明会等待敌人靠近然后射击。<br>正当小明为自己的强大而自我膨胀时，他忽然发现了一个致命的失误：他携带的枪是单发枪，每射出一发子弹都必须花k秒钟的时间装子弹。而凶残的敌人才不会花时间等你换子弹呢。他们始终在以1m&#x2F;s的速度接近山头。而如果在一个敌人到达山头时小明无法将他击毙，那么我们可怜的小明就将牺牲在敌人的刺刀下。现在小明用心灵感应向你发出求助：要保住自己的性命并且歼灭所有敌人，小明最多只能用多少时间给枪装上一发子弹？<br>说明：假设一开始小明的枪中就有一发子弹，并且一旦确定一个装弹时间，小明始终会用这个时间完成子弹的装卸。希望你能帮助小明脱离险境。</p>
-<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>每组输入数据，第一行有两个整数n和m，（2≤n≤100,000; 1≤m≤10,000,000）n代表敌人个数，m代表小明的射程。<br>接下来有n行，每行一个整数mi,（1≤mi≤10,000,000），代表每个敌人一开始相对山头的距离（单位为米）。</p>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>每组输出数据仅有一个整数，代表小明的换弹时间（单位为秒）。</p>
-<p>样例输入</p>
-<pre><code>6 100
-236
-120
-120
-120
-120
-120
-</code></pre>
-<p>样例输出</p>
-<pre><code>25
-</code></pre>
-<p>Analyse：</p>
-<p>敌人到射程才能开始开枪.</p>
-<p>需要一个一个的来进行模拟</p>
-<p>二分</p>
-<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-map&lt;int,int&gt;a1[100001];
-int n,q;
-int main()
-&#123;
-    cin&gt;&gt;n&gt;&gt;q;
-    for(int i=0;i&lt;q;i++)
-    &#123;
-        int a,b,c,d;
-        cin&gt;&gt;a;
-        if(a==1)
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-            a1[b][c]=d;  //用map数组记录k
-        &#125;
-        else
-        &#123;
-            cin&gt;&gt;b&gt;&gt;c;
-            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
-
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<p>7-4 Reversing Linked List</p>
-<p>分数 300</p>
-<p>全屏浏览题目</p>
-<p>切换布局</p>
-<p>作者 陈越</p>
-<p>单位 浙江大学</p>
-<p>Given a constant K and a singly linked list L, you are supposed to reverse the links of every K elements on L. For example, given L being 1→2→3→4→5→6, if K&#x3D;3, then you must output 3→2→1→6→5→4; if K&#x3D;4, you must output 4→3→2→1→5→6.</p>
-<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains the address of the first node, a positive N (≤105) which is the total number of nodes, and a positive K (≤N) which is the length of the sublist to be reversed. The address of a node is a 5-digit nonnegative integer, and NULL is represented by -1.</p>
-<p>Then N lines follow, each describes a node in the format:</p>
-<pre><code>Address Data Next
-</code></pre>
-<p>where <code>Address</code> is the position of the node, <code>Data</code> is an integer, and <code>Next</code> is the position of the next node.</p>
-<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each case, output the resulting ordered linked list. Each node occupies a line, and is printed in the same format as in the input.</p>
-<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h3><pre><code>00100 6 4
-00000 4 99999
-00100 1 12309
-68237 6 -1
-33218 3 00000
-99999 5 68237
-12309 2 33218
-</code></pre>
-<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h3><pre><code>00000 4 33218
-33218 3 12309
-12309 2 00100
-00100 1 99999
-99999 5 68237
-68237 6 -1
-</code></pre>
-<p>Analyse：</p>
-<p>就是用一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84&spm=1001.2101.3001.7020">二维数组</a>存储第i个柜子和第j个格子。个人认为用二维数组过于浪费空间，所以用STL中的map来存储。</p>
-<ul>
-<li><h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><p>  #include&lt;bits&#x2F;stdc++.h&gt;<br>  using namespace std;<br>  map&lt;int,int&gt;a1[100001];<br>  int n,q;<br>  int main()<br>  {</p>
-<pre><code>  cin&gt;&gt;n&gt;&gt;q;
-  for(int i=0;i&lt;q;i++)
-  &#123;
-      int a,b,c,d;
-      cin&gt;&gt;a;
-      if(a==1)
-      &#123;
-          cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-          a1[b][c]=d;  //用map数组记录k
-      &#125;
-      else
-      &#123;
-          cin&gt;&gt;b&gt;&gt;c;
-          cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
-
-      &#125;
-  &#125;
-  return 0;
-</code></pre>
-<p>  }</p>
-</li>
-</ul>
-<p>7-5 一元三次方程</p>
-<p>分数 300</p>
-<p>全屏浏览题目</p>
-<p>切换布局</p>
-<p>作者 neuqAcmClub</p>
-<p>单位 东北大学秦皇岛分校</p>
-<p>给定一个形如ax3+bx2+cx+d&#x3D;0的一元三次方程。</p>
-<p>已知该方程有三个不同的实数根（根与根之差的绝对值≥10−6），且根范围均在[p,q]之间，你需要解出这个方程的三个根。</p>
-<h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>第一行一个整数T(1≤T≤1000)，表示有T组数据</p>
-<p>接下来T行，每行6个实数，分别表示a,b,c,d,p,q</p>
-<p>数据保证：−102≤p,q≤102，且对于∀x∈[p,q],−106≤f(x)≤106</p>
-<h3 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出三个实数，表示方程的三个解。</p>
-<p>你的答案可以以任意顺序输出。</p>
-<p>一个答案被认为是正确的，当且仅当其与标准答案的绝对误差不超过10−6</p>
-<h3 id="输入样例-2"><a href="#输入样例-2" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
-<pre><code>1
-1.000000 -5.000000 -4.000000 20.000000 -10.000000 10.000000
-</code></pre>
-<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
-<pre><code>-2.000000 2.000000 5.000000
-</code></pre>
-<h3 id="提示1："><a href="#提示1：" class="headerlink" title="提示1："></a>提示1：</h3><p>样例所给方程的图像如下：</p>
-<p><img src="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png" alt="T4.png"></p>
-<h3 id="分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内"><a href="#分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内" class="headerlink" title="分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,"></a>分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,</h3><h3 id="My-Code-4"><a href="#My-Code-4" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
-#include&lt;cmath&gt;
-#include&lt;iomanip&gt;
-using namespace std;   
-double f(double x,double a,double b,double c,double d)&#123;  //求函数值
-    double f;
-    f=a*pow(x,3.0)+b*pow(x,2.0)+c*x+d;
-    return f;
-&#125;
-double findx(double l,double r,double a,double b,double c,double d)&#123;  //二分搜索
-    double mid;
-    while(abs(l-r)&gt;pow(10.0,-7.0))&#123;  //控制精度
-        mid=(l+r)/2.0;
-        if(f(mid,a,b,c,d)*f(l,a,b,c,d)&gt;0)&#123;
-            l=mid;
-        &#125;
-        else&#123;
-            r=mid;
-        &#125;
-    &#125;
-    return mid;
-&#125;
-void findm(double a,double b,double c,double d,double p,double q)&#123;
-    double x1,x2;
-    double ret1,ret2,ret3;
-    x1=((-2)*b+pow(4*b*b-12*a*c,0.5))/(6*a);
-    x2=((-2)*b-pow(4*b*b-12*a*c,0.5))/(6*a);   //求极值点的横坐标
-    if(x1&gt;x2)&#123;
-        ret3=findx(x1,q,a,b,c,d);
-        ret1=findx(p,x2,a,b,c,d);
-        ret2=findx(x2,x1,a,b,c,d);        //在x1&gt;x2状态下进行二分搜索
-    &#125;       
-    else&#123;
-        ret3=findx(x2,q,a,b,c,d);
-        ret1=findx(p,x1,a,b,c,d);
-        ret2=findx(x1,x2,a,b,c,d);      //在x2&gt;x1状态下进行二分搜索
-    &#125;
-    cout&lt;&lt;ret1&lt;&lt;&quot; &quot;&lt;&lt;ret2&lt;&lt;&quot; &quot;&lt;&lt;ret3&lt;&lt;endl;  //输出结果
-&#125;
-int main()&#123;
-    double arr[1005][6];  //用于存放每组输入的数据
-    cout&lt;&lt;fixed&lt;&lt;setprecision(9);  
-    int n;
-    cin&gt;&gt;n;
-    for(int i=0;i&lt;n;i++)&#123;
-        for(int j=0;j&lt;6;j++)&#123;
-            cin&gt;&gt;arr[i][j];  
-        &#125;
-    &#125;
-    for(int i=0;i&lt;n;i++)&#123;
-        findm(arr[i][0],arr[i][1],arr[i][2],arr[i][3],arr[i][4],arr[i][5]);  //进行计算
-    &#125;
-    system(&quot;pause&quot;);
-    return 0;
-&#125;
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/28/%E5%8F%8C%E5%91%A81/" data-id="clcpq4sgd000dqcw18ynq62bg" data-title="双周1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/12/05/Sixth/" data-id="clcpqq72i0004gkw12rsth5d7" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -1661,6 +1514,10 @@ int main()&#123;
       <ul>
         
           <li>
+            <a href="/2023/01/10/0x3f3f3f3f/">1061109567</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
           </li>
         
@@ -1674,10 +1531,6 @@ int main()&#123;
         
           <li>
             <a href="/2023/01/10/week11/">week11</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/10/week10/">week10</a>
           </li>
         
       </ul>

@@ -71,6 +71,330 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-双周1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/11/28/%E5%8F%8C%E5%91%A81/" class="article-date">
+  <time class="dt-published" datetime="2022-11-28T13:35:31.000Z" itemprop="datePublished">2022-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/11/28/%E5%8F%8C%E5%91%A81/">双周1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>7-1 Lily</p>
+<p>分数 300</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 neuqAcmClub</p>
+<p>单位 东北大学秦皇岛分校</p>
+<p>百合花（Lily）是一种美丽的花。她通常一年只开一次花，所以如果你看到百合花盛开，它会非常珍贵。然而，她对猫有剧毒，所以你必须注意让好奇的猫远离可爱的百合花。</p>
+<p>你有n个网格的土壤土地排成一行，从1到n，其中一些是百合花。我们不想伤害百合，也不想伤害猫。你可以在网格上放一些猫粮，但对于任何有猫粮的网格i，在区域[i−1,i+1]不得含有百合花。你喜欢猫和百合，所以你想最大限度地增加有猫粮的格子。</p>
+<p>设计满足上述要求的计划。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>有一个整数n（1≤n≤1000）表示网格的数量。</p>
+<p>第二行包含仅由“L”和“.”组成的字符串R，表示有和没有百合花的格子。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出包含一行，字符串R′仅由“L”、“”组成和“C”，其中“C”表示在满足上述要求的同时分配给R中空网格的猫粮。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
+<pre><code>5
+..L..
+</code></pre>
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
+<pre><code>C.L.C
+</code></pre>
+<p>输出样例:</p>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code>C.L.C
+</code></pre>
+<p>Analyse：</p>
+<p>先读入格子的状态</p>
+<p>再遍历每一个格子检测其相邻格子中是否有有百合&#96;</p>
+<ul>
+<li><p>Code:</p>
+<p> #include<iostream><br> using namespace std;<br> int main(){</p>
+<pre><code> int n,m=1;
+ int A[1005]=&#123;0&#125;;  
+ char a[1005]=&#123;0&#125;;
+ cin&gt;&gt;n;
+ for(int i=1;i&lt;=n;i++)&#123;
+     cin&gt;&gt;a[i]; 
+ &#125;
+ while(m&lt;=n)&#123;
+     if(a[m]==&#39;L&#39;)&#123;
+         A[i]=1;
+         A[i+1]=1;
+         A[i-1]=1;   
+     &#125;
+     m++;
+ &#125;
+
+ for(int i=1;i&lt;=n;i++)&#123;
+     if(A[i]!=1)&#123;
+         a[i]=&#39;C&#39;;  
+     &#125;
+ &#125;
+ for(int i=1;i&lt;=n;i++)&#123;
+     cout&lt;&lt;a[i];  
+ &#125;
+
+ return 0;
+</code></pre>
+<p> }</p>
+</li>
+</ul>
+<p>7-2 a * b</p>
+<p>分数 300</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 neuqAcmClub</p>
+<p>单位 东北大学秦皇岛分校</p>
+<p>给出两个不超过1000位的十六进制数a,b。<br>求a∗b的值</p>
+<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入共两行，两个十六进制的数</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出一行，表示a∗b</p>
+<h3 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
+<pre><code>1BF52
+1D4B42
+</code></pre>
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>存储每个位置的数字时,我们要注意字母与数字的转化.同样,在输出时也要注意输出数字若大于等于10,就要转化成字母.</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><ul>
+<li>}a[N];</li>
+</ul>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+map&lt;int,int&gt;a1[100001];
+int n,q;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=0;i&lt;q;i++)
+    &#123;
+        int a,b,c,d;
+        cin&gt;&gt;a;
+        if(a==1)
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+            a1[b][c]=d;  //用map数组记录k
+        &#125;
+        else
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c;
+            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<p>7-3 山头狙击战</p>
+<p>分数 300</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 neuqAcmClub</p>
+<p>单位 东北大学秦皇岛分校</p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小明为了掩护大部队，单枪匹马同敌人周旋，后来被敌人包围在某山头……等等，为什么怎么听怎么像狼牙山五壮士！不过不用着急，这次小明携带了足够的弹药，完全可以将涌上来的敌人一个一个干掉。小明是个神枪手，只要他的枪膛中有子弹，他就能将在他射程m（用从敌人位置到山头的直线距离算）以内的一个敌人瞬间射杀。但如果在射程内没有敌人，出于节约子弹考虑和面子问题，小明会等待敌人靠近然后射击。<br>正当小明为自己的强大而自我膨胀时，他忽然发现了一个致命的失误：他携带的枪是单发枪，每射出一发子弹都必须花k秒钟的时间装子弹。而凶残的敌人才不会花时间等你换子弹呢。他们始终在以1m&#x2F;s的速度接近山头。而如果在一个敌人到达山头时小明无法将他击毙，那么我们可怜的小明就将牺牲在敌人的刺刀下。现在小明用心灵感应向你发出求助：要保住自己的性命并且歼灭所有敌人，小明最多只能用多少时间给枪装上一发子弹？<br>说明：假设一开始小明的枪中就有一发子弹，并且一旦确定一个装弹时间，小明始终会用这个时间完成子弹的装卸。希望你能帮助小明脱离险境。</p>
+<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>每组输入数据，第一行有两个整数n和m，（2≤n≤100,000; 1≤m≤10,000,000）n代表敌人个数，m代表小明的射程。<br>接下来有n行，每行一个整数mi,（1≤mi≤10,000,000），代表每个敌人一开始相对山头的距离（单位为米）。</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>每组输出数据仅有一个整数，代表小明的换弹时间（单位为秒）。</p>
+<p>样例输入</p>
+<pre><code>6 100
+236
+120
+120
+120
+120
+120
+</code></pre>
+<p>样例输出</p>
+<pre><code>25
+</code></pre>
+<p>Analyse：</p>
+<p>敌人到射程才能开始开枪.</p>
+<p>需要一个一个的来进行模拟</p>
+<p>二分</p>
+<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+map&lt;int,int&gt;a1[100001];
+int n,q;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;q;
+    for(int i=0;i&lt;q;i++)
+    &#123;
+        int a,b,c,d;
+        cin&gt;&gt;a;
+        if(a==1)
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+            a1[b][c]=d;  //用map数组记录k
+        &#125;
+        else
+        &#123;
+            cin&gt;&gt;b&gt;&gt;c;
+            cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<p>7-4 Reversing Linked List</p>
+<p>分数 300</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>Given a constant K and a singly linked list L, you are supposed to reverse the links of every K elements on L. For example, given L being 1→2→3→4→5→6, if K&#x3D;3, then you must output 3→2→1→6→5→4; if K&#x3D;4, you must output 4→3→2→1→5→6.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains the address of the first node, a positive N (≤105) which is the total number of nodes, and a positive K (≤N) which is the length of the sublist to be reversed. The address of a node is a 5-digit nonnegative integer, and NULL is represented by -1.</p>
+<p>Then N lines follow, each describes a node in the format:</p>
+<pre><code>Address Data Next
+</code></pre>
+<p>where <code>Address</code> is the position of the node, <code>Data</code> is an integer, and <code>Next</code> is the position of the next node.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each case, output the resulting ordered linked list. Each node occupies a line, and is printed in the same format as in the input.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h3><pre><code>00100 6 4
+00000 4 99999
+00100 1 12309
+68237 6 -1
+33218 3 00000
+99999 5 68237
+12309 2 33218
+</code></pre>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h3><pre><code>00000 4 33218
+33218 3 12309
+12309 2 00100
+00100 1 99999
+99999 5 68237
+68237 6 -1
+</code></pre>
+<p>Analyse：</p>
+<p>就是用一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84&spm=1001.2101.3001.7020">二维数组</a>存储第i个柜子和第j个格子。个人认为用二维数组过于浪费空间，所以用STL中的map来存储。</p>
+<ul>
+<li><h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><p>  #include&lt;bits&#x2F;stdc++.h&gt;<br>  using namespace std;<br>  map&lt;int,int&gt;a1[100001];<br>  int n,q;<br>  int main()<br>  {</p>
+<pre><code>  cin&gt;&gt;n&gt;&gt;q;
+  for(int i=0;i&lt;q;i++)
+  &#123;
+      int a,b,c,d;
+      cin&gt;&gt;a;
+      if(a==1)
+      &#123;
+          cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+          a1[b][c]=d;  //用map数组记录k
+      &#125;
+      else
+      &#123;
+          cin&gt;&gt;b&gt;&gt;c;
+          cout&lt;&lt;a1[b][c]&lt;&lt;endl;  //输出aij
+
+      &#125;
+  &#125;
+  return 0;
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<p>7-5 一元三次方程</p>
+<p>分数 300</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 neuqAcmClub</p>
+<p>单位 东北大学秦皇岛分校</p>
+<p>给定一个形如ax3+bx2+cx+d&#x3D;0的一元三次方程。</p>
+<p>已知该方程有三个不同的实数根（根与根之差的绝对值≥10−6），且根范围均在[p,q]之间，你需要解出这个方程的三个根。</p>
+<h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>第一行一个整数T(1≤T≤1000)，表示有T组数据</p>
+<p>接下来T行，每行6个实数，分别表示a,b,c,d,p,q</p>
+<p>数据保证：−102≤p,q≤102，且对于∀x∈[p,q],−106≤f(x)≤106</p>
+<h3 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出三个实数，表示方程的三个解。</p>
+<p>你的答案可以以任意顺序输出。</p>
+<p>一个答案被认为是正确的，当且仅当其与标准答案的绝对误差不超过10−6</p>
+<h3 id="输入样例-2"><a href="#输入样例-2" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
+<pre><code>1
+1.000000 -5.000000 -4.000000 20.000000 -10.000000 10.000000
+</code></pre>
+<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
+<pre><code>-2.000000 2.000000 5.000000
+</code></pre>
+<h3 id="提示1："><a href="#提示1：" class="headerlink" title="提示1："></a>提示1：</h3><p>样例所给方程的图像如下：</p>
+<p><img src="https://images.ptausercontent.com/0600ddcf-0496-4697-a16c-5f7ceccf042f.png" alt="T4.png"></p>
+<h3 id="分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内"><a href="#分析：必定在p和q的区间里有极大值点a和极小值点b-则方程的解也就是在-p-min-a-b-min-a-b-max-a-b-max-a-b-q-这三个区间内" class="headerlink" title="分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,"></a>分析：必定在p和q的区间里有极大值点a和极小值点b,                                                                       则方程的解也就是在(p,min{a,b})(min{a,b},max{a,b})(max{a,b},q)这三个区间内,</h3><h3 id="My-Code-4"><a href="#My-Code-4" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;iomanip&gt;
+using namespace std;   
+double f(double x,double a,double b,double c,double d)&#123;  //求函数值
+    double f;
+    f=a*pow(x,3.0)+b*pow(x,2.0)+c*x+d;
+    return f;
+&#125;
+double findx(double l,double r,double a,double b,double c,double d)&#123;  //二分搜索
+    double mid;
+    while(abs(l-r)&gt;pow(10.0,-7.0))&#123;  //控制精度
+        mid=(l+r)/2.0;
+        if(f(mid,a,b,c,d)*f(l,a,b,c,d)&gt;0)&#123;
+            l=mid;
+        &#125;
+        else&#123;
+            r=mid;
+        &#125;
+    &#125;
+    return mid;
+&#125;
+void findm(double a,double b,double c,double d,double p,double q)&#123;
+    double x1,x2;
+    double ret1,ret2,ret3;
+    x1=((-2)*b+pow(4*b*b-12*a*c,0.5))/(6*a);
+    x2=((-2)*b-pow(4*b*b-12*a*c,0.5))/(6*a);   //求极值点的横坐标
+    if(x1&gt;x2)&#123;
+        ret3=findx(x1,q,a,b,c,d);
+        ret1=findx(p,x2,a,b,c,d);
+        ret2=findx(x2,x1,a,b,c,d);        //在x1&gt;x2状态下进行二分搜索
+    &#125;       
+    else&#123;
+        ret3=findx(x2,q,a,b,c,d);
+        ret1=findx(p,x1,a,b,c,d);
+        ret2=findx(x1,x2,a,b,c,d);      //在x2&gt;x1状态下进行二分搜索
+    &#125;
+    cout&lt;&lt;ret1&lt;&lt;&quot; &quot;&lt;&lt;ret2&lt;&lt;&quot; &quot;&lt;&lt;ret3&lt;&lt;endl;  //输出结果
+&#125;
+int main()&#123;
+    double arr[1005][6];  //用于存放每组输入的数据
+    cout&lt;&lt;fixed&lt;&lt;setprecision(9);  
+    int n;
+    cin&gt;&gt;n;
+    for(int i=0;i&lt;n;i++)&#123;
+        for(int j=0;j&lt;6;j++)&#123;
+            cin&gt;&gt;arr[i][j];  
+        &#125;
+    &#125;
+    for(int i=0;i&lt;n;i++)&#123;
+        findm(arr[i][0],arr[i][1],arr[i][2],arr[i][3],arr[i][4],arr[i][5]);  //进行计算
+    &#125;
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/11/28/%E5%8F%8C%E5%91%A81/" data-id="clcpqq72q000egkw14dr27zg4" data-title="双周1" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-T1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/11/28/T1/" class="article-date">
@@ -302,7 +626,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/28/T1/" data-id="clcpq4sg20002qcw19h7ifme4" data-title="T1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/28/T1/" data-id="clcpqq72g0002gkw16k0vcp7c" data-title="T1" class="article-share-link">Share</a>
       
       
       
@@ -490,7 +814,7 @@ int main() &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/21/%E9%A9%AC%E7%9A%84/" data-id="clcpq4sgf000hqcw14xeb3r52" data-title="搜索" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/21/%E9%A9%AC%E7%9A%84/" data-id="clcpqq72u000igkw19nha5gue" data-title="搜索" class="article-share-link">Share</a>
       
       
       
@@ -532,7 +856,7 @@ int main() &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/14/0/" data-id="clcpq4sfx0000qcw1b8pn3cbg" data-title="0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/14/0/" data-id="clcpqq72a0000gkw17bdudx2w" data-title="0" class="article-share-link">Share</a>
       
       
       
@@ -868,7 +1192,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/14/%E6%8E%92%E9%98%9F/" data-id="clcpq4sge000fqcw19dab039k" data-title="排队" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/14/%E6%8E%92%E9%98%9F/" data-id="clcpqq72s000ggkw19tqf8z6k" data-title="排队" class="article-share-link">Share</a>
       
       
       
@@ -1061,7 +1385,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/11/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" data-id="clcpq4sgc000cqcw1cipn2r60" data-title="二分查找与二分答案" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/11/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" data-id="clcpqq72p000dgkw129arce57" data-title="二分查找与二分答案" class="article-share-link">Share</a>
       
       
       
@@ -1321,7 +1645,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/11/%E6%A8%A1%E6%8B%9F%E4%B8%8E%E9%AB%98%E7%B2%BE%E5%BA%A6/" data-id="clcpq4sgf000gqcw1a1mha79m" data-title="模拟与高精度" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/11/%E6%A8%A1%E6%8B%9F%E4%B8%8E%E9%AB%98%E7%B2%BE%E5%BA%A6/" data-id="clcpqq72t000hgkw17iw76lwa" data-title="模拟与高精度" class="article-share-link">Share</a>
       
       
       
@@ -1360,7 +1684,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/11/wise-cookie/" data-id="clcpq4sgc000bqcw169561bh3" data-title="wise cookie" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/11/wise-cookie/" data-id="clcpqq72o000cgkw1c758c7t0" data-title="wise cookie" class="article-share-link">Share</a>
       
       
       
@@ -1411,7 +1735,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/11/hello-world/" data-id="clcpq4sg40004qcw1c4tkfr8i" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/11/hello-world/" data-id="clcpqq72j0005gkw17a3pgohm" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -1459,6 +1783,10 @@ int main()&#123;
       <ul>
         
           <li>
+            <a href="/2023/01/10/0x3f3f3f3f/">1061109567</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
           </li>
         
@@ -1472,10 +1800,6 @@ int main()&#123;
         
           <li>
             <a href="/2023/01/10/week11/">week11</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/10/week10/">week10</a>
           </li>
         
       </ul>
