@@ -125,7 +125,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpoevbc0005lgw105asf7dk" data-title="pair知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpq4sg50005qcw1ev914yl9" data-title="pair知识点" class="article-share-link">Share</a>
       
       
       
@@ -169,7 +169,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpoevbl000elgw12j7u053f" data-title="堆的知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpq4sge000eqcw13a6f8x4z" data-title="堆的知识点" class="article-share-link">Share</a>
       
       
       
@@ -207,7 +207,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week12/" data-id="clcpoevbf0009lgw145081nui" data-title="week12" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week12/" data-id="clcpq4sg90008qcw1hewacvbc" data-title="week12" class="article-share-link">Share</a>
       
       
       
@@ -245,7 +245,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week11/" data-id="clcpoevbe0007lgw1den0gl7s" data-title="week11" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week11/" data-id="clcpq4sg80007qcw11sm0932i" data-title="week11" class="article-share-link">Share</a>
       
       
       
@@ -283,7 +283,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week10/" data-id="clcpoevbd0006lgw153aa5rdh" data-title="week10" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week10/" data-id="clcpq4sg70006qcw114e5erld" data-title="week10" class="article-share-link">Share</a>
       
       
       
@@ -317,11 +317,226 @@ for(int i=1;i&lt;=10;i++)&#123;
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="【深基18-例3】查找文献"><a href="#【深基18-例3】查找文献" class="headerlink" title="【深基18.例3】查找文献"></a>【深基18.例3】查找文献</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小K 喜欢翻看洛谷博客获取知识。每篇文章可能会有若干个（也有可能没有）参考文献的链接指向别的博客文章。小K 求知欲旺盛，如果他看了某篇文章，那么他一定会去看这篇文章的参考文献（如果他之前已经看过这篇参考文献的话就不用再看它了）。</p>
+<p>假设洛谷博客里面一共有 $n(n\le10^5)$ 篇文章（编号为 1 到 $n$）以及 $m(m\le10^6)$ 条参考文献引用关系。目前小 K 已经打开了编号为 1 的一篇文章，请帮助小 K 设计一种方法，使小 K 可以不重复、不遗漏的看完所有他能看到的文章。</p>
+<p>这边是已经整理好的参考文献关系图，其中，文献 X → Y 表示文章 X 有参考文献 Y。不保证编号为 1 的文章没有被其他文章引用。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/f4n4tlhi.png"></p>
+<p>请对这个图分别进行 DFS 和 BFS，并输出遍历结果。如果有很多篇文章可以参阅，请先看编号较小的那篇(因此你可能需要先排序)。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>共 $m+1$ 行，第 1 行为 2 个数，$n$ 和 $m$，分别表示一共有 $n(n\le10^5)$ 篇文章（编号为 1 到 $n$）以及$m(m\le10^6)$ 条参考文献引用关系。</p>
+<p>接下来 $m$ 行，每行有两个整数 $X,Y$ 表示文章 X 有参考文献 Y。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>共 2 行。<br>第一行为 DFS 遍历结果，第二行为 BFS 遍历结果。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">8 9</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">2 5</span><br><span class="line">2 6</span><br><span class="line">3 7</span><br><span class="line">4 7</span><br><span class="line">4 8</span><br><span class="line">7 8</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 2 5 6 3 7 8 4 </span><br><span class="line">1 2 3 4 5 6 7 8</span><br></pre></td></tr></table></figure>
+
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>你一张有向图，要你把它深度遍历一遍再广度遍历一遍。</p>
+<p>首先我们得明白什么叫DFS和BFS。</p>
+<p>DFS，用通俗的话来说，就是你从图的一个结点出发，选择了下一个你需要遍历的结点，然后你再以你所选择的点作为新的起点，继续向下选择，直到你选择的结点没有了下一个结点，或者它所有的子节点都被访问过。</p>
+<p><strong>那么此时怎么办呢？</strong></p>
+<p>那你就要按照你选择的路径，依次跳回，直到你跳回的节点有了字节点，再进行遍历，以此类推。</p>
+<p>BFS，用通俗的话来说，就是你从图中的一个节点出发，其有几个子节点，你会先将这所有的子节点遍历，再挑其中的一个子节点，遍历它的所有子节点，再换到另外一个结点遍历其所有的子节点。这样一层层遍历，以此类推。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main()
+&#123;
+    const int A = 1e4 + 5;
+    int a[A], b[A], c[A], e[1005];
+    int x1, x2, x3, x4, n, m;
+    char a1, a2;
+    cin &gt;&gt; x1 &gt;&gt; a1 &gt;&gt; x2 &gt;&gt; x3 &gt;&gt; a2 &gt;&gt; x4 &gt;&gt; n;
+    m = (x3 - x1) * 60 + x4 - x2;
+    for (int i = 1; i &lt;= n; i++)
+    &#123;
+        cin &gt;&gt; a[i] &gt;&gt; b[i] &gt;&gt; c[i];
+        if (c[i] == 0)
+            c[i] = 1e9;
+    &#125;
+
+    for(int i=1;i&lt;=n;i++)
+        for (int j = m; j &gt;= a[i]; j--)
+        &#123;
+            if (a[i] == 0)
+            &#123;
+                for (int p = 1; p &lt;= m; p++)
+                    e[p] += b[i] * c[i];
+                break;
+            &#125;
+            else
+            &#123;
+                for (int t = 1; t &lt;= c[i] &amp;&amp; j &gt;= a[i] * t; t++)
+                    e[j] = max(e[j], e[j - a[i] * t] + b[i] * t);
+            &#125;
+        &#125;
+    cout &lt;&lt; e[m];
+    return 0;
+&#125;
+</code></pre>
+<h1 id="【模板】floyd"><a href="#【模板】floyd" class="headerlink" title="【模板】floyd"></a>【模板】floyd</h1><h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>模板题，无背景</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出n个点，m条边的无向图，求每个点到其他点的距离之和%998244354的值</p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行两个数n，m含义如上<br>从第二行开始，共m行，每行三个数x，y，l，代表从x到y点的长度为l</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>n行，每行一个数，第i行代表点i到其他点的距离之和</p>
+<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br><span class="line">1 2 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 #2"></a>样例 #2</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 #2"></a>样例输入 #2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">1 2 1</span><br><span class="line">1 3 2</span><br><span class="line">2 3 2</span><br><span class="line">3 4 3</span><br><span class="line">2 4 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 #2"></a>样例输出 #2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">7</span><br><span class="line">7</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>模板题，保证图联通<br>n&lt;&#x3D;500<br>m&lt;&#x3D;10000<br>1&lt;&#x3D;x,y&lt;&#x3D;n<br>l&lt;&#x3D;1e9</p>
+<p>Code:</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main()
+&#123;
+    const int A = 1e4 + 5;
+    int a[A], b[A], c[A], e[1005];
+    int x1, x2, x3, x4, n, m;
+    char a1, a2;
+    cin &gt;&gt; x1 &gt;&gt; a1 &gt;&gt; x2 &gt;&gt; x3 &gt;&gt; a2 &gt;&gt; x4 &gt;&gt; n;
+    m = (x3 - x1) * 60 + x4 - x2;
+    for (int i = 1; i &lt;= n; i++)
+    &#123;
+        cin &gt;&gt; a[i] &gt;&gt; b[i] &gt;&gt; c[i];
+        if (c[i] == 0)
+            c[i] = 1e9;
+    &#125;
+
+    for(int i=1;i&lt;=n;i++)
+        for (int j = m; j &gt;= a[i]; j--)
+        &#123;
+            if (a[i] == 0)
+            &#123;
+                for (int p = 1; p &lt;= m; p++)
+                    e[p] += b[i] * c[i];
+                break;
+            &#125;
+            else
+            &#123;
+                for (int t = 1; t &lt;= c[i] &amp;&amp; j &gt;= a[i] * t; t++)
+                    e[j] = max(e[j], e[j - a[i] * t] + b[i] * t);
+            &#125;
+        &#125;
+    cout &lt;&lt; e[m];
+    return 0;
+&#125;
+</code></pre>
+<h1 id="【模板】单源最短路径（标准版）"><a href="#【模板】单源最短路径（标准版）" class="headerlink" title="【模板】单源最短路径（标准版）"></a>【模板】单源最短路径（标准版）</h1><h2 id="题目背景-1"><a href="#题目背景-1" class="headerlink" title="题目背景"></a>题目背景</h2><p>2018 年 7 月 19 日，某位同学在 <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4768">NOI Day 1 T1 归程</a> 一题里非常熟练地使用了一个广为人知的算法求最短路。</p>
+<p>然后呢？</p>
+<p>$100 \rightarrow 60$；</p>
+<p>$\text{Ag} \rightarrow \text{Cu}$；</p>
+<p>最终，他因此没能与理想的大学达成契约。</p>
+<p>小 F 衷心祝愿大家不再重蹈覆辙。</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个 $n$ 个点，$m$ 条有向边的带非负权图，请你计算从 $s$ 出发，到每个点的距离。</p>
+<p>数据保证你能从 $s$ 出发到任意点。</p>
+<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行为三个正整数 $n, m, s$。<br>第二行起 $m$ 行，每行三个非负整数 $u_i, v_i, w_i$，表示从 $u_i$ 到 $v_i$ 有一条权值为 $w_i$ 的有向边。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行 $n$ 个空格分隔的非负整数，表示 $s$ 到每个点的距离。</p>
+<h2 id="样例-1-2"><a href="#样例-1-2" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">4 6 1</span><br><span class="line">1 2 2</span><br><span class="line">2 3 2</span><br><span class="line">2 4 1</span><br><span class="line">1 3 5</span><br><span class="line">3 4 3</span><br><span class="line">1 4 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 2 4 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>样例解释请参考 <a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3371">数据随机的模板题</a>。</p>
+<p>$1 \leq n \leq 10^5$；</p>
+<p>$1 \leq m \leq 2\times 10^5$；</p>
+<p>$s &#x3D; 1$；</p>
+<p>$1 \leq u_i, v_i\leq n$；</p>
+<p>$0 \leq w_i \leq 10 ^ 9$,</p>
+<p>$0 \leq \sum w_i \leq 10 ^ 9$。</p>
+<p>本题数据可能会持续更新，但不会重测，望周知。</p>
+<p>2018.09.04 数据更新 from @zzq</p>
+<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><ul>
+<li>(令start&#x3D;1)</li>
+<li>开始时我们把dis[start]初始化为0,其余点初始化为inf <img src="https://i.loli.net/2018/07/25/5b583277e47e9.png" alt="初始化"></li>
+<li>第一轮循环找到dis值最小的点1,将1变成白点,对所有与1相连的蓝点的dis值进行修改,使得dis[2]&#x3D;2,dis[3]&#x3D;4,dis[4]&#x3D;7 <img src="https://i.loli.net/2018/07/25/5b58347b9a37b.png" alt="1"></li>
+<li>第二轮循环找到dis值最小的点2,将2变成白点,对所有与2相连的蓝点的dis值进行修改,使得dis[3]&#x3D;3,dis[5]&#x3D;4 <img src="https://i.loli.net/2018/07/25/5b586fa8de335.png" alt="2"></li>
+<li>第三轮循环找到dis值最小的点3,将3变成白点,对所有与2相连的蓝点的dis值进行修改,使得dis[4]&#x3D;4 <img src="https://i.loli.net/2018/07/25/5b58703e8d0d6.png" alt="3"></li>
+<li>接下来两轮循环分别将4,5设为白点,算法结束,求出所有点的最短路径</li>
+<li>时间复杂度O(n2)</li>
+</ul>
+<h3 id="为什么dijkstra不能处理有负权边的情况"><a href="#为什么dijkstra不能处理有负权边的情况" class="headerlink" title="为什么dijkstra不能处理有负权边的情况?"></a>为什么dijkstra不能处理有负权边的情况?</h3><ul>
+<li>我们来看下面这张图 <img src="https://i.loli.net/2018/07/25/5b58724845b8d.png" alt="4"></li>
+<li>2到3的边权为−4,显然从1到3的最短路径为−2 (1−&gt;2−&gt;3).但在循环开始时程序会找到当前dis值最小的点3,并标记它为白点.</li>
+<li>这时的dis[3]&#x3D;1,然而1并不是起点到3的最短路径.因为3已经被标为白点,所以dis[3]不会再被修改了.我们在边权存在负数的情况下得到了错误的答案.</li>
+</ul>
+<h3 id="什么是dijkstra"><a href="#什么是dijkstra" class="headerlink" title="什么是dijkstra?"></a>什么是dijkstra?</h3><ul>
+<li><p>dijkstra是一种单源最短路径算法,时间复杂度上限为O(n2)(朴素),在实际应用中较为稳定;加上堆优化之后更是具有O((n+m)log2​n)的时间复杂度,在稠密图中有不俗的表现.</p>
+<p>1.这道题利用里vector建立<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%82%BB%E6%8E%A5%E8%A1%A8&spm=1001.2101.3001.7020">邻接表</a>。</p>
+<p>2.运用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97&spm=1001.2101.3001.7020">优先队列</a>重载运算符。</p>
+<p>3.用的dijkstra算法的思想。</p>
+<p>4.运用vis数组进行标记。</p>
+<p>5.运用队列进行回溯。</p>
+</li>
+</ul>
+<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define INF 2147483647
+#define P pair&lt;long long , int&gt; 
+int n, m, s, cnt, a3[100010], a1[100010], a2[100010];
+class node
+&#123;
+public:
+    int to, next, w;
+&#125;E[200010];
+
+priority_queue&lt;P, vector&lt;P&gt;, greater&lt;P&gt; &gt;a;
+void add(int u, int v, int w)
+&#123;
+    E[++cnt].w = w;
+    E[cnt].to = v;
+    E[cnt].next = a3[u];
+    a3[u] = cnt;
+&#125;
+void dijkstra()
+&#123;
+    for (int i = 1; i &lt;= n; i++)
+        a1[i] = INF;
+    a1[s] = 0;
+    a.push(make_pair(0, s));
+    while (!a.empty())
+    &#123;
+        int x = a.top().second;
+        a.pop();
+        if (!a2[x])
+        &#123;
+            a2[x] = 1;
+    
+    
+    
+            for (int i = a3[x]; i; i = E[i].next)
+                if (a1[E[i].to] &gt; a1[x] + E[i].w)
+                &#123;
+                    a1[E[i].to] = a1[x] + E[i].w;
+                    a.push(make_pair(a1[E[i].to], E[i].to));
+                &#125;
+        &#125;
+    &#125;
+&#125;
+int main()
+&#123;
+    int i;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;
+    i=m;
+    while(i&gt;=1)&#123;
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        add(u, v, w);
+        i--;
+    &#125;
+    i=1;
+    dijkstra();
+    while(i&lt;=n)&#123;
+        cout &lt;&lt; a1[i]&lt;&lt;&quot; &quot;;
+        i++;
+    &#125;
+
+    return 0;
+&#125;
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week9/" data-id="clcpoevbg000algw1f2padk85" data-title="week9" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week9/" data-id="clcpq4sgb000aqcw15ohl865i" data-title="week9" class="article-share-link">Share</a>
       
       
       
@@ -598,7 +813,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/09/week8/" data-id="clcpoevbe0008lgw125rx8wcw" data-title="week8" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/09/week8/" data-id="clcpq4sga0009qcw10sdr9v85" data-title="week8" class="article-share-link">Share</a>
       
       
       
@@ -895,7 +1110,7 @@ int main(int argc, char **argv)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/12/19/Test-7/" data-id="clcpoevbb0003lgw15btl5lc5" data-title="Test 7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/12/19/Test-7/" data-id="clcpq4sg30003qcw1cfybakl1" data-title="Test 7" class="article-share-link">Share</a>
       
       
       
@@ -1074,7 +1289,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/12/05/Sixth/" data-id="clcpoevb80001lgw18m2yhe7f" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/12/05/Sixth/" data-id="clcpq4sg10001qcw15uboe43p" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -1398,7 +1613,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/28/%E5%8F%8C%E5%91%A81/" data-id="clcpoevbk000dlgw1h62jcfaw" data-title="双周1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/28/%E5%8F%8C%E5%91%A81/" data-id="clcpq4sgd000dqcw18ynq62bg" data-title="双周1" class="article-share-link">Share</a>
       
       
       
