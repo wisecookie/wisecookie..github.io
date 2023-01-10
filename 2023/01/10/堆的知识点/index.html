@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>堆的知识点 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言最近在刷算法题的时候遇到了需要使用堆来解决的问题(尤其是TOP k 问题)，所以想把这些方法总结一下，防止后面忘记了还得到处找资料。希望能帮助到大家参考链接1参考链接2 堆(heap)的介绍对通常是一个可以被看做一棵树的数组对象，满足两个条件：1，堆中的某个结点的值总是不大于或者不小于其父结点的值 2，堆是一颗完全二叉树根结点最大的数叫做大根堆，最小的叫做小根堆。堆排序中建堆的时间复杂度为O(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆的知识点">
+<meta property="og:url" content="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言最近在刷算法题的时候遇到了需要使用堆来解决的问题(尤其是TOP k 问题)，所以想把这些方法总结一下，防止后面忘记了还得到处找资料。希望能帮助到大家参考链接1参考链接2 堆(heap)的介绍对通常是一个可以被看做一棵树的数组对象，满足两个条件：1，堆中的某个结点的值总是不大于或者不小于其父结点的值 2，堆是一颗完全二叉树根结点最大的数叫做大根堆，最小的叫做小根堆。堆排序中建堆的时间复杂度为O(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-10T03:26:22.000Z">
+<meta property="article:modified_time" content="2023-01-10T03:28:03.686Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-堆的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2023-01-10T03:26:22.000Z" itemprop="datePublished">2023-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      堆的知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>前言<br>最近在刷算法题的时候遇到了需要使用堆来解决的问题(尤其是TOP k 问题)，所以想把这些方法总结一下，防止后面忘记了还得到处找资料。希望能帮助到大家<br>参考链接1<br>参考链接2</p>
+<p>堆(heap)的介绍<br>对通常是一个可以被看做一棵树的数组对象，满足两个条件：1，堆中的某个结点的值总是不大于或者不小于其父结点的值 2，堆是一颗完全二叉树<br>根结点最大的数叫做大根堆，最小的叫做小根堆。<br>堆排序中建堆的时间复杂度为O(n)<br>在C++ STL中没有堆的数据结构，所以借助其中的 priority_queue(默认是大根堆)</p>
+<p>priority_queue<br>常用的方法如下：</p>
+<p>priority_queue, 优先队列，默认是大根堆<br>    size()<br>    empty()<br>    push()  插入一个元素<br>    top()  返回堆顶元素<br>    pop()  弹出堆顶元素<br>    定义成小根堆的方式：priority_queue&lt;int, vector<int>, greater<int>&gt; q;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>priority_queue使用<br>定义：priority_queue&lt;Type, Container, Functional&gt; ，priority_queue属于是容器适配器，需要指定底层的容器，所以第一个参数Type是queue里面存的数据的类型，第二个参数Container是要使用的底层容器(一般是vector)，Functional 就是比较的方式（准确来说应该是比较方式的类型）.<br>当数据是基本数据类型时可以使用默认的比较方式，使用如下：<br>&#x2F;&#x2F;升序队列<br>priority_queue &lt;int,vector<int>,greater<int> &gt; q;<br>&#x2F;&#x2F;降序队列<br>priority_queue &lt;int,vector<int>,less<int> &gt;q;<br>&#x2F;&#x2F;greater和less是std实现的两个仿函数（就是使一个类的使用看上去像一个函数。<br>&#x2F;&#x2F;其实现就是类中实现一个operator()，这个类就有了类似函数的行为，就是一个仿函数类了）<br>1<br>2<br>3<br>4<br>5<br>6<br>当使用自定的数据类型时，比较方式的写法<br>lambda函数（如果有不清楚的可以参考我的这篇文章：c++11新特性）<br>auto cmp &#x3D; [](pair&lt;int, int&gt; left, pair&lt;int, int&gt; right) -&gt; bool { return left.second &gt; right.second; };<br>priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, decltype(cmp)&gt;  pri_que(cmp);<br>1<br>2<br>仿函数实现(最常用)<br>class mycomparison {<br>public:<br>    bool operator()(const pair&lt;int, int&gt;&amp; left, const pair&lt;int, int&gt;&amp; right) {<br>        return left.second &gt; right.second;<br>    }<br>};<br>priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int, int&gt;&gt;,mycomparison&gt; pri_que2;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>在自定义类型的类或者结构体中，重载运算符</p>
+<p>struct tmp1 &#x2F;&#x2F;运算符重载&lt;<br>{<br>    int x;<br>    tmp1(int a) {x &#x3D; a;}<br>    bool operator&lt;(const tmp1&amp; a) const<br>    {<br>        return x &lt; a.x; &#x2F;&#x2F;大顶堆<br>    }<br>}<br>priority_queue<tmp1> pri_que3;<br>————————————————</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43964318/article/details/125879319">https://blog.csdn.net/qq_43964318/article/details/125879319</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clcpoevbl000elgw12j7u053f" data-title="堆的知识点" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pair知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/01/10/week12/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">week12</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">堆的知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/week12/">week12</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/week11/">week11</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/week10/">week10</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
