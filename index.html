@@ -679,7 +679,33 @@ for(int i=1;i&lt;=10;i++)&#123;
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 $100 %$ 的数据，$1 \le N \le 100$，$1 \le K_i \le 100$。</p>
 <p>样例解释：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/pic/652.png"></p>
-<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="跑步"><a href="#跑步" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
+<h2 id="Analyse-这道题的状态转移方程很好找，用i表示星球的等级，j表示星球编号，c为代价，可得f-i-j-x3D-min-f-i-1-j-c，f-i-j-，然后这道题就迎刃而解了"><a href="#Analyse-这道题的状态转移方程很好找，用i表示星球的等级，j表示星球编号，c为代价，可得f-i-j-x3D-min-f-i-1-j-c，f-i-j-，然后这道题就迎刃而解了" class="headerlink" title="Analyse: 这道题的状态转移方程很好找，用i表示星球的等级，j表示星球编号，c为代价，可得f[i][j]&#x3D;min(f[i - 1][j] + c，f[i][j])，然后这道题就迎刃而解了"></a>Analyse: 这道题的状态转移方程很好找，用i表示星球的等级，j表示星球编号，c为代价，可得f[i][j]&#x3D;min(f[i - 1][j] + c，f[i][j])，然后这道题就迎刃而解了</h2><h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10001];    
+int n,m,ans;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        a[x]++;
+        a[y]++;
+    &#125;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        if(a[i]%2==1)
+              ans++;
+    &#125;
+    if(ans)
+       cout&lt;&lt;ans/2;
+    else
+       cout&lt;&lt;ans+1;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="跑步"><a href="#跑步" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
 <p>为了有效地提高自己的体能，他决定每次跑的圈数都必须比上次跑的多。</p>
 <p>可以假设他刚开始跑了 $0$ 圈，那么请问他可以有多少种跑完这 $n$ 圈的方案？</p>
 <h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>一行一个整数，代表 $n$。</p>
@@ -689,7 +715,39 @@ for(int i=1;i&lt;=10;i++)&#123;
 <h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">995645335</span><br></pre></td></tr></table></figure>
 
 <h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><h4 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><p>对于 $100%$ 的数据，保证 $5\le n\le 500$。</p>
-<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="跑步-1"><a href="#跑步-1" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
+<h2 id="Analyse-什么是动规？"><a href="#Analyse-什么是动规？" class="headerlink" title="Analyse:什么是动规？"></a>Analyse:<strong>什么是动规？</strong></h2><pre><code>动规，全称动态规划
+指动态地演变每一步，类似著名的斐波那契数列：
+末路等于来路之和……
+实现过程即为开一个足够的数组，然后模拟每一步，最终答案为数组的第n项。
+时间复杂度：低
+</code></pre>
+<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10001];    
+int n,m,ans;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        a[x]++;
+        a[y]++;
+    &#125;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        if(a[i]%2==1)
+              ans++;
+    &#125;
+    if(ans)
+       cout&lt;&lt;ans/2;
+    else
+       cout&lt;&lt;ans+1;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="跑步-1"><a href="#跑步-1" class="headerlink" title="跑步"></a>跑步</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>路人甲准备跑 $n$ 圈来锻炼自己的身体，他准备分多次（$\gt1$）跑完，每次都跑正整数圈，然后休息下再继续跑。</p>
 <p>为了有效地提高自己的体能，他决定每次跑的圈数都必须比上次跑的多。</p>
 <p>可以假设他刚开始跑了 $0$ 圈，那么请问他可以有多少种跑完这 $n$ 圈的方案？</p>
 <h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>一行一个整数，代表 $n$。</p>
@@ -699,7 +757,33 @@ for(int i=1;i&lt;=10;i++)&#123;
 <h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">995645335</span><br></pre></td></tr></table></figure>
 
 <h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><h4 id="数据规模与约定-1"><a href="#数据规模与约定-1" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><p>对于 $100%$ 的数据，保证 $5\le n\le 500$。</p>
-<h2 id="Analyse-2"><a href="#Analyse-2" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="蓝桥杯-2021-省-AB-砝码称重"><a href="#蓝桥杯-2021-省-AB-砝码称重" class="headerlink" title="[蓝桥杯 2021 省 AB] 砝码称重"></a>[蓝桥杯 2021 省 AB] 砝码称重</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>你有一架天平和 $N$ 个砝码, 这 $N$ 个砝码重量依次是 $W_{1}, W_{2}, \cdots, W_{N}$ 。 请你计算一共可以称出多少种不同的重量?</p>
+<h2 id="Analyse-Code"><a href="#Analyse-Code" class="headerlink" title="Analyse:## Code:"></a>Analyse:## Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10001];    
+int n,m,ans;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        a[x]++;
+        a[y]++;
+    &#125;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        if(a[i]%2==1)
+              ans++;
+    &#125;
+    if(ans)
+       cout&lt;&lt;ans/2;
+    else
+       cout&lt;&lt;ans+1;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="蓝桥杯-2021-省-AB-砝码称重"><a href="#蓝桥杯-2021-省-AB-砝码称重" class="headerlink" title="[蓝桥杯 2021 省 AB] 砝码称重"></a>[蓝桥杯 2021 省 AB] 砝码称重</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>你有一架天平和 $N$ 个砝码, 这 $N$ 个砝码重量依次是 $W_{1}, W_{2}, \cdots, W_{N}$ 。 请你计算一共可以称出多少种不同的重量?</p>
 <p>注意砝码可以放在天平两边。</p>
 <h2 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入的第一行包含一个整数 $N$ 。</p>
 <p>第二行包含 $N$ 个整数: $W_{1}, W_{2}, W_{3}, \cdots, W_{N}$ 。</p>
@@ -715,7 +799,33 @@ for(int i=1;i&lt;=10;i++)&#123;
 <p>对于 $50 %$ 的评测用例, $1 \leq N \leq 15$ 。</p>
 <p>对于所有评测用例, $1 \leq N \leq 100, N$ 个砝码总重不超过 $10^5$。 </p>
 <p>蓝桥杯 2021 第一轮省赛 A 组 F 题（B 组 G 题）。</p>
-<h2 id="Analyse-3"><a href="#Analyse-3" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="遗址"><a href="#遗址" class="headerlink" title="遗址"></a>遗址</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>很久很久以前有一座寺庙，从上往下看寺庙的形状正好是一个正方形，由 $4$ 个角上竖立的圆柱搭建而成。现在圆柱都倒塌了，只在地上留下圆形的痕迹，可是现在地上有很多这样的痕迹，专家说一定是最大的那个。</p>
+<h2 id="Analyse-Code-1"><a href="#Analyse-Code-1" class="headerlink" title="Analyse:## Code:"></a>Analyse:## Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10001];    
+int n,m,ans;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        a[x]++;
+        a[y]++;
+    &#125;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        if(a[i]%2==1)
+              ans++;
+    &#125;
+    if(ans)
+       cout&lt;&lt;ans/2;
+    else
+       cout&lt;&lt;ans+1;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="遗址"><a href="#遗址" class="headerlink" title="遗址"></a>遗址</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>很久很久以前有一座寺庙，从上往下看寺庙的形状正好是一个正方形，由 $4$ 个角上竖立的圆柱搭建而成。现在圆柱都倒塌了，只在地上留下圆形的痕迹，可是现在地上有很多这样的痕迹，专家说一定是最大的那个。</p>
 <p>写一个程序，给出圆柱的坐标，找出由 $4$ 个圆柱构成的最大的正方形，因为这就是寺庙的位置，要求计算出最大的面积。注意正方形的边不一定平行于坐标轴。</p>
 <p>例如图有 $10$ 根柱子，其中 $(4,2),(5,2),(5,3),(4,3)$ 可以形成一个正方形，$(1,1),(4,0),(5,3),(2,4)$ 也可以，后者是其中最大的，面积为 $10$。</p>
 <p><img src="https://cdn.luogu.com.cn/upload/pic/869.png"></p>
@@ -730,7 +840,53 @@ for(int i=1;i&lt;=10;i++)&#123;
 <p>$30%$ 满足：$1\leq N \leq100$。</p>
 <p>$60%$ 满足：$1\leq N \leq500$。</p>
 <p>$100%$ 满足：$1\leq N \leq3000$。</p>
-<h2 id="Analyse-4"><a href="#Analyse-4" class="headerlink" title="Analyse:"></a>Analyse:</h2><h1 id="蓝桥杯-2022-国-A-环境治理"><a href="#蓝桥杯-2022-国-A-环境治理" class="headerlink" title="[蓝桥杯 2022 国 A] 环境治理"></a>[蓝桥杯 2022 国 A] 环境治理</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>LQ 国拥有 $n$ 个城市，从 $0$ 到 $n - 1$ 编号，这 $n$ 个城市两两之间都有且仅有一条双向道路连接，这意味着任意两个城市之间都是可达的。每条道路都有一个属性 $D$，表示这条道路的灰尘度。当从一个城市 A 前往另一个城市 B 时，可能存在多条路线，每条路线的灰尘度定义为这条路线所经过的所有道路的灰尘度之和，LQ 国的人都很讨厌灰尘，所以他们总会优先选择灰尘度最小的路线。</p>
+<h2 id="Analyse-我们的难点在于如何判断两个点是倾斜的情况"><a href="#Analyse-我们的难点在于如何判断两个点是倾斜的情况" class="headerlink" title="Analyse:### 我们的难点在于如何判断两个点是倾斜的情况."></a>Analyse:### 我们的难点在于如何判断两个点是倾斜的情况.</h2><p>容易发现一个将一个倾斜正方形围起来之后,四个三角形是相等的. 像这样↓ <img src="https://i.loli.net/2018/09/06/5b9080d67ca2b.png"></p>
+<p>很明显全等吧!<del>证明过程略</del></p>
+<p>然后我们需要<strong>考虑的是两个点所在直线斜率是正还是负</strong>的问题</p>
+<p>(亲测只考虑一种情况,不能AC此题.)</p>
+<p><code>求斜率的公式： k=Δy/Δx</code></p>
+<p><strong>分母不能为0!</strong></p>
+<p>然后我们又开始画图 emmm</p>
+<p><strong>斜率为负</strong>有两种情况.我们可以画图如下↓ <img src="https://i.loli.net/2018/09/06/5b90a49775949.png"></p>
+<p><strong>斜率为正</strong>.同样有两种情况如下↓ <img src="https://i.loli.net/2018/09/06/5b909ec9c8eef.png">Code:</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;map&gt;
+using namespace std;
+struct A&#123;
+    int x,y; 
+&#125;a[5005]; 
+int n,a1,a2;
+int maxn=0;
+int a3[5005][5005];
+int main()&#123;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)&#123;
+        scanf(&quot;%d%d&quot;,&amp;a[i].x,&amp;a[i].y);
+        a3[a[i].x][a[i].y]=1;
+    &#125;
+    for(int i=2;i&lt;=n;i++)&#123;
+        for(int j=1;j&lt;i;j++)&#123;
+            if(i!=j)&#123;
+                a1=(a[i].x&gt;=a[j].x?a[i].x-a[j].x:a[j].x-a[i].x);
+                a2=(a[i].y&gt;=a[j].y?a[i].y-a[j].y:a[j].y-a[i].y);
+                if(a[j].y-a1&gt;=0&amp;&amp;a[j].x+a2&lt;=5000&amp;&amp;a[i].y-a1&gt;=0&amp;&amp;a[i].x+a2&lt;=5000)&#123;
+                    if(a3[a[i].x+a2][a[i].y-a1]&amp;&amp;a3[a[j].x+a2][a[j].y-a1])&#123;
+                        maxn=(maxn&gt;=(a1*a1+a2*a2)?maxn:(a1*a1+a2*a2));
+                    &#125;	
+                &#125;
+                if(a[j].y+a1&lt;=5000&amp;&amp;a[j].x-a2&gt;=0&amp;&amp;a[i].y+a1&lt;=5000&amp;&amp;a[i].x-a2&gt;=0)&#123;
+                    if(a3[a[i].x-a2][a[i].y+a1]&amp;&amp;a3[a[j].x-a2][a[j].y+a1])&#123;
+                        maxn=(maxn&gt;=(a1*a1+a2*a2)?maxn:(a1*a1+a2*a2));
+                    &#125;
+                &#125;
+                
+            &#125;
+        &#125;
+    &#125;
+    cout&lt;&lt;maxn;
+&#125;
+</code></pre>
+<h1 id="蓝桥杯-2022-国-A-环境治理"><a href="#蓝桥杯-2022-国-A-环境治理" class="headerlink" title="[蓝桥杯 2022 国 A] 环境治理"></a>[蓝桥杯 2022 国 A] 环境治理</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>LQ 国拥有 $n$ 个城市，从 $0$ 到 $n - 1$ 编号，这 $n$ 个城市两两之间都有且仅有一条双向道路连接，这意味着任意两个城市之间都是可达的。每条道路都有一个属性 $D$，表示这条道路的灰尘度。当从一个城市 A 前往另一个城市 B 时，可能存在多条路线，每条路线的灰尘度定义为这条路线所经过的所有道路的灰尘度之和，LQ 国的人都很讨厌灰尘，所以他们总会优先选择灰尘度最小的路线。</p>
 <p>LQ 国很看重居民的出行环境，他们用一个指标 $P$ 来衡量 LQ 国的出行环境，$P$ 定义为：</p>
 <p>$$P&#x3D;\sum \limits_{i&#x3D;0}^{n-1} \sum \limits_{j&#x3D;0}^{n-1} d(i,j)$$</p>
 <p>其中 $d(i,j)$ 表示城市 $i$ 到城市 $j$ 之间灰尘度最小的路线对应的灰尘度的值。</p>
@@ -792,8 +948,34 @@ for(int i=1;i&lt;=10;i++)&#123;
 <li>对于所有评测用例，$1 \leq n \leq 100$，$0 \leq L_{i,j} \leq D_{i,j} \leq 10^5$，$0 \leq Q \leq 2^{31} - 1$。</li>
 </ul>
 <p>蓝桥杯 2022 国赛 A 组 F 题。</p>
-<h2 id="Analyse-5"><a href="#Analyse-5" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>P &#x3D; 任意两点之间的最短距离的和，可以用 Floyd 算法求，单次检查复杂度 O(n3)</p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>P &#x3D; 任意两点之间的最短距离的和，可以用 Floyd 算法求，单次检查复杂度 O(n3)</p>
 <p>由于道路改善发生的次数越多，指标 P 越小。故根据这种单调性，可以采用二分，二分道路改善次数 x。已知道路改善次数的情况，我们可以很快的知道图上每一条边当下的边权，然后我们可以用 Floyd 算法计算一下指标 P，判断指标 P 是否小于等于 Q 即可，复杂度 O(n3logK)，其中 K 为最大的道路改善次数，设成 109 左右即可。</p>
+<h2 id="Analyse-Code-2"><a href="#Analyse-Code-2" class="headerlink" title="Analyse:## Code:"></a>Analyse:## Code:</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10001];    
+int n,m,ans;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int x,y;
+        cin&gt;&gt;x&gt;&gt;y;
+        a[x]++;
+        a[y]++;
+    &#125;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        if(a[i]%2==1)
+              ans++;
+    &#125;
+    if(ans)
+       cout&lt;&lt;ans/2;
+    else
+       cout&lt;&lt;ans+1;
+    return 0;
+&#125;
+</code></pre>
 
       
     </div>
