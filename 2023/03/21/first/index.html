@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>first | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="This is the 8th week. 特殊的正方形 附加文件 统计   描述  提交  自定义测试  输入n，输出n行n列的由+和.组成的正方形，其中最外面一圈全是+，第二圈全是.，…，对于第i圈，如果i是奇数，那么全是+，否则全是.。 输入格式一行，一个整数n。 输出格式n行，为满足题目要求的正方形。注意不要有行末空格。 样例输入10  样例输出++++++++++ +........+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="first">
+<meta property="og:url" content="http://example.com/2023/03/21/first/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="This is the 8th week. 特殊的正方形 附加文件 统计   描述  提交  自定义测试  输入n，输出n行n列的由+和.组成的正方形，其中最外面一圈全是+，第二圈全是.，…，对于第i圈，如果i是奇数，那么全是+，否则全是.。 输入格式一行，一个整数n。 输出格式n行，为满足题目要求的正方形。注意不要有行末空格。 样例输入10  样例输出++++++++++ +........+">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/QiuHong-1202/FigureBed/2021/202203011202618.png">
+<meta property="article:published_time" content="2023-03-21T10:12:44.000Z">
+<meta property="article:modified_time" content="2023-03-21T10:19:50.876Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/QiuHong-1202/FigureBed/2021/202203011202618.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-first" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/21/first/" class="article-date">
+  <time class="dt-published" datetime="2023-03-21T10:12:44.000Z" itemprop="datePublished">2023-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      first
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>This is the 8th week.</p>
+<h3 id="特殊的正方形"><a href="#特殊的正方形" class="headerlink" title="特殊的正方形"></a>特殊的正方形</h3><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=386">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/386/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/386#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/386#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/386#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>输入n，输出n行n列的由<code>+</code>和<code>.</code>组成的正方形，其中最外面一圈全是<code>+</code>，第二圈全是<code>.</code>，…，对于第i圈，如果i是奇数，那么全是<code>+</code>，否则全是<code>.</code>。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>一行，一个整数n。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>n行，为满足题目要求的正方形。注意不要有行末空格。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>10
+</code></pre>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>++++++++++
++........+
++.++++++.+
++.+....+.+
++.+.++.+.+
++.+.++.+.+
++.+....+.+
++.++++++.+
++........+
+++++++++++
+</code></pre>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于100%的数据，保证2≤n≤100。</p>
+<p> 中文</p>
+<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98&spm=1001.2101.3001.7020">背包问题</a></p>
+<p><strong>很清晰看到樱花树可以看得次数有三种，一次，多次，无数次，很显然这是一道混合背包的裸题，要用到二进制优化。</strong></p>
+<p>这是一道混合背包板子题。使用二进制对数量有限且不为1的物品进行分割，化归为数量为1的物品。然后依据物品数为1或无限，分别按照0&#x2F;1背包、完全背包进行处理。0&#x2F;1背包、完全背包具体步骤 #include <iostream> using namespace std; int main() { const int A &#x3D; 1e4 + 5; int a[A], b[A], c[A], e[1005]; int x1, x2, x3, x4, n, m; char a1, a2; cin &gt;&gt; x1 &gt;&gt; a1 &gt;&gt; x2 &gt;&gt; x3 &gt;&gt; a2 &gt;&gt; x4 &gt;&gt; n; m &#x3D; (x3 - x1) * 60 + x4 - x2; for (int i &#x3D; 1; i &lt;&#x3D; n; i++) { cin &gt;&gt; a[i] &gt;&gt; b[i] &gt;&gt; c[i]; if (c[i] &#x3D;&#x3D; 0) c[i] &#x3D; 1e9; } for(int i&#x3D;1;i&lt;&#x3D;n;i++) for (int j &#x3D; m; j &gt;&#x3D; a[i]; j–) { if (a[i] &#x3D;&#x3D; 0) { for (int p &#x3D; 1; p &lt;&#x3D; m; p++) e[p] +&#x3D; b[i] * c[i]; break; } else { for (int t &#x3D; 1; t &lt;&#x3D; c[i] &amp;&amp; j &gt;&#x3D; a[i] * t; t++) e[j] &#x3D; max(e[j], e[j - a[i] * t] + b[i] * t); } } cout &lt;&lt; e[m]; return 0; }</p>
+<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+using namespace std;
+string a[101][101];
+void scf(int w,int n)&#123;
+    string aa;
+    if(n%2==0)&#123;
+        aa=&quot;+&quot;;
+    &#125;else aa=&quot;.&quot;;
+    for(int i=n;i&lt;w-n;i++)&#123;
+        a[n][i]=aa;
+        a[w-n-1][i]=aa;
+        a[i][n]=aa;
+        a[i][w-n-1]=aa;
+    &#125;
+&#125;
+int main()&#123;
+    int len;
+    cin&gt;&gt;len;
+    int len1;
+    len1=(len-1)/2;
+    for(int i=0;i&lt;=len1;i++)&#123;
+        scf(len,i);
+    &#125;
+    for(int i=0;i&lt;len-1;i++)&#123;
+        for(int j=0;j&lt;len;j++)&#123;
+            cout&lt;&lt;a[i][j];
+
+        &#125;
+        cout&lt;&lt;endl;
+    &#125;
+    for(int j=0;j&lt;len;j++)&#123;
+        cout&lt;&lt;a[len-1][j];
+
+    &#125;
+&#125;
+</code></pre>
+<h1 id="走楼梯2"><a href="#走楼梯2" class="headerlink" title="走楼梯2"></a>走楼梯2</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=129">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/129/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/129#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/129#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/129#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>楼梯有 n 阶，上楼可以一步上一阶，也可以一步上二阶。</p>
+<p>但你不能连续三步都走两阶，计算走到第n阶共有多少种不同的走法。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>一行，一个数字，表示n。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出走楼梯的方式总数。</p>
+<h4 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>6
+</code></pre>
+<h4 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>12
+</code></pre>
+<h4 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h4><p>对于100%的数据，保证n≤50。</p>
+<p> 中文</p>
+<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><p>这道题的价值在于，它既可以从简单的动态规划开始，一路优化，也可以从生成函数的视角观察，继续优化。</p>
+<p>从这个题我才知道DP并不是全都有max,min函数的啊，DP的核心其实是从上一层的最优解推下一层的最优解，但这个题的最优即所有方案加起来的和，所以这个题没有取max,min。</p>
+<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+using namespace std;
+int fun(int n,int key)&#123;
+    if(n&lt;0||key==3)return 0;
+    else if(n==1)&#123;
+        return 1;
+
+    &#125;
+    else if(n==2)&#123;
+        if(key==2)return 1;
+        else return 2;
+    &#125;
+    else return fun(n-1,0)+fun(n-2,++key);
+
+
+&#125;
+
+
+
+int main()
+&#123;
+    int n;
+    cin&gt;&gt;n;
+    cout&lt;&lt;fun(n,0);
+    return 0;
+&#125;
+</code></pre>
+<h1 id="走路"><a href="#走路" class="headerlink" title="走路"></a>走路</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=460">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/460/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/460#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/460#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/460#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>有一条很长的数轴，一开始你在0的位置。接下来你要走n步，第i步你可以往右走ai或者bi。</p>
+<p>问n步之后，0到m的每个位置，能不能走到？</p>
+<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行，两个整数n,m。</p>
+<p>接下来n行，每行两个整数ai,bi。</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>一行，一共m+1个数，每个数都是<code>0</code>或<code>1</code>表示能否走到，数字之间不用空格隔开。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h3><pre><code>3 10
+1 2
+2 6
+3 3
+</code></pre>
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre><code>00000011001
+</code></pre>
+<h3 id="数据规模-1"><a href="#数据规模-1" class="headerlink" title="数据规模"></a>数据规模</h3><p>对于所有数据，保证1≤n≤100,1≤m≤105,1≤ai,bi≤1000。</p>
+<p> 中文</p>
+<h3 id="Analyse：-2"><a href="#Analyse：-2" class="headerlink" title="Analyse："></a>Analyse：</h3><ol>
+<li><ul>
+<li><p>我们可以对主件i的“附件集合”先进行一次01背包，得到费用依次为0..V-c[i]。所有这些值时相应的最大价值f’[0..V-c[i]]。</p>
+</li>
+<li><p>那么这个主件及它的附件集合相当于V-c[i]+1个物品的物品组，其中费用为c[i]+k的物品的价值为f’[k]+w[i]。也就是说原来指数级的策略中有很多策略都是冗余的，通过一次01背包后，将主件i转化为V-c[i]+1个物品的物品组，就可以直接解决问题了。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+using namespace std;
+#define N 100000 
+typedef long long ll;
+
+ll f[110][N]=&#123;0&#125;;
+int a[1000];
+int b[1000];
+int n,m;
+int main()&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=0;i&lt;n;i++)&#123;
+        cin&gt;&gt;a[i];
+        cin&gt;&gt;b[i];
+    &#125;
+    f[0][0]=1;
+    for(int i=0;i&lt;n;i++)&#123;
+        for(int j=0;j&lt;=m;j++)&#123;
+            if(f[i][j]==1)&#123;
+                if((f[i][j]+a[i])&lt;m+1)f[i+1][j+a[i]]=1;
+                if((f[i][j]+b[i])&lt;m+1)f[i+1][j+b[i]]=1;
+
+            &#125;
+        &#125;
+
+
+    &#125;
+    for(int i=0;i&lt;m+1;i++)&#123;
+        cout&lt;&lt;f[n][i];
+    &#125;
+
+
+&#125;
+</code></pre>
+<h1 id="简单分数统计"><a href="#简单分数统计" class="headerlink" title="简单分数统计"></a>简单分数统计</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=455">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/455/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/455#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/455#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/455#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>N 个好朋友在codeforces上参加一场包含 M 个题目的比赛, 比赛期间codeforces网站一共有 k 次提交。</p>
+<p>已知每个题目的分数，</p>
+<p>但是由于他们只能查到在比赛期间codeforces总共的提交记录(其他用户提交的其他题目记录也包含在内, 即存在不属于该场比赛的题目)，</p>
+<p>所以想请你编写一个程序算出他们每个人的分数。</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行三个整数 N, M, K 分别表示好朋友的个数, 题目的个数, 和提交的总次数(其中0&lt;N,M,K&lt;&#x3D;200）。</p>
+<p>接下来 N 行 第 i 行输入为第 i 个人的id，</p>
+<p>接下来 M 行 第 j 行输入为第 j 个题目的名称和分数，</p>
+<p>接下来 K 行 第 k 行输入为第 k 次提交的提交者id, 题目名称和结果(“WA” 或 “AC”, 如果”AC”代表通过这个题目, 提交者获得对应分数)。</p>
+<p>注: 题目名称和id均为仅包含英文字母和数字的字符串, 题目分数为小于等于 1e6 的正整数. 每一行的多个输入之间用空格隔开。</p>
+<p>所有输入的字符串长度 length 满足 0&lt;length≤500。</p>
+<p>所有用户id和题目名称不存在重名, 用户AC了某个题之后之后不会再重复提交该题, 好朋友们只会提交属于比赛的题目。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出 N 行, 第 i 行输出第 i 个人的名字和对应分数 (名字和分数用空格隔开)。</p>
+<h4 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>2 2 4
+GabrielPessoa
+beza
+metebronca 100
+geometry 200
+beza metebronca AC
+ffern numbertheory AC
+GabrielPessoa geometry WA
+beza geometry AC
+</code></pre>
+<h4 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>GabrielPessoa 0
+beza 300
+</code></pre>
+<h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><p>beza 过了 metebronca和geometry 拿到 300 分。</p>
+<p>GabrielPessos 没有过题, 所以是 0 分。</p>
+<p>还有一些其他选手提交的其他题目忽略不计。</p>
+<p>Analyse：</p>
+<ol>
+<li><ul>
+<li><p>我们可以对主件i的“附件集合”先进行一次01背包，得到费用依次为0..V-c[i]。所有这些值时相应的最大价值f’[0..V-c[i]]。</p>
+</li>
+<li><p>那么这个主件及它的附件集合相当于V-c[i]+1个物品的物品组，其中费用为c[i]+k的物品的价值为f’[k]+w[i]。也就是说原来指数级的策略中有很多策略都是冗余的，通过一次01背包后，将主件i转化为V-c[i]+1个物品的物品组，就可以直接解决问题了。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="My-Code-3"><a href="#My-Code-3" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+using namespace std;
+int N,M,J;
+struct T&#123;
+    string name;
+    int core;
+&#125;;
+struct P&#123;
+    string name;
+    string pname;
+    string result;
+
+&#125;;
+struct F&#123;
+    string name;
+    int core=0;
+&#125;;
+T test[100];
+P data[1000];
+F guys[100];
+string f[100],t[100];//名字
+int core[100];   //单科分
+string p=&quot;AC&quot;;
+
+int dd(string a[],string result)&#123;
+    for(int i=0;i&lt;N;i++)&#123;  //i&lt;sizeof(a)/sizeof(a[0])
+        if(a[i]==result)return i;     //strcmp(const char[],const char[])
+    &#125;
+    return -1;
+&#125;
+
+int nn(string a[],string b)&#123;
+    for(int i=0;i&lt;M;i++)&#123;
+        if(a[i]==b)return i;
+
+    &#125;
+    return -1;
+
+&#125;
+
+int main()&#123;
+    int DD, NN;
+    cin&gt;&gt;N;
+    cin&gt;&gt;M;
+    cin&gt;&gt;J;
+    for(int i=0;i&lt;N;i++)&#123;
+        cin&gt;&gt;f[i];
+        guys[i].name=f[i];
+    &#125;
+    for(int i=0;i&lt;M;i++)&#123;
+        cin&gt;&gt;t[i];
+        cin&gt;&gt;core[i];
+        test[i].name=t[i];
+        test[i].core=core[i];
+    &#125;
+    
+    for(int i=0;i&lt;J;i++)&#123;
+        cin&gt;&gt;(data+i)-&gt;pname;
+        cin&gt;&gt;(data+i)-&gt;name;
+        cin&gt;&gt;data[i].result;
+        if((DD=dd(f,data[i].pname))!=-1&amp;&amp;data[i].result!=&quot;WA&quot;)&#123;
+            NN=nn(t,data[i].name);
+            guys[DD].core+=test[NN].core;
+    
+        &#125;
+    &#125;
+    for(int i=0;i&lt;N;i++)&#123;
+        cout&lt;&lt;guys[i].name&lt;&lt;&quot; &quot;&lt;&lt;guys[i].core&lt;&lt;endl;
+    &#125;
+
+
+
+&#125;
+</code></pre>
+<h1 id="Alice的德州扑克"><a href="#Alice的德州扑克" class="headerlink" title="Alice的德州扑克"></a>Alice的德州扑克</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=453">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/453/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/453#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/453#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/453#tab-custom-test">自定义测试</a></li>
+</ul>
+<blockquote>
+<p>德州扑克是目前世界上最流行的扑克游戏，全世界有众多相关的比赛，例如是 WSOP，WPT，EPT等，也让这款游戏的玩法变得层出不穷，丰富多变。 不要被简单的游戏规则而误导，复杂多变的比赛状况，让这款游戏在高水平的竞技中会变得非常复杂，这也让人们为德州扑克给出了这样一句评价 ”用一刻就能学会，但要用一生才能掌握” 。</p>
+</blockquote>
+<p>现在我们并不在乎游戏规则是什么，因为 Alice 是一个德州扑克高手，他对于德州扑克的规则烂熟于心，不过他每次都记不得牌型的大小关系，他知道你是一个编程高手，所以他想让你帮他写一个程序：输入五张牌的大小和花色，输出这五张牌能组成的最大牌型.你能帮帮他吗?</p>
+<p>为了降低你的编程难度，我们规定：</p>
+<ol>
+<li><p><strong>输入的牌都是来源于同一副扑克牌</strong></p>
+</li>
+<li><p><strong>输入的牌的点数都是非递减的</strong></p>
+</li>
+<li><p><strong>所有花色没有大小之分</strong></p>
+</li>
+</ol>
+<p>下面给出各牌型，(从大到小)</p>
+<ol>
+<li><p>**皇家同花顺(ROYAL FLUSH)<strong>：五张顺连的牌(点数连续单调递增)，</strong>且最大的一张牌是A(Ace)**，并且五张牌的花色相同</p>
+</li>
+<li><p>**同花顺(STRAIGHT FLUSH)<strong>：五张顺连的牌(点数连续单调递增)，</strong>不规定最大的一张牌是A(Ace)**，并且五张牌的花色相同</p>
+</li>
+<li><p>**四条(FOUR OF A KIND)**：至少四张牌的点数相同</p>
+</li>
+<li><p>**葫芦(FULL HOUSE)**：至少三张牌的点数相同，并且除此之外还有两张牌的点数相同</p>
+</li>
+<li><p>**同花(FLUSH)**：五张牌的花色都相同</p>
+</li>
+<li><p>**顺子(STRAIGHT)**：五张顺连的牌(点数连续单调递增)，不要求五张牌的花色相同</p>
+</li>
+<li><p><strong>特别注意</strong>：由于 Alice 是个谨慎的人，所以比 <strong>三条(THREE OF A KIND)</strong> (包括三条) 小的牌型 Alice 不在乎他们的大小关系，你只需要告诉 Alice 弃牌就行</p>
+</li>
+</ol>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入两行，每行五个数字，第一行的第 i 个字符表示第 i 张扑克的点数，</p>
+<p>第二行的第 i 个数字表示第 i 张扑克花色。**(保证输入的牌的点数是非递减的，且所有输入均合法)**。</p>
+<p>点数和对应输入的数字：</p>
+<ul>
+<li>2−10 对应 2 - 10</li>
+<li>J(Jack) 对应 11</li>
+<li>Q(Queen) 对应 12</li>
+<li>K(King) 对应 13</li>
+<li>A(Ace) 对应 14</li>
+</ul>
+<p>花色和对应输入的数字：</p>
+<ul>
+<li>黑桃 (Spades) 对应 1</li>
+<li>方片 (Diamonds) 对应 2</li>
+<li>红桃 (Hearts) 对应 3</li>
+<li>梅花 (Clubs) 对应 4</li>
+</ul>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出这五张牌能组成的最大牌型。</p>
+<ul>
+<li>如果最大是皇家同花顺输出 “ROYAL FLUSH”</li>
+<li>如果最大是同花顺输出 “STRAIGHT FLUSH”</li>
+<li>如果最大是四条输出 “FOUR OF A KIND”</li>
+<li>如果最大是葫芦输出 “FULL HOUSE”</li>
+<li>如果最大是同花输出 “FLUSH”</li>
+<li>如果最大是顺子输出 “STRAIGHT”</li>
+<li>如果最大的牌型小于等于三条输出”FOLD”，劝 Alice 弃牌</li>
+<li>输出不包括引号</li>
+</ul>
+<h4 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>10 11 12 13 14
+1 1 1 1 1
+</code></pre>
+<h4 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>ROYAL FLUSH
+</code></pre>
+<h4 id="样例输入2"><a href="#样例输入2" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>10 11 12 13 14
+1 2 1 3 4
+</code></pre>
+<h4 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>STRAIGHT
+</code></pre>
+<h4 id="样例输入3"><a href="#样例输入3" class="headerlink" title="样例输入3"></a>样例输入3</h4><pre><code>6 6 6 7 7
+1 2 3 1 3
+</code></pre>
+<h4 id="样例输出3"><a href="#样例输出3" class="headerlink" title="样例输出3"></a>样例输出3</h4><pre><code>FULL HOUSE
+</code></pre>
+<h4 id="样例输入4"><a href="#样例输入4" class="headerlink" title="样例输入4"></a>样例输入4</h4><pre><code>3 3 6 6 9
+1 2 1 2 1
+</code></pre>
+<h4 id="样例输出4"><a href="#样例输出4" class="headerlink" title="样例输出4"></a>样例输出4</h4><pre><code>FOLD
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/QiuHong-1202/FigureBed/2021/202203011202618.png" alt="image-20220301120214464"></p>
+<h3 id="My-Code-4"><a href="#My-Code-4" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+bool flush(int color[])&#123;
+    for(int i=0;i&lt;4;i++)&#123;
+        if(color[i]!=color[i+1])&#123;
+            return false;
+        &#125;
+    &#125;
+    return true;
+
+&#125;
+bool straight(int a[])&#123;
+    for(int i=0;i&lt;4;i++)&#123;
+        if(a[i+1]-a[i]!=1)
+        return false;
+    &#125;
+    return true;
+&#125;
+int kind(int a[])&#123;
+    int k=0;
+    int key1=1;
+    int key2=0;
+    int num1=a[0];
+    int num2=a[1];
+    for(int i=1;i&lt;5;i++)&#123;
+        if(a[i]==num1)&#123;
+            key1++;
+        &#125;
+        else if(k==0) &#123;
+            num2=a[i];
+            key2++;
+            k=1;
+        &#125;
+        else if(a[i]==num2) &#123;
+            key2++;
+        &#125;
+        else return 0;
+        
+    &#125;
+    if(key1&gt;=4||key2&gt;=4)return 4;
+    if(key1==3||key2==3)return 3;
+    return 0;
+
+&#125;
+
+int main()&#123;
+    vector&lt;int&gt;a;
+    int nn[5];
+    int color[5];
+    int num;
+    for(int i=0;i&lt;5;i++)&#123;
+        cin&gt;&gt;num;
+        a.push_back(num);
+    &#125;
+    for(int i=0;i&lt;5;i++)&#123;
+        cin&gt;&gt;color[i];
+    &#125;
+    sort(a.begin(),a.end());
+    for(int i=0;i&lt;5;i++)&#123;
+        nn[i]=a[i];
+
+    &#125;
+    if(flush(color))&#123;
+        if(straight(nn)&amp;&amp;nn[4]==14)cout&lt;&lt;&quot;ROYAL FLUSH&quot;;
+        else if(straight(nn))cout&lt;&lt;&quot;STRAIGHT FLUSH&quot;;
+        else cout&lt;&lt;&quot;FLUSH&quot;;
+        return 0;
+    &#125;
+    if(straight(nn))&#123;
+        cout&lt;&lt;&quot;STRAIGHT&quot;;
+        return 0;
+    &#125;
+    int kk=kind(nn);
+    if(kk==4)&#123;
+        cout&lt;&lt;&quot;FOUR OF A KIND&quot;;
+        return 0;
+        &#125;
+    else if(kk==3)&#123;
+        cout&lt;&lt;&quot;FULL HOUSE&quot;; 
+        return 0;
+    &#125;
+    cout&lt;&lt;&quot;FOLD&quot;;
+    
+
+
+&#125;
+</code></pre>
+<h1 id="订单编号"><a href="#订单编号" class="headerlink" title="订单编号"></a>订单编号</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=465">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/465/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/465#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/465#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/465#tab-custom-test">自定义测试</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/5055">小缘</a>开了一家公司，生意很好，每天都会收到很多订单，自动交易系统会自动给这些订单生成没有重复的订单编号。但是有一天，系统出现了未知的错误，导致当天的订单编号可能有重复的，这可把小缘急坏了。你可以帮助小缘按照规则给这些订单重新编号吗？</p>
+<p>按照时间先后顺序给出 N 个正整数作为原订单编号，你需要按照规则依次赋予这些订单新的编号，对于任意一个订单，要找到大于等于其原订单编号且未被使用过的（没有被之前的订单作为新的订单编号）的最小整数，作为它的新订单编号。</p>
+<p>例如： 原订单编号依次为1 2 3 1，则新订单编号应该为1 2 3 4 （前3个订单的原订单编号都没有使用过，所以用其原订单编号即可，对于第四个订单，原订单编号为1，而1, 2, 3都已经被使用过，所以新订单编号为4）。</p>
+<h4 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个整数 N (1≤N≤5×105)。</p>
+<p>第二行输入 N 个数 ai (1≤ai≤109) 作为原订单编号。</p>
+<h4 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一行，包含 N 个整数为新的订单编号。</p>
+<h4 id="样例输入1-1"><a href="#样例输入1-1" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>6
+2 3 4 1 1 1
+</code></pre>
+<h4 id="样例输出1-1"><a href="#样例输出1-1" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>2 3 4 1 5 6
+</code></pre>
+<h4 id="样例输入2-1"><a href="#样例输入2-1" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>3
+1000000000 1000000000 1000000000
+</code></pre>
+<h4 id="样例输出2-1"><a href="#样例输出2-1" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>1000000000 1000000001 1000000002
+</code></pre>
+<h4 id="样例输入3-1"><a href="#样例输入3-1" class="headerlink" title="样例输入3"></a>样例输入3</h4><pre><code>6
+4 5 1 2 1 1
+</code></pre>
+<h4 id="样例输出3-1"><a href="#样例输出3-1" class="headerlink" title="样例输出3"></a>样例输出3</h4><pre><code>4 5 1 2 3 6
+</code></pre>
+<p> 中文</p>
+<h3 id="My-Code-5"><a href="#My-Code-5" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
+using namespace std;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;map&gt;
+#include&lt;unordered_map&gt;
+#include&lt;stack&gt;
+
+typedef long long ll;
+typedef pair&lt;int, int&gt;PII;
+
+set&lt;PII&gt;s;
+
+void myinsert(int l, int r)
+&#123;
+    if (l &gt; r)return;
+    s.insert(&#123; r,l &#125;);
+&#125;
+
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    s.insert(&#123; 2e9,1 &#125;);
+    for (int i = 1; i &lt;= n; i++)
+    &#123;
+        int x;
+        scanf(&quot;%d&quot;,&amp;x);
+        auto it = s.lower_bound(&#123; x,0 &#125;);
+        if (it-&gt;second &lt;= x)
+        &#123;
+            cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+            myinsert(it-&gt;second, x - 1);
+            myinsert(x + 1, it-&gt;first);
+            s.erase(it);
+        &#125;
+        else
+        &#123;
+            cout &lt;&lt; it-&gt;second &lt;&lt; &quot; &quot;;
+            myinsert(it-&gt;second + 1, it-&gt;first);
+            s.erase(it);
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="饿饿-饭饭"><a href="#饿饿-饭饭" class="headerlink" title="饿饿 饭饭"></a>饿饿 饭饭</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=463">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/463/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/463#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/463#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/463#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>有n个同学正在排队打饭，第i个同学排在从前往后第i个位置。但是这天食堂内只有一个食堂阿姨，为了使同学们都能尽快的吃上饭，每一个同学在打完一份饭之后就会排在队伍的末尾先吃着打到的饭，我们知道第i个同学的饭量为ai，也就是说第i个同学要吃ai份饭才能吃饱，当一位同学吃饱后，他就会立刻离开食堂，不会排在队伍的末尾。食堂阿姨想知道，在打完k份饭之后，队伍的样子是怎样的，但是食堂阿姨数学不太好，想让你帮忙想想办法。</p>
+<h4 id="输入格式-6"><a href="#输入格式-6" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行给出两个整数n，k。</p>
+<p>第二行给出n个整数a1,a2,……an。</p>
+<h4 id="输出格式-6"><a href="#输出格式-6" class="headerlink" title="输出格式"></a>输出格式</h4><p>如果食堂阿姨打饭数少于k，请输出”-1”。</p>
+<p>否则按照队伍顺序输出每一个同学的编号。</p>
+<h4 id="样例输入1-2"><a href="#样例输入1-2" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>3 3
+1 2 1
+</code></pre>
+<h4 id="样例输出1-2"><a href="#样例输出1-2" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>2
+</code></pre>
+<h4 id="样例输入2-2"><a href="#样例输入2-2" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>4 10
+3 3 2 1
+</code></pre>
+<h4 id="样例输出2-2"><a href="#样例输出2-2" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>-1
+</code></pre>
+<h4 id="样例输入3-2"><a href="#样例输入3-2" class="headerlink" title="样例输入3"></a>样例输入3</h4><pre><code>7 10
+1 3 3 1 2 3 1
+</code></pre>
+<h4 id="样例输出3-2"><a href="#样例输出3-2" class="headerlink" title="样例输出3"></a>样例输出3</h4><pre><code>6 2 3
+</code></pre>
+<h4 id="数据规模-2"><a href="#数据规模-2" class="headerlink" title="数据规模"></a>数据规模</h4><p>数据保证1≤n≤105, 0≤k≤1014, 1≤ai≤109。</p>
+<p> 中文</p>
+<pre><code>#include&lt;iostream&gt;
+using namespace std;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;map&gt;
+#include&lt;unordered_map&gt;
+#include&lt;stack&gt;
+
+typedef long long ll;
+typedef pair&lt;int, int&gt;PII;
+
+
+int main()
+&#123;
+    map&lt;ll, int&gt;mymap;
+    ll n, k;
+    ll sum = 0;
+    cin &gt;&gt; n &gt;&gt; k;
+    vector&lt;ll&gt;v(n + 1);
+    for (int i = 1; i &lt;= n; i++)
+    &#123;
+        cin &gt;&gt; v[i];
+        sum += v[i];
+        mymap[v[i]]++;
+    &#125;
+    if (sum &lt; k)
+    &#123;
+        cout &lt;&lt; -1 &lt;&lt; endl;
+        return 0;
+    &#125;
+    ll len = n, res = 0, algo = 0;
+    auto it = mymap.begin();
+    while (it!=mymap.end()&amp;&amp;k &gt;= (it-&gt;first - algo) * len)
+    &#123;
+        k -= (it-&gt;first - algo) * len;
+        len -= it-&gt;second;
+        res = it-&gt;first;
+        algo = it-&gt;first;
+        it++;
+        if (len == 1)
+            cout &lt;&lt; &quot; &quot;;
+    &#125;
+    if (len == 0)
+    &#123;
+        return 0;
+    &#125;
+    k %= len;
+    int ans = 1;
+    vector&lt;ll&gt;back;
+    bool flag = false;
+    for (int i = ans; i &lt;= n &amp;&amp; k; i++)
+    &#123;
+        flag = false;
+        if (v[i] == res + 1)
+        &#123;
+            k--;
+            ans = i;
+            flag = true;
+        &#125;
+        else if (v[i] &gt; res)
+        &#123;
+            back.push_back(i);
+            ans = i;
+            k--;
+            flag = true;
+        &#125;
+    &#125;
+    if (flag)ans++;
+    for (int i = ans; i &lt;= n; i++)
+    &#123;
+        if (v[i] &gt; res)cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+    &#125;
+    for (int i = 0; i &lt; back.size(); i++)cout &lt;&lt; back[i] &lt;&lt; &quot; &quot;;
+
+    return 0;
+&#125;
+</code></pre>
+<h1 id="任务分配"><a href="#任务分配" class="headerlink" title="任务分配"></a>任务分配</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=461">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/461/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/461#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/461#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/461#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>你有n个任务，其中第i个任务，在si开始，ei时刻结束，如果做这个任务，你能获得wi的收益。</p>
+<p>但是你在一个时刻只能做一个任务，问选择哪些任务，能让你的收益尽量大。</p>
+<p>注意：你在上一个任务结束后马上开始下一个任务是可以的。</p>
+<h3 id="输入格式-7"><a href="#输入格式-7" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行一个整数n。</p>
+<p>接下来n行，每行三个整数si,ei,wi。</p>
+<h3 id="输出格式-7"><a href="#输出格式-7" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个数，表示答案。</p>
+<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>3
+1 3 100
+2 4 199
+3 5 100
+</code></pre>
+<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>200
+</code></pre>
+<h3 id="数据规模-3"><a href="#数据规模-3" class="headerlink" title="数据规模"></a>数据规模</h3><p>对于所有数据，保证1≤n≤103,1≤si&lt;ei≤103,1≤wi≤105。</p>
+<p> 中文</p>
+<h3 id="My-Code-6"><a href="#My-Code-6" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
+using namespace std;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;stack&gt;
+
+typedef long long ll;
+typedef pair&lt;ll, ll&gt;PII;
+const int N = 1010;
+ll s[N], w[N], e[N];
+PII f[N];
+
+bool cmp(vector&lt;ll&gt;a, vector&lt;ll&gt;b)
+&#123;
+    if (a[0] != b[0])return a[0] &lt; b[0];
+    else if (a[1] != b[1])return a[1] &lt; b[1];
+    return a[2] &lt; b[2];
+&#125;
+
+int main()
+&#123;
+    int n, m;
+    cin &gt;&gt; n;
+    vector&lt;vector&lt;ll&gt;&gt;v(n, vector&lt;ll&gt;(3));
+    for (int i = 0; i &lt; n; i++)
+    &#123;
+        cin &gt;&gt; v[i][0] &gt;&gt; v[i][1] &gt;&gt; v[i][2];
+    &#125;
+    sort(v.begin(), v.end(), cmp);
+    f[0].first = v[0][1];
+    f[0].second = v[0][2];
+    ll res = f[0].second;
+    for (int i = 1; i &lt; n; i++)
+    &#123;
+        ll ans = 0;
+        f[i].first = v[i][1];
+        f[i].second = v[i][2];
+        for (int j = i - 1; j &gt;= 0; j--)
+        &#123;
+            if (v[i][0] &gt;= f[j].first)
+            &#123;
+                f[i].second = max(f[i].second, f[j].second + v[i][2]);
+                
+            &#125;
+        &#125;
+        res = max(res, f[i].second);
+    &#125;
+    cout &lt;&lt; res &lt;&lt; endl;
+    
+    return 0;
+&#125;
+</code></pre>
+<p>Analyse：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/21/first/" data-id="clfi3tq6r00034cw10mvf7q4d" data-title="first" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">建栈链表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/03/21/first/">first</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/">建栈链表</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/%E5%8F%8C%E5%91%A8%E8%B5%9BThird/">双周赛Third</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/0x3f3f3f3f/">1061109567</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

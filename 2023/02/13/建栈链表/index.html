@@ -4,17 +4,15 @@
   <meta charset="utf-8">
   
   
-  <title>pair知识点 | Hexo</title>
+  <title>建栈链表 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="C++ pair型pair 是 一种模版类型。每个pair 可以存储两个值。 如果一个函数有两个返回值并且是不同类型，一种方法是写个struct ，但为了方便可以使用 c++ 自带的pair型 ，返回一个pair 。 另外，在一个对象有多个属性时 ，一般使用struct ，但是如果只有两个属性的时候，就可以用pair 进行操作。。。 如果有三个属性的话，其实也是可以用pair 。。。。  pair">
-<meta property="og:type" content="article">
-<meta property="og:title" content="pair知识点">
-<meta property="og:url" content="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="建栈链表">
+<meta property="og:url" content="http://example.com/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++ pair型pair 是 一种模版类型。每个pair 可以存储两个值。 如果一个函数有两个返回值并且是不同类型，一种方法是写个struct ，但为了方便可以使用 c++ 自带的pair型 ，返回一个pair 。 另外，在一个对象有多个属性时 ，一般使用struct ，但是如果只有两个属性的时候，就可以用pair 进行操作。。。 如果有三个属性的话，其实也是可以用pair 。。。。  pair">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-01-10T03:30:29.000Z">
-<meta property="article:modified_time" content="2023-01-10T03:30:49.059Z">
+<meta property="article:published_time" content="2023-02-13T03:30:18.000Z">
+<meta property="article:modified_time" content="2023-02-13T03:30:18.352Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,10 +71,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-pair知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-建栈链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-01-10T03:30:29.000Z" itemprop="datePublished">2023-01-10</time>
+    <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-02-13T03:30:18.000Z" itemprop="datePublished">2023-02-13</time>
 </a>
     
   </div>
@@ -87,7 +85,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      pair知识点
+      建栈链表
     </h1>
   
 
@@ -95,39 +93,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>C++ pair型<br>pair 是 一种模版类型。每个pair 可以存储两个值。</p>
-<p>如果一个函数有两个返回值并且是不同类型，一种方法是写个struct ，但为了方便可以使用 c++ 自带的pair型 ，返回一个pair 。</p>
-<p>另外，在一个对象有多个属性时 ，一般使用struct ，但是如果只有两个属性的时候，就可以用pair 进行操作。。。</p>
-<p>如果有三个属性的话，其实也是可以用pair 。。。。</p>
-<p> pair&lt;int ,pair&lt;int ,int &gt; &gt; a;<br>1<br>（后边的两个 &gt; &gt; 要有空格，否则就会是 &gt;&gt; 位移运算符）</p>
-<p>生成方法有两种：</p>
-<p>pair&lt;int ,int &gt;p (5,6);<br>pair&lt;int ,int &gt; p1&#x3D; make_pair(5,6);<br>1<br>2<br>对于取值，每个pair 都有两个属性值 first 和second</p>
-<p> cout &lt;&lt; p1.first &lt;&lt; p1.second;<br>1<br>可以理解为struct的两个变量</p>
-<p>对于排序函数sort ，pair自带属性为first优先进行升序排序，其次为second进行升序排序，代码举例：</p>
-<p>#include<iostream><br>#include<cstdio><br>#include<cstring><br>#include<algorithm><br>#define mmm(a,b) memset(a,b,sizeof(a))<br>#define mk make_pair<br>#define fi first<br>#define se second<br>#define pill pair&lt;int, int&gt;<br>using namespace std; </p>
-<p>int main()<br>{<br>    pill a[200];<br>    mmm(a,0);<br>    for(int i&#x3D;1;i&lt;&#x3D;10;i++){<br>        a[i]&#x3D;mk(20-i,i);<br>    }</p>
-<pre><code>for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;cout&lt;&lt;endl;
-
-sort(a+1,a+11);
-for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;cout&lt;&lt;endl;
-
-a[2].first=10;
-sort(a+1,a+11);
-cout&lt;&lt;&quot;11 9 change to 10 9&quot;&lt;&lt;endl&lt;&lt;endl;
-for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;
-</code></pre>
-<p>}<br>————————————————<br>版权声明：本文为CSDN博主「JK Chen」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jk_chen_acmer/article/details/79268165">https://blog.csdn.net/jk_chen_acmer/article/details/79268165</a></p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfi3tq6t00064cw1h0830vp4" data-title="pair知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/" data-id="clfi3tq6y000h4cw128dv1nkq" data-title="建栈链表" class="article-share-link">Share</a>
       
       
       
@@ -137,19 +107,19 @@ for(int i=1;i&lt;=10;i++)&#123;
     
 <nav id="article-nav">
   
-    <a href="/2023/01/10/0x3f3f3f3f/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/03/21/first/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          1061109567
+          first
         
       </div>
     </a>
   
   
-    <a href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/01/10/%E5%8F%8C%E5%91%A8%E8%B5%9BThird/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">堆的知识点</div>
+      <div class="article-nav-title">双周赛Third</div>
     </a>
   
 </nav>
