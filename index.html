@@ -93,11 +93,423 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>7-1 重要的话说三遍</p>
+<p>分数 5</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>这道超级简单的题目没有任何输入。</p>
+<p>你只需要把这句很重要的话 —— “I’m gonna WIN!”——连续输出三遍就可以了。</p>
+<p>注意每遍占一行，除了每行的回车不能有任何多余字符。</p>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>using namespace std;<br>int main(){<br>    cout&lt;&lt;”I’m gonna WIN!”&lt;&lt;endl;<br>    cout&lt;&lt;”I’m gonna WIN!”&lt;&lt;endl;<br>    cout&lt;&lt;”I’m gonna WIN!”;</p>
+<p>}</p>
+<p>7-2 日期格式化</p>
+<p>分数 5</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>世界上不同国家有不同的写日期的习惯。比如美国人习惯写成“月-日-年”，而中国人习惯写成“年-月-日”。下面请你写个程序，自动把读入的美国格式的日期改写成中国习惯的日期。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行中按照“mm-dd-yyyy”的格式给出月、日、年。题目保证给出的日期是1900年元旦至今合法的日期。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行中按照“yyyy-mm-dd”的格式给出年、月、日。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>03-15-2017
+</code></pre>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>2017-03-15
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>#include &lt;string.h&gt;<br>using namespace std;<br>int main(){<br>    string a;<br>    cin&gt;&gt;a;<br>    for(int i&#x3D;6;i&lt;10;i++){<br>        cout&lt;&lt;a[i];<br>    }<br>    cout&lt;&lt;”-“;<br>    cout&lt;&lt;a[0]&lt;&lt;a[1]&lt;&lt;a[2]&lt;&lt;a[3]&lt;&lt;a[4];</p>
+<p>}</p>
+<p>7-3 大笨钟</p>
+<p>分数 10</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>微博上有个自称“大笨钟V”的家伙，每天敲钟催促码农们爱惜身体早点睡觉。不过由于笨钟自己作息也不是很规律，所以敲钟并不定时。一般敲钟的点数是根据敲钟时间而定的，如果正好在某个整点敲，那么“当”数就等于那个整点数；如果过了整点，就敲下一个整点数。另外，虽然一天有24小时，钟却是只在后半天敲1~12下。例如在23:00敲钟，就是“当当当当当当当当当当当”，而到了23:01就会是“当当当当当当当当当当当当”。在午夜00:00到中午12:00期间（端点时间包括在内），笨钟是不敲的。</p>
+<p>下面就请你写个程序，根据当前时间替大笨钟敲钟。</p>
+<h3 id="输入格式：-1"><a href="#输入格式：-1" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行按照<code>hh:mm</code>的格式给出当前时间。其中<code>hh</code>是小时，在00到23之间；<code>mm</code>是分钟，在00到59之间。</p>
+<h3 id="输出格式：-1"><a href="#输出格式：-1" class="headerlink" title="输出格式："></a>输出格式：</h3><p>根据当前时间替大笨钟敲钟，即在一行中输出相应数量个<code>Dang</code>。如果不是敲钟期，则输出：<br>    Only hh:mm.  Too early to Dang.</p>
+<p>其中<code>hh:mm</code>是输入的时间。</p>
+<h3 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h3><pre><code>19:05
+</code></pre>
+<h3 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h3><pre><code>DangDangDangDangDangDangDangDang
+</code></pre>
+<h3 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h3><pre><code>07:05
+</code></pre>
+<h3 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h3><pre><code>Only 07:05.  Too early to Dang.
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>#include &lt;string.h&gt;<br>using namespace std;<br>int main(){<br>    string a;<br>    cin&gt;&gt;a;<br>    if(a[0]&#x3D;&#x3D;’1’&amp;&amp;(a[1]&#x3D;&#x3D;’3’||a[1]&#x3D;&#x3D;’4’||a[1]&#x3D;&#x3D;’5’||a[1]&#x3D;&#x3D;’6’||a[1]&#x3D;&#x3D;’7’||a[1]&#x3D;&#x3D;’8’||a[1]&#x3D;&#x3D;’9’)){<br>    }<br>    if(a&#x3D;&#x3D;”00:00”){cout&lt;&lt;”Only “&lt;&lt;a&lt;&lt;”.  Too early to Dang.”;<br>        return 0;<br>    }<br>    if(a[3]&#x3D;&#x3D;’0’&amp;&amp;a[4]&#x3D;&#x3D;’0’){<br>        if(a[0]&#x3D;&#x3D;’2’&amp;&amp;a[1]&#x3D;&#x3D;’4’)cout&lt;&lt;”Only hh:mm.  Too early to Dang.”;<br>        else if(a[0]&#x3D;&#x3D;’1’&amp;&amp;a[1]&gt;’2’)for(char i&#x3D;’2’;i&lt;a[1];i++){<br>            cout&lt;&lt;”Dang”;<br>        }<br>        else if(a[0]&#x3D;&#x3D;’2’&amp;&amp;a[1]&lt;’4’){<br>            cout&lt;&lt;”DangDangDangDangDangDangDang”;<br>            for(char i&#x3D;’0’;i&lt;&#x3D;a[1];i++){<br>                cout&lt;&lt;”Dang”;<br>            }<br>        }<br>        else cout&lt;&lt;”Only “&lt;&lt;a&lt;&lt;”.  Too early to Dang.”;<br>    }<br>    else if(a[0]&#x3D;&#x3D;’1’&amp;&amp;a[1]&gt;&#x3D;’2’)for(char i&#x3D;’2’;i&lt;&#x3D;a[1];i++){<br>            cout&lt;&lt;”Dang”;<br>        }<br>    else if(a[0]&#x3D;&#x3D;’2’&amp;&amp;a[1]&lt;’4’){<br>            cout&lt;&lt;”DangDangDangDangDangDangDangDang”;<br>            for(char i&#x3D;’0’;i&lt;&#x3D;a[1];i++){<br>                cout&lt;&lt;”Dang”;<br>            }<br>        }<br>    else cout&lt;&lt;”Only “&lt;&lt;a&lt;&lt;”.  Too early to Dang.”;</p>
+<p>}</p>
+<p>7-4 拯救外星人</p>
+<p>分数 10</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p><img src="https://images.ptausercontent.com/6a6a0e8b-dabb-4364-b5c7-f180082ef719.jpg" alt="T.jpg"></p>
+<p>你的外星人朋友不认得地球上的加减乘除符号，但是会算阶乘 —— 正整数 N 的阶乘记为 “N!”，是从 1 到 N 的连乘积。所以当他不知道“5+7”等于多少时，如果你告诉他等于“12!”，他就写出了“479001600”这个答案。</p>
+<p>本题就请你写程序模仿外星人的行为。</p>
+<h3 id="输入格式：-2"><a href="#输入格式：-2" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行中给出两个正整数 A 和 B。</p>
+<h3 id="输出格式：-2"><a href="#输出格式：-2" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行中输出 (A+B) 的阶乘。题目保证 (A+B) 的值小于 12。</p>
+<h3 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>3 6
+</code></pre>
+<h3 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>362880
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>using namespace std;<br>int main(){<br>    int A,B;<br>    cin&gt;&gt;A&gt;&gt;B;<br>    int c&#x3D;A+B;<br>    int ans&#x3D;1;<br>    for(int i&#x3D;c;i&gt;&#x3D;1;i–){<br>        ans&#x3D;ans*i;<br>    }<br>    cout&lt;&lt;ans;</p>
+<p>}</p>
+<p>7-5 个位数统计</p>
+<p>分数 15</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 CHEN, Yue</p>
+<p>单位 浙江大学</p>
+<p>给定一个 k 位整数 N&#x3D;dk−1​10k−1+⋯+d1​101+d0​ (0≤di​≤9, i&#x3D;0,⋯,k−1, dk−1​&gt;0)，请编写程序统计每种不同的个位数字出现的次数。例如：给定 N&#x3D;100311，则有 2 个 0，3 个 1，和 1 个 3。</p>
+<h3 id="输入格式：-3"><a href="#输入格式：-3" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个输入包含 1 个测试用例，即一个不超过 1000 位的正整数 N。</p>
+<h3 id="输出格式：-3"><a href="#输出格式：-3" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对 N 中每一种不同的个位数字，以 <code>D:M</code> 的格式在一行中输出该位数字 <code>D</code> 及其在 N 中出现的次数 <code>M</code>。要求按 <code>D</code> 的升序输出。</p>
+<h3 id="输入样例：-2"><a href="#输入样例：-2" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>100311
+</code></pre>
+<h3 id="输出样例：-2"><a href="#输出样例：-2" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>0:2
+1:3
+3:1
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>#include <string><br>using namespace std;<br>int main(){<br>    string a;<br>    int a0&#x3D;0,a1&#x3D;0,a2&#x3D;0,a3&#x3D;0,a4&#x3D;0,a5&#x3D;0,a6&#x3D;0,a7&#x3D;0,a8&#x3D;0,a9&#x3D;0;<br>    cin&gt;&gt;a;<br>    for(int i&#x3D;0;i&lt;a.length();i++){<br>        if(a[i]&#x3D;&#x3D;’0’)a0++;<br>        else if(a[i]&#x3D;&#x3D;’1’)a1++;<br>        else if(a[i]&#x3D;&#x3D;’2’)a2++;<br>        else if(a[i]&#x3D;&#x3D;’3’)a3++;<br>        else if(a[i]&#x3D;&#x3D;’4’)a4++;<br>        else if(a[i]&#x3D;&#x3D;’5’)a5++;<br>        else if(a[i]&#x3D;&#x3D;’6’)a6++;<br>        else if(a[i]&#x3D;&#x3D;’7’)a7++;<br>        else if(a[i]&#x3D;&#x3D;’8’)a8++;<br>        else if(a[i]&#x3D;&#x3D;’9’)a9++;<br>    }<br>    if(a0!&#x3D;0)cout&lt;&lt;”0:”&lt;&lt;a0&lt;&lt;endl;<br>    if(a1!&#x3D;0)cout&lt;&lt;”1:”&lt;&lt;a1&lt;&lt;endl;<br>    if(a2!&#x3D;0)cout&lt;&lt;”2:”&lt;&lt;a2&lt;&lt;endl;<br>    if(a3!&#x3D;0)cout&lt;&lt;”3:”&lt;&lt;a3&lt;&lt;endl;<br>    if(a4!&#x3D;0)cout&lt;&lt;”4:”&lt;&lt;a4&lt;&lt;endl;<br>    if(a5!&#x3D;0)cout&lt;&lt;”5:”&lt;&lt;a5&lt;&lt;endl;<br>    if(a6!&#x3D;0)cout&lt;&lt;”6:”&lt;&lt;a6&lt;&lt;endl;<br>    if(a7!&#x3D;0)cout&lt;&lt;”7:”&lt;&lt;a7&lt;&lt;endl;<br>    if(a8!&#x3D;0)cout&lt;&lt;”8:”&lt;&lt;a8&lt;&lt;endl;<br>    if(a9!&#x3D;0)cout&lt;&lt;”9:”&lt;&lt;a9;</p>
+<p>}</p>
+<p>7-6 正整数A+B</p>
+<p>分数 15</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>题的目标很简单，就是求两个正整数<code>A</code>和<code>B</code>的和，其中<code>A</code>和<code>B</code>都在区间[1,1000]。稍微有点麻烦的是，输入并不保证是两个正整数。</p>
+<h3 id="输入格式：-4"><a href="#输入格式：-4" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行给出<code>A</code>和<code>B</code>，其间以空格分开。问题是<code>A</code>和<code>B</code>不一定是满足要求的正整数，有时候可能是超出范围的数字、负数、带小数点的实数、甚至是一堆乱码。</p>
+<p>注意：我们把输入中出现的第1个空格认为是<code>A</code>和<code>B</code>的分隔。题目保证至少存在一个空格，并且<code>B</code>不是一个空字符串。</p>
+<h3 id="输出格式：-4"><a href="#输出格式：-4" class="headerlink" title="输出格式："></a>输出格式：</h3><p>如果输入的确是两个正整数，则按格式<code>A + B = 和</code>输出。如果某个输入不合要求，则在相应位置输出<code>?</code>，显然此时和也是<code>?</code>。</p>
+<h3 id="输入样例1：-1"><a href="#输入样例1：-1" class="headerlink" title="输入样例1："></a>输入样例1：</h3><pre><code>123 456
+</code></pre>
+<h3 id="输出样例1：-1"><a href="#输出样例1：-1" class="headerlink" title="输出样例1："></a>输出样例1：</h3><pre><code>123 + 456 = 579
+</code></pre>
+<h3 id="输入样例2：-1"><a href="#输入样例2：-1" class="headerlink" title="输入样例2："></a>输入样例2：</h3><pre><code>22. 18
+</code></pre>
+<h3 id="输出样例2：-1"><a href="#输出样例2：-1" class="headerlink" title="输出样例2："></a>输出样例2：</h3><pre><code>? + 18 = ?
+</code></pre>
+<h3 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h3><pre><code>-100 blabla bla...33
+</code></pre>
+<h3 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h3><pre><code>? + ? = ?
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include<iostream><br>using namespace std;<br>&#x2F;&#x2F;123 456<br>&#x2F;*<br>解题思路：<br>每读入一个字符，把它转换成相应的整数，直到结束，然后再参与运算<br>如对于123来说<br>    读入1，就是1<br>    读入2，就是1<em>10+2<br>    读入3，就是（1</em>10+2）*10+3<br>    即前一个数乘10再加上新的数<br>*&#x2F; </p>
+<p>int main(){<br>    char s[100];&#x2F;&#x2F;声明一个字符串<br>    bool flagA &#x3D; true , flagB &#x3D;true;&#x2F;&#x2F;标识A B是否满足条件<br>    int A &#x3D; 0 , B &#x3D; 0;<br>    cin.getline(s,100);<br>    int i;<br>    for( i&#x3D;0 ; s[i]!&#x3D;’ ‘;++i);</p>
+<pre><code>for( int j=0 ; j&lt; i ;++j )&#123;
+    if(s[j] &gt;=&#39;0&#39; &amp;&amp; s[j] &lt;=&#39;9&#39;)&#123;
+        A = A * 10 + (s[j]-&#39;0&#39;);
+    &#125; else&#123;
+        flagA = false; //判断输入的是否是数字，不是记为false，直接退出
+        break;
+    &#125;
+&#125; 
+//判断范围，这个一定要做，因为题目中明确说了可能是超过范围的
+if(A ==0 || A &gt;1000) flagA = false;
+//i是空格位置，往后部分是B,
+for( int j=i+1 ; s[j]!=&#39;\0&#39; ;++j )&#123;
+    if(s[j] &gt;=&#39;0&#39; &amp;&amp; s[j] &lt;=&#39;9&#39;)&#123;
+        B = B * 10 + (s[j]-&#39;0&#39;);
+    &#125; else&#123;
+        flagB = false; 
+        break;
+    &#125;
+&#125; 
+if(B ==0 || B &gt;1000) flagB = false;
+
+if(flagA)&#123;
+    if(flagB)&#123;
+        printf(&quot;%d + %d = %d&quot;,A,B,A+B);
+    &#125;else&#123;
+        printf(&quot;%d + ? = ?&quot;,A);
+    &#125;
+&#125; else&#123;
+    if(flagB)&#123;
+        printf(&quot;? + %d = ?&quot;,B);
+    &#125;else&#123;
+        printf(&quot;? + ? = ?&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>7-7 打印沙漏</p>
+<p>分数 20</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>本题要求你写个程序把给定的符号打印成沙漏的形状。例如给定17个“*”，要求按下列格式打印<br>    *****<br>     ***<br>      *<br>     ***<br>    *****</p>
+<p>所谓“沙漏形状”，是指每行输出奇数个符号；各行符号中心对齐；相邻两行符号数差2；符号数先从大到小顺序递减到1，再从小到大顺序递增；首尾符号数相等。</p>
+<p>给定任意N个符号，不一定能正好组成一个沙漏。要求打印出的沙漏能用掉尽可能多的符号。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入在一行给出1个正整数N（≤1000）和一个符号，中间以空格分隔。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>首先打印出由给定符号组成的最大的沙漏形状，最后在一行中输出剩下没用掉的符号数。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><pre><code>19 *
+</code></pre>
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><pre><code>*****
+ ***
+  *
+ ***
+*****
+2
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>&#x2F;&#x2F;6 10 14 18 n*4+2</p>
+<p>&#x2F;&#x2F;(n*2+4 )*n+1<br>#include <iostream><br>using namespace std;</p>
+<p>int main(){<br>    int a[1000];<br>    int key&#x3D;0;<br>    for(int i&#x3D;0;((i*2+4)*i+1)&lt;2000;i++){ &#x2F;&#x2F;值<br>        a[i]&#x3D;((i*2+4)*i+1);<br>        key++;<br>    }<br>    int n;<br>    string f;<br>    cin&gt;&gt;n;<br>    cin&gt;&gt;f;<br>    int le;<br>    int yu;<br>    for(int i&#x3D;0;i&lt;key;i++){<br>        if(n&lt;a[i]){<br>            le&#x3D;i-1;<br>            yu&#x3D;n-a[i-1];<br>            break;<br>        }<br>    }<br>    if(le&#x3D;&#x3D;0){<br>        cout&lt;&lt;f&lt;&lt;endl;<br>        cout&lt;&lt;yu;<br>        return 0;<br>    }<br>    int x&#x3D;(2*le+1);<br>    int ans[x][x];<br>    for(int i&#x3D;0;i&lt;x;i++){<br>        for(int j&#x3D;0;j&lt;x;j++){<br>            ans[i][j]&#x3D;0;<br>        }<br>    }<br>    for(int i&#x3D;0;i&lt;x&#x2F;2;i++){<br>        for(int j&#x3D;i;j&lt;x-i;j++){<br>            ans[i][j]&#x3D;1;<br>        }<br>    }<br>    ans[x&#x2F;2][x&#x2F;2]&#x3D;1;<br>    for(int i&#x3D;x-1;i&gt;x&#x2F;2;i–){<br>        for(int j&#x3D;x-1-i;j&lt;x-(x-1-i);j++){<br>            ans[i][j]&#x3D;1;<br>        }<br>    }<br>    int tt&#x3D;0;<br>    for(int i&#x3D;0;i&lt;x;i++){<br>        for(int j&#x3D;0;j&lt;x;j++){<br>            if(ans[i][j]&#x3D;&#x3D;0&amp;&amp;tt&#x3D;&#x3D;0)cout&lt;&lt;” “;<br>            else if(ans[i][j]&#x3D;&#x3D;0&amp;&amp;tt&#x3D;&#x3D;1)break;<br>            else {cout&lt;&lt;f;tt&#x3D;1;}</p>
+<pre><code>    &#125;
+    tt=0;
+    cout&lt;&lt;endl;
+&#125;
+
+cout&lt;&lt;yu;
+</code></pre>
+<p>}</p>
+<p>7-8 机工士姆斯塔迪奥</p>
+<p>分数 20</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 DAI, Longao</p>
+<p>单位 杭州百腾教育科技有限公司</p>
+<p>在 MMORPG《最终幻想14》的副本“乐欲之所瓯博讷修道院”里，BOSS 机工士姆斯塔迪奥将会接受玩家的挑战。</p>
+<p>你需要处理这个副本其中的一个机制：N×M 大小的地图被拆分为了 N×M 个 1×1 的格子，BOSS 会选择若干行或&#x2F;及若干列释放技能，玩家不能站在释放技能的方格上，否则就会被击中而失败。</p>
+<p>给定 BOSS 所有释放技能的行或列信息，请你计算出最后有多少个格子是安全的。</p>
+<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入第一行是三个整数 N,M,Q (1≤N×M≤105，0≤Q≤1000)，表示地图为 N 行 M 列大小以及选择的行&#x2F;列数量。</p>
+<p>接下来 Q 行，每行两个数 Ti​,Ci​，其中 Ti​&#x3D;0 表示 BOSS 选择的是一整行，Ti​&#x3D;1 表示选择的是一整列，Ci​ 为选择的行号&#x2F;列号。行和列的编号均从 1 开始。</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出一个数，表示安全格子的数量。</p>
+<h3 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例:"></a>输入样例:</h3><pre><code>5 5 3
+0 2
+0 4
+1 3
+</code></pre>
+<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例:"></a>输出样例:</h3><pre><code>12
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include&lt;stdio.h&gt;<br>int flagr[100001]&#x3D;{0},flagc[100001]&#x3D;{0};<br>int main(){<br>    int n,m,q,Ti,Ci,r&#x3D;0,c&#x3D;0;<br>    scanf(“%d%d%d”,&amp;n,&amp;m,&amp;q);<br>    while(q–){<br>        scanf(“%d%d”,&amp;Ti,&amp;Ci);<br>        if(Ti&#x3D;&#x3D;0&amp;&amp;flagr[Ci]||Ti&#x3D;&#x3D;1&amp;&amp;flagc[Ci])<br>             continue;   &#x2F;&#x2F;如果是之前被攻击的行或者列就直接跳过<br>        if(Ti&#x3D;&#x3D;0){<br>             r++;<br>             flagr[Ci]&#x3D;1;<br>        }<br>        else{<br>            c++;       &#x2F;&#x2F;标记已经被攻击过了<br>            flagc[Ci]&#x3D;1;<br>        }<br>    }<br>    printf(“%d”,m<em>n-r</em>m-c<em>n+r</em>c);<br>}</p>
+<p>7-9 排座位</p>
+<p>分数 25</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>布置宴席最微妙的事情，就是给前来参宴的各位宾客安排座位。无论如何，总不能把两个死对头排到同一张宴会桌旁！这个艰巨任务现在就交给你，对任何一对客人，请编写程序告诉主人他们是否能被安排同席。</p>
+<h3 id="输入格式：-5"><a href="#输入格式：-5" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出3个正整数：<code>N</code>（≤100），即前来参宴的宾客总人数，则这些人从1到<code>N</code>编号；<code>M</code>为已知两两宾客之间的关系数；<code>K</code>为查询的条数。随后<code>M</code>行，每行给出一对宾客之间的关系，格式为：<code>宾客1 宾客2 关系</code>，其中<code>关系</code>为1表示是朋友，-1表示是死对头。注意两个人不可能既是朋友又是敌人。最后<code>K</code>行，每行给出一对需要查询的宾客编号。</p>
+<p>这里假设朋友的朋友也是朋友。但敌人的敌人并不一定就是朋友，朋友的敌人也不一定是敌人。只有单纯直接的敌对关系才是绝对不能同席的。</p>
+<h3 id="输出格式：-5"><a href="#输出格式：-5" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每个查询输出一行结果：如果两位宾客之间是朋友，且没有敌对关系，则输出<code>No problem</code>；如果他们之间并不是朋友，但也不敌对，则输出<code>OK</code>；如果他们之间有敌对，然而也有共同的朋友，则输出<code>OK but...</code>；如果他们之间只有敌对关系，则输出<code>No way</code>。</p>
+<h3 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>7 8 4
+5 6 1
+2 7 -1
+1 3 1
+3 4 1
+6 7 -1
+1 2 1
+1 4 1
+2 3 -1
+3 4
+5 7
+2 3
+7 2
+</code></pre>
+<h3 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>No problem
+OK
+OK but...
+No way
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>200 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include&lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>#define Maxn 120<br>int a[Maxn][Maxn];<br>int n,m,l;<br>int find(int c,int d){<br>  for(int i&#x3D;1;i&lt;&#x3D;n;i++) {<br>    if(a[c][i]&amp;&amp;a[d][i]) return 1;<br>  }<br>  return 0;<br>}<br>int main(){<br>    cin&gt;&gt;n&gt;&gt;m&gt;&gt;l;<br>    memset(a,0,sizeof(a));<br>    int q,w,e;<br>    for(int i&#x3D;1;i&lt;&#x3D;m;i++){<br>        cin&gt;&gt;q&gt;&gt;w&gt;&gt;e;<br>        a[w][q]&#x3D;a[q][w]&#x3D;e;<br>    }<br>    int r,t;<br>    int flag&#x3D;0;<br>    for(int i&#x3D;1;i&lt;&#x3D;l;i++){<br>        cin&gt;&gt;r&gt;&gt;t;<br>        if(a[r][t]&#x3D;&#x3D;1){<br>            cout&lt;&lt;”No problem”&lt;&lt;endl;<br>            continue;<br>        }else if(a[r][t]&#x3D;&#x3D;0){<br>            cout&lt;&lt;”OK”&lt;&lt;endl;<br>        }else if(a[r][t]&#x3D;&#x3D;-1&amp;&amp;find(r,t)){<br>            cout&lt;&lt;”OK but…”&lt;&lt;endl;<br>        }else{<br>            cout&lt;&lt;”No way”&lt;&lt;endl;<br>        }<br>    }<br>    return 0;</p>
+<p>} </p>
+<p>7-10 名人堂与代金券</p>
+<p>分数 25</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>对于在中国大学MOOC（<a target="_blank" rel="noopener" href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，总评成绩必须达到 60 分及以上，并且有另加福利：总评分在 [G, 100] 区间内者，可以得到 50 元 PAT 代金券；在 [60, G) 区间内者，可以得到 20 元PAT代金券。全国考点通用，一年有效。同时任课老师还会把总评成绩前 K 名的学生列入课程“名人堂”。本题就请你编写程序，帮助老师列出名人堂的学生，并统计一共发出了面值多少元的 PAT 代金券。</p>
+<h3 id="输入格式：-6"><a href="#输入格式：-6" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在第一行给出 3 个整数，分别是 N（不超过 10 000 的正整数，为学生总数）、G（在 (60,100) 区间内的整数，为题面中描述的代金券等级分界线）、K（不超过 100 且不超过 N 的正整数，为进入名人堂的最低名次）。接下来 N 行，每行给出一位学生的账号（长度不超过15位、不带空格的字符串）和总评成绩（区间 [0, 100] 内的整数），其间以空格分隔。题目保证没有重复的账号。</p>
+<h3 id="输出格式：-6"><a href="#输出格式：-6" class="headerlink" title="输出格式："></a>输出格式：</h3><p>首先在一行中输出发出的 PAT 代金券的总面值。然后按总评成绩非升序输出进入名人堂的学生的名次、账号和成绩，其间以 1 个空格分隔。需要注意的是：成绩相同的学生享有并列的排名，排名并列时，按账号的字母序升序输出。</p>
+<h3 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>10 80 5
+cy@zju.edu.cn 78
+cy@pat-edu.com 87
+1001@qq.com 65
+uh-oh@163.com 96
+test@126.com 39
+anyone@qq.com 87
+zoe@mit.edu 80
+jack@ucla.edu 88
+bob@cmu.edu 80
+ken@163.com 70
+</code></pre>
+<h3 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>360
+1 uh-oh@163.com 96
+2 jack@ucla.edu 88
+3 anyone@qq.com 87
+3 cy@pat-edu.com 87
+5 bob@cmu.edu 80
+5 zoe@mit.edu 80
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>250 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include<iostream><br>#include<cstdio><br>#include<vector><br>#include<algorithm><br>#include<string><br>using namespace std;<br>&#x2F;&#x2F;测试点2、3 名人堂是全部的人<br>int n,g,k,grade,sum;<br>string a;<br>pair&lt;int,string&gt; v[10010];<br>int state[10010];</p>
+<p>bool my_cmp(pair&lt;int,string&gt; a,pair&lt;int,string&gt; b){<br>    if(a.first&#x3D;&#x3D;b.first) return a.second&lt;b.second;<br>    else return a.first&gt;b.first;<br>}</p>
+<p>int main(){<br>    cin&gt;&gt;n&gt;&gt;g&gt;&gt;k;<br>    for(int i&#x3D;0;i&lt;n;i++){<br>        cin&gt;&gt;a&gt;&gt;grade;<br>        if(grade&gt;&#x3D;g) sum+&#x3D;50;<br>        else if(grade&gt;&#x3D;60) sum+&#x3D;20;<br>        v[i]&#x3D;{grade,a};<br>    }<br>    sort(v,v+n,my_cmp);<br>    state[0]&#x3D;1;<br>    for(int i&#x3D;1;i&lt;n;i++){<br>        if(v[i].first&#x3D;&#x3D;v[i-1].first) state[i]&#x3D;state[i-1];<br>        else state[i]&#x3D;i+1;<br>    }<br>    cout&lt;&lt;sum&lt;&lt;endl;<br>    for(int i&#x3D;0;state[i]&lt;&#x3D;k&amp;&amp;i&lt;n;i++){<br>        cout&lt;&lt;state[i]&lt;&lt;’ ‘&lt;&lt;v[i].second&lt;&lt;’ ‘&lt;&lt;v[i].first&lt;&lt;endl;<br>    }<br>    system(“pause”);<br>}</p>
+<p>7-11 包装机</p>
+<p>分数 25</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>一种自动包装机的结构如图 1 所示。首先机器中有 N 条轨道，放置了一些物品。轨道下面有一个筐。当某条轨道的按钮被按下时，活塞向左推动，将轨道尽头的一件物品推落筐中。当 0 号按钮被按下时，机械手将抓取筐顶部的一件物品，放到流水线上。图 2 显示了顺序按下按钮 3、2、3、0、1、2、0 后包装机的状态。</p>
+<p><img src="https://images.ptausercontent.com/40282bd3-1adb-43f9-9db7-6af4ae06d6c3.JPG" alt="图1.JPG"></p>
+<p>图1 自动包装机的结构</p>
+<p><img src="https://images.ptausercontent.com/0092f601-031c-4b74-a7f1-d26846fe65a1.JPG" alt="图2.JPG"></p>
+<p>图 2 顺序按下按钮 3、2、3、0、1、2、0 后包装机的状态</p>
+<p>一种特殊情况是，因为筐的容量是有限的，当筐已经满了，但仍然有某条轨道的按钮被按下时，系统应强制启动 0 号键，先从筐里抓出一件物品，再将对应轨道的物品推落。此外，如果轨道已经空了，再按对应的按钮不会发生任何事；同样的，如果筐是空的，按 0 号按钮也不会发生任何事。</p>
+<p>现给定一系列按钮操作，请你依次列出流水线上的物品。</p>
+<h3 id="输入格式：-7"><a href="#输入格式：-7" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出 3 个正整数 N（≤100）、M（≤1000）和 Smax​（≤100），分别为轨道的条数（于是轨道从 1 到 N 编号）、每条轨道初始放置的物品数量、以及筐的最大容量。随后 N 行，每行给出 M 个英文大写字母，表示每条轨道的初始物品摆放。</p>
+<p>最后一行给出一系列数字，顺序对应被按下的按钮编号，直到 −1 标志输入结束，这个数字不要处理。数字间以空格分隔。题目保证至少会取出一件物品放在流水线上。</p>
+<h3 id="输出格式：-7"><a href="#输出格式：-7" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行中顺序输出流水线上的物品，不得有任何空格。</p>
+<h3 id="输入样例：-5"><a href="#输入样例：-5" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>3 4 4
+GPLT
+PATA
+OMSA
+3 2 3 0 1 2 0 2 2 0 -1
+</code></pre>
+<h3 id="输出样例：-5"><a href="#输出样例：-5" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>MATA
+</code></pre>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>400 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include <iostream><br>#include &lt;bits&#x2F;stdc++.h&gt;<br>#define ll long long<br>using namespace std;<br>const int maxn &#x3D; 105;<br>queue<char> v[maxn]; &#x2F;&#x2F;&#x2F;存储每个轨道上的物品<br>stack<char> s;  &#x2F;&#x2F;&#x2F;筐<br>queue<char> q;  &#x2F;&#x2F;&#x2F;结果输出<br>int main()<br>{<br>    int N,M,S;<br>    int a[1005];<br>    char ch;<br>    cin&gt;&gt;N&gt;&gt;M&gt;&gt;S;<br>    getchar();<br>    for(int i&#x3D;1;i&lt;&#x3D;N;i++){<br>        for(int j&#x3D;0;j&lt;M;j++){<br>            cin&gt;&gt;ch;<br>            v[i].push(ch);<br>            a[i]++;<br>        }<br>        getchar();<br>    }<br>    int x;<br>    while(true){<br>        cin&gt;&gt;x;<br>        if(x&#x3D;&#x3D;-1)break;<br>        if(x&#x3D;&#x3D;0){<br>            if(s.size()&#x3D;&#x3D;0)continue;    &#x2F;&#x2F;如果筐里面的为空就不做任何处理，跳过<br>            else{<br>                q.push(s.top());        &#x2F;&#x2F;否则，弹出栈顶元素，放入流水线上<br>                s.pop();<br>            }<br>        }<br>        if(x&gt;&#x3D;1 &amp;&amp; x&lt;&#x3D;N){<br>            if(v[x].size()&#x3D;&#x3D;0)continue;        &#x2F;&#x2F;如果对应轨道上没有物品了不做任何处理，跳过<br>            else{<br>                if(s.size()&#x3D;&#x3D;S){    &#x2F;&#x2F;如果筐已经满了，就弹出筐顶物品到流水线上，再将物品放入框中<br>                    q.push(s.top());<br>                    s.pop();<br>                }<br>                s.push(v[x].front());<br>                v[x].pop();<br>            }<br>        }<br>    }<br>    &#x2F;*<br>    for(int i&#x3D;0;i&lt;N;i++){<br>        for(int j&#x3D;0;j&lt;M;j++){<br>            cout&lt;&lt;v[i][j];<br>        }<br>    }<br>    *&#x2F;<br>    while(!q.empty()){<br>        cout&lt;&lt;q.front();<br>        q.pop();<br>    }<br>    return 0;<br>}</p>
+<p>7-12 愿天下有情人都是失散多年的兄妹</p>
+<p>分数 25</p>
+<p>全屏浏览题目</p>
+<p>切换布局</p>
+<p>作者 陈越</p>
+<p>单位 浙江大学</p>
+<p>呵呵。大家都知道五服以内不得通婚，即两个人最近的共同祖先如果在五代以内（即本人、父母、祖父母、曾祖父母、高祖父母）则不可通婚。本题就请你帮助一对有情人判断一下，他们究竟是否可以成婚？</p>
+<h3 id="输入格式：-8"><a href="#输入格式：-8" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出一个正整数<code>N</code>（2 ≤ <code>N</code> ≤104），随后<code>N</code>行，每行按以下格式给出一个人的信息：<br>    本人ID 性别 父亲ID 母亲ID</p>
+<p>其中<code>ID</code>是5位数字，每人不同；性别<code>M</code>代表男性、<code>F</code>代表女性。如果某人的父亲或母亲已经不可考，则相应的<code>ID</code>位置上标记为<code>-1</code>。</p>
+<p>接下来给出一个正整数<code>K</code>，随后<code>K</code>行，每行给出一对有情人的<code>ID</code>，其间以空格分隔。</p>
+<p>注意：题目保证两个人是同辈，每人只有一个性别，并且血缘关系网中没有乱伦或隔辈成婚的情况。</p>
+<h3 id="输出格式：-8"><a href="#输出格式：-8" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每一对有情人，判断他们的关系是否可以通婚：如果两人是同性，输出<code>Never Mind</code>；如果是异性并且关系出了五服，输出<code>Yes</code>；如果异性关系未出五服，输出<code>No</code>。</p>
+<h3 id="输入样例：-6"><a href="#输入样例：-6" class="headerlink" title="输入样例："></a>输入样例：</h3><pre><code>24
+00001 M 01111 -1
+00002 F 02222 03333
+00003 M 02222 03333
+00004 F 04444 03333
+00005 M 04444 05555
+00006 F 04444 05555
+00007 F 06666 07777
+00008 M 06666 07777
+00009 M 00001 00002
+00010 M 00003 00006
+00011 F 00005 00007
+00012 F 00008 08888
+00013 F 00009 00011
+00014 M 00010 09999
+00015 M 00010 09999
+00016 M 10000 00012
+00017 F -1 00012
+00018 F 11000 00013
+00019 F 11100 00018
+00020 F 00015 11110
+00021 M 11100 00020
+00022 M 00016 -1
+00023 M 10012 00017
+00024 M 00022 10013
+9
+00021 00024
+00019 00024
+00011 00012
+00022 00018
+00001 00004
+00013 00016
+00017 00015
+00019 00021
+00010 00011
+</code></pre>
+<h3 id="输出样例：-6"><a href="#输出样例：-6" class="headerlink" title="输出样例："></a>输出样例：</h3><pre><code>Never Mind
+Yes
+Never Mind
+No
+Yes
+No
+Yes
+No
+No
+</code></pre>
+<p><strong>鸣谢用户 徐校波 修正数据！</strong></p>
+<p>代码长度限制</p>
+<p>16 KB</p>
+<p>时间限制</p>
+<p>200 ms</p>
+<p>内存限制</p>
+<p>64 MB</p>
+<p>#include&lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>const int maxn&#x3D;1e5+5;<br>int a[maxn],father[maxn],mother[maxn];<br>char sex[maxn];<br>int judge(int x,int y,int num)<br>{<br>    if(x&#x3D;&#x3D;-1 &amp;&amp; y&#x3D;&#x3D;-1)&#x2F;&#x2F;善意的爱护，如果无法考证就算是符合<br>        return 1;<br>    if((mother[x]!&#x3D;-1 &amp;&amp; mother[x]&#x3D;&#x3D;mother[y]) || (father[x]!&#x3D;-1 &amp;&amp; father[x]&#x3D;&#x3D;father[y]))<br>        return 0;&#x2F;&#x2F;父母亲可以考证，且相同，那可是不行的<br>    num++;<br>    if(num&gt;&#x3D;4)&#x2F;&#x2F;超过了五代就牵手成功了，哈哈哈，有情人终成眷属了<br>        return 1;<br>    return judge(mother[x],mother[y],num)&amp;&amp;&#x2F;&#x2F;别激动，判断一下你们的父母是不是近亲<br>           judge(father[x],father[y],num)&amp;&amp;<br>           judge(mother[x],father[y],num)&amp;&amp;&#x2F;&#x2F;判断你的老妈和他的老爸是不是近亲<br>           judge(father[x],mother[y],num);&#x2F;&#x2F;判断你的老爸和他的老妈是不是近亲<br>}<br>int main()<br>{<br>    int n,m;<br>    memset(father,-1,sizeof(father));<br>    memset(mother,-1,sizeof(mother));<br>    scanf(“%d”,&amp;n);<br>    while(n–)<br>    {<br>        int x,f,m;<br>        char ch;<br>        scanf(“%d”,&amp;x);<br>        getchar();<br>        scanf(“%c”,&amp;sex[x]);<br>        scanf(“%d%d”,&amp;f,&amp;m);<br>        father[x]&#x3D;f;sex[f]&#x3D;’M’;&#x2F;&#x2F;注意一下爸妈也是要设置性别哦<br>        mother[x]&#x3D;m;sex[m]&#x3D;’F’;<br>    }<br>    scanf(“%d”,&amp;m);<br>    while(m–)<br>    {<br>        int x,y;<br>        scanf(“%d%d”,&amp;x,&amp;y);<br>        if(sex[x]&#x3D;&#x3D;sex[y])<br>            printf(“Never Mind\n”);<br>        else<br>        {<br>            if(judge(x,y,0))<br>                printf(“Yes\n”);<br>            else<br>                printf(“No\n”);<br>        }<br>    }<br>    return 0;<br>}</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/" data-id="clfxmzfl7000hxsw12noi6e8g" data-title="双周赛一" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/" data-id="clfxsji52000m9kw13td9apz0" data-title="双周赛一" class="article-share-link">Share</a>
       
       
       
@@ -135,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/" data-id="clfxmzfla000mxsw1ehf3gm8o" data-title="第三周" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/" data-id="clfxsji52000k9kw1940z8eif" data-title="第三周" class="article-share-link">Share</a>
       
       
       
@@ -630,7 +1042,7 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/" data-id="clfxmzfla000oxsw1arv50oun" data-title="第二周" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/" data-id="clfxsji53000o9kw1g15eb5eg" data-title="第二周" class="article-share-link">Share</a>
       
       
       
@@ -1392,7 +1804,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/21/first/" data-id="clfxmzfl10005xsw14t5b6xb0" data-title="first" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/03/21/first/" data-id="clfxsji4y000c9kw1dspt9rmm" data-title="first" class="article-share-link">Share</a>
       
       
       
@@ -1430,7 +1842,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/" data-id="clfxmzfl8000jxsw1fnvc731v" data-title="建栈链表" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/" data-id="clfxsji51000i9kw17osr94xb" data-title="建栈链表" class="article-share-link">Share</a>
       
       
       
@@ -1806,7 +2218,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/%E5%8F%8C%E5%91%A8%E8%B5%9BThird/" data-id="clfxmzfl7000gxsw1foio65tc" data-title="双周赛Third" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/%E5%8F%8C%E5%91%A8%E8%B5%9BThird/" data-id="clfxsji50000g9kw1biqj7k2s" data-title="双周赛Third" class="article-share-link">Share</a>
       
       
       
@@ -1854,7 +2266,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/0x3f3f3f3f/" data-id="clfxmzfkx0001xsw1bj4k4jab" data-title="1061109567" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/0x3f3f3f3f/" data-id="clfxsji4p00019kw19l5j6dhe" data-title="1061109567" class="article-share-link">Share</a>
       
       
       
@@ -1920,7 +2332,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxmzfl20006xsw1diqw14wr" data-title="pair知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsji4t00059kw1eqde9iui" data-title="pair知识点" class="article-share-link">Share</a>
       
       
       
@@ -1964,7 +2376,7 @@ for(int i=1;i&lt;=10;i++)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxmzfl8000ixsw18hui7jaz" data-title="堆的知识点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsji4z000f9kw15mj65en2" data-title="堆的知识点" class="article-share-link">Share</a>
       
       
       
@@ -2193,7 +2605,7 @@ int main()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week12/" data-id="clfxmzfl40009xsw1afu0a7r2" data-title="week12" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2023/01/10/week12/" data-id="clfxsji4x000a9kw16abjfagv" data-title="week12" class="article-share-link">Share</a>
       
       
       
