@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>第二周 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="路径计数 附加文件 统计   描述  提交  自定义测试  有一个n×n的网格，有些格子是可以通行的，有些格子是障碍。 一开始你在左上角的位置，你可以每一步往下或者往右走，问有多少种走到右下角的方案。 由于答案很大，输出对109+7取模的结果。 输入格式第一行一个正整数n。 接下来n行，每行n个正整数，1表示可以通行，0表示不能通行。 输出格式一个整数，表示答案。 样例输入3 1 1 1 1 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二周">
+<meta property="og:url" content="http://example.com/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="路径计数 附加文件 统计   描述  提交  自定义测试  有一个n×n的网格，有些格子是可以通行的，有些格子是障碍。 一开始你在左上角的位置，你可以每一步往下或者往右走，问有多少种走到右下角的方案。 由于答案很大，输出对109+7取模的结果。 输入格式第一行一个正整数n。 接下来n行，每行n个正整数，1表示可以通行，0表示不能通行。 输出格式一个整数，表示答案。 样例输入3 1 1 1 1 0">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/652.png">
+<meta property="article:published_time" content="2023-03-27T13:19:56.000Z">
+<meta property="article:modified_time" content="2023-04-01T07:09:34.447Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/pic/652.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-第二周" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-03-27T13:19:56.000Z" itemprop="datePublished">2023-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      第二周
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="路径计数"><a href="#路径计数" class="headerlink" title="路径计数"></a>路径计数</h2><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=126">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/126/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/126#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/126#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/126#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>有一个n×n的网格，有些格子是可以通行的，有些格子是障碍。</p>
+<p>一开始你在左上角的位置，你可以每一步往下或者往右走，问有多少种走到右下角的方案。</p>
+<p>由于答案很大，输出对109+7取模的结果。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个正整数n。</p>
+<p>接下来n行，每行n个正整数，1表示可以通行，0表示不能通行。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个整数，表示答案。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>3
+1 1 1
+1 0 1
+1 1 1
+</code></pre>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>2
+</code></pre>
+<h4 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h4><p>对于100%的数据，保证2≤n≤100，左上角右下角都是可以通行的。<img src="https://cdn.luogu.com.cn/upload/pic/652.png"></p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>唯一的问题就是数量实在是太多了</p>
+<p>直接写模板的话肯定会超时</p>
+<p>那么就需要用到优化了</p>
+<p>这里用到的是二进制优化</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+ 
+using namespace std;
+ 
+typedef pair&lt;int, int&gt; pii;
+typedef long long ll;
+typedef vector&lt;int&gt; vi;
+//#define int long long
+#define fir first
+#define sec second
+#define all(x) (x).begin(), (x).end()
+#define sz(x) (int)x.size()
+#define rep(i, l, r) for (int i = l; i &lt;= r; ++i)
+#define repd(i, l, r) for (int i = l; i &gt;= r; --i)
+#define pb push_back
+ 
+ 
+const int mod=1e9+7;
+const int N=1e3+10;
+int f[N][N];
+int a[N][N];
+ 
+int main() &#123;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n;
+    cin&gt;&gt;n;
+    rep(i,1,n)
+    &#123;
+        rep(j,1,n)
+        &#123;
+            cin&gt;&gt;a[i][j];
+        &#125;
+    &#125;
+    f[1][1]=1;
+    rep(i,1,n)
+    &#123;
+        rep(j,1,n)
+        &#123;
+            if(i==1&amp;&amp;j==1)continue;
+            if(a[i][j]==1)
+            &#123;
+                f[i][j]=(f[i-1][j]+f[i][j-1])%mod;
+            &#125;
+        &#125;
+    &#125;
+    cout&lt;&lt;f[n][n]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
+<h1 id="最大和上升子序列"><a href="#最大和上升子序列" class="headerlink" title="最大和上升子序列"></a>最大和上升子序列</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=289">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/289/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/289#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/289#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/289#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>给定一个长度为 n 的数组 a1,a2,…,an，问其中的和最大的上升子序列。也就是说，我们要找到数组 p1,p2,…,pm，满足 1≤p1&lt;p2&lt;⋯&lt;pm≤n 并且 ap1&lt;ap2&lt;⋯&lt;apm，使得ap1+ap2+⋯+apm最大。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个数字 n。</p>
+<p>接下来一行 n 个整数 a1,a2,…,an。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个数，表示答案。</p>
+<h4 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>6
+3 7 4 2 6 8
+</code></pre>
+<h4 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>21
+</code></pre>
+<h4 id="数据规模-1"><a href="#数据规模-1" class="headerlink" title="数据规模"></a>数据规模</h4><p>所有数据保证 1≤n≤1000,1≤ai≤105。</p>
+<p>#include <iostream><br>using namespace std;<br>int main(){<br>    int n;<br>    cin&gt;&gt;n;<br>    int a[10000];<br>    for(int i&#x3D;0;i&lt;n;i++){<br>        cin&gt;&gt;a[i];<br>    }<br>    int p;<br>    int max&#x3D;0;<br>    int sum;<br>    for(int i&#x3D;0;i&lt;n;i++){<br>        sum&#x3D;a[i];<br>        p&#x3D;a[i];<br>        for(int j&#x3D;i+1;j&lt;n;j++){<br>            if(a[j]&gt;p){<br>                sum+&#x3D;a[j];<br>                p&#x3D;a[j];<br>            }<br>        }<br>        if(sum&gt;max)max&#x3D;sum;</p>
+<pre><code>&#125;
+cout&lt;&lt;max;
+</code></pre>
+<p>}</p>
+<h1 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=498">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/498/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/498#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/498#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/498#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>给定一个整数 n。你需要对它做 m 次操作。在一次操作中，你要将这个数的每一位 d 替换成 d+1。比如，1912 在进行一次操作后将变成 21023。</p>
+<p>请求出整数 n 进行了 m 次操作后的长度。答案可能很大，输出对 109+7 取模后的结果。</p>
+<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>​ 第一行一个整数 t，表示测试单元的个数。</p>
+<p>​ 接下来 t 行，每行有两个整数 n 和 m，表示最初的数字和进行多少次操作。</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>​ 对于每个测试单元输出最终数字的长度，答案对 109+7 取模。</p>
+<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>5
+1912 1
+5 6
+999 1
+88 2
+12 100
+</code></pre>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>5
+2
+6
+4
+2115
+</code></pre>
+<h3 id="数据规模-2"><a href="#数据规模-2" class="headerlink" title="数据规模"></a>数据规模</h3><p>​ 所有数据保证 1≤t≤2⋅105，1≤n≤109，1≤m≤2⋅105。</p>
+<p>#include&lt;bits&#x2F;stdc++.h&gt;<br>#include<iostream><br>using namespace std;<br>#include<vector><br>#include<algorithm><br>#include&lt;math.h&gt;<br>#include<set><br>#include<numeric><br>#include<string><br>#include<map><br>#include<unordered_map><br>#include<stack></p>
+<p>typedef long long ll;<br>typedef pair&lt;int, int&gt;PII;<br>const int MOD &#x3D; 1e9 + 7;<br>const int N &#x3D; 200010;<br>ll f[N+50][10];</p>
+<p>int main()<br>{<br>    int n;<br>    scanf(“%d”, &amp;n);<br>    for (int i &#x3D; 0; i &lt;&#x3D; 9; i++)f[0][i] &#x3D; 1;<br>    for (int i &#x3D; 1; i &lt;&#x3D; N; i++)<br>    {<br>        for (int j &#x3D; 1; j &lt;&#x3D; 9; j++)f[i][j - 1] &#x3D; f[i-1][j];<br>        f[i][9] &#x3D; (f[i-1][1] + f[i-1][0]) % MOD;<br>    }<br>    while (n–)<br>    {<br>        char str[20];<br>        int m, res &#x3D; 0;<br>        scanf(“%s %d”, &amp;str, &amp;m);<br>        int len &#x3D; strlen(str);<br>        for (int i &#x3D; 0; i &lt; len; i++)<br>        {<br>            res +&#x3D; f[m][str[i] - ‘0’];<br>            res %&#x3D; MOD;<br>        }<br>        cout &lt;&lt; res &lt;&lt; “\n”;<br>    }<br>    return 0;<br>}</p>
+<h1 id="跳跳"><a href="#跳跳" class="headerlink" title="跳跳"></a>跳跳</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=496">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/496/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/496#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/496#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/496#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>平面上给定了一些<strong>整点</strong>（横纵坐标均为整数的点），被称为 “魔法阵”。魔法少女派派想要在各魔法阵之间传送，每一次传送，她将使用下面的方式：</p>
+<ol>
+<li>刚开始，派派已经位于某传送阵之上；</li>
+<li>如果派派掌握一种魔法 (A,B)，其中 A,B 均为整数。使用一次这个魔法可以让派派从任意整点 (X,Y) 瞬间移动至 (X+A,Y+B)；</li>
+<li>选择一种魔法并开始传送，<strong>在一次传送过程中可以使用多次该魔法，但在抵达下一个传送阵之前仅能使用这一种魔法</strong>。</li>
+</ol>
+<p>问派派<strong>至少</strong>需要掌握多少种魔法，才能在从任意魔法阵直接传送到任意魔法阵？</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个整数 N。</p>
+<p>接下来一行 N 行，每行包含两个整数 Xi,Yi， 表示每个魔法阵的坐标。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个数，表示答案。</p>
+<h4 id="样例1输入"><a href="#样例1输入" class="headerlink" title="样例1输入"></a>样例1输入</h4><pre><code>3
+1 1
+4 5
+1 4
+</code></pre>
+<h4 id="样例1输出"><a href="#样例1输出" class="headerlink" title="样例1输出"></a>样例1输出</h4><pre><code>6
+</code></pre>
+<p>解释： 任务是从 (1,1) 传送至 (4,5) 以及 (1,4) 、从 (4,5) 传送至 (1,1) 以及 (1,4) 、从 (1,4) 传送至 (1,1) 以及 (4,5) 。</p>
+<p>注意你不能使用 (0,3)+(3,1) 的魔法从 (1,1) 到达 (4,5)。因为每次移动，你只能使用一种魔法。</p>
+<p>当然，你可以学习 (0,1)，那样的话，从 (1,1) 到达 (1,4) 则需要使用 3 次 (0,1) 魔法了。</p>
+<h4 id="样例2输入"><a href="#样例2输入" class="headerlink" title="样例2输入"></a>样例2输入</h4><pre><code>3
+1 1
+2 2
+1000000000 1000000000
+</code></pre>
+<h4 id="样例2输出"><a href="#样例2输出" class="headerlink" title="样例2输出"></a>样例2输出</h4><pre><code>2
+</code></pre>
+<h4 id="数据规模-3"><a href="#数据规模-3" class="headerlink" title="数据规模"></a>数据规模</h4><ul>
+<li>N∈[10,500]</li>
+<li>Xi,Yi∈[0,109], 但保证坐标之间<strong>两两不同</strong>。</li>
+</ul>
+<p>#include <iostream><br>#include <set><br>#include <algorithm><br>typedef long long ll;<br>using namespace std;<br>struct magic{<br>    ll x;<br>    ll y;<br>};<br>&#x2F;&#x2F;化为最简<br>&#x2F;&#x2F;欧几里得gcd</p>
+<p>ll gcd(ll a,ll b){<br>    ll t;<br>    while(b!&#x3D;0){<br>        t&#x3D;a%b;<br>        a&#x3D;b;<br>        b&#x3D;t;<br>    }<br>    return a;</p>
+<p>}</p>
+<p>set&lt;pair&lt;ll,ll&gt;&gt;ans;</p>
+<p>int main(){<br>    int n;<br>    cin&gt;&gt;n;<br>    magic m[n];<br>    for(int i&#x3D;0;i&lt;n;i++){<br>        cin&gt;&gt;m[i].x&gt;&gt;m[i].y;<br>    }<br>    ll sx,sy;<br>    ll t;<br>    for(int i&#x3D;0;i&lt;n-1;i++){<br>        for(int j&#x3D;i+1;j&lt;n;j++){<br>            sx&#x3D;m[i].x-m[j].x;<br>            sy&#x3D;m[i].y-m[j].y;<br>            if(sx &amp;&amp; sy){<br>                if(sx<em>sy&lt;0){<br>                    sx&#x3D;abs(sx);<br>                    sy&#x3D;abs(sy)</em>-1;<br>                }<br>                t&#x3D;gcd(sx,-1*sy);</p>
+<pre><code>        &#125;
+        else if(sx)&#123;
+            t=sx;
+        &#125;
+        else t=sy;
+        ans.insert(pair&lt;ll,ll&gt;(sx/t,sy/t));
+
+
+    &#125;
+
+
+&#125;
+cout&lt;&lt;ans.size()*2;
+</code></pre>
+<p>}</p>
+<h1 id="异或和或"><a href="#异或和或" class="headerlink" title="异或和或"></a>异或和或</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=500">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/500/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/500#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/500#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/500#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>对于一个长度为 n 的01序列 a1,a2,…,an。</p>
+<p>你可以执行以下操作任意多次：</p>
+<ul>
+<li><p>选择两个下标 1≤i,j≤n(i≠j)。</p>
+</li>
+<li><p>记x&#x3D;ai xor aj , y&#x3D;ai or aj , 其中 xor 表示按位异或 , or 表示按位或。</p>
+</li>
+<li><p>然后令 ai&#x3D;x,aj&#x3D;y 或 ai&#x3D;y,aj&#x3D;x。</p>
+</li>
+</ul>
+<p>给定两个01序列 s,t , 请你判断是否可以通过有限次(可以为0次)操作将序列 s 变为 t。</p>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个整数 t , 表示数据的组数(1≤t≤103)。接下来 t 组数据：</p>
+<p>每组第一行一个01字符串 s(1≤|s|≤103)，每组第二行一个01字符串 t(1≤|t|≤103)。</p>
+<p>注意：|s| 可能不等于 |t|。</p>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>如果可以通过有限次(可以为0次)操作将序列 s 变为 t , 输出 <code>YES</code> , 否则输出 <code>NO</code>。</p>
+<h4 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>2
+001
+011
+11
+101
+</code></pre>
+<h4 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>YES
+NO
+</code></pre>
+<h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><p>第一组数据选择 i&#x3D;2,j&#x3D;3 , 那么 x&#x3D;1,y&#x3D;1 , 接着令 ai&#x3D;x,aj&#x3D;y 即可得到 t 序列。</p>
+<p>第二组数据 |s|&#x3D;2,|t|&#x3D;3 显然无法满足要求。</p>
+<p> #include <iostream><br>#include <algorithm><br>using namespace std;<br>int main(){<br>    int n;<br>    cin&gt;&gt;n;<br>    string a,b;<br>    string a2,b2;<br>    int len1,len2;<br>    int len01&#x3D;0,len02&#x3D;0;<br>    for(int j&#x3D;0;j&lt;n;j++){<br>        cin&gt;&gt;a&gt;&gt;b;<br>        len1&#x3D;a.length();<br>        len2&#x3D;b.length();<br>        for(int i&#x3D;0;i&lt;len1;i++){<br>            if(a[i]&#x3D;&#x3D;’0’){<br>                len01++;<br>            }</p>
+<pre><code>    &#125;
+    for(int i=0;i&lt;len2;i++)&#123;
+        if(b[i]==&#39;0&#39;)&#123;
+            len02++;
+        &#125;
+    &#125;
+
+    if(len1!=len2)&#123;
+        cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    else if(len1==1&amp;&amp;a!=b)&#123;
+        cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    else if((len01==0&amp;&amp;len02!=0)||(len02==0&amp;&amp;len01!=0))&#123;
+        cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    &#125;
+    else cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+
+
+
+
+
+&#125;
+</code></pre>
+<p>}</p>
+<h1 id="整齐的数组"><a href="#整齐的数组" class="headerlink" title="整齐的数组"></a>整齐的数组</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=554">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/554/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/554#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/554#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/554#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>​ Polycarp 有一个长度为 n 的数组 a1,a2,…,an（n 是偶数）。Polycarp 还得到了一个正整数 k，他开始对数组 a 做如下操作：选择一个下标 i (1≤i≤n) 使 ai 减去 k。</p>
+<p>​ 在 Polycarp 进行若干次操作后（可能 0 次），数组 a 中的所有数都变成相同的了。请你找到最大的符合要求的 k，如果 k 可以为任意大，请输出 −1。<br>输入格式</p>
+<hr>
+<p>​ 第一行一个整数 t，表示测试单元的个数。</p>
+<p>​ 接下来每个测试单元有两行。第一行包含一个偶数 n。第二行包含 n 个整数 a1,a2,…,an。<br>输出格式</p>
+<hr>
+<p>​ 对于每个测试单元输出单独一行一个整数 k (k≥1) —— Polycarp 能用来对数组进行操作的最大的数，或者 −1 —— 如果 k 能任意大的话。<br>样例输入</p>
+<hr>
+<pre><code>3
+6
+1 5 3 1 1 5
+8
+-1 0 1 -1 0 1 -1 0
+4
+100 -1000 -1000 -1000
+</code></pre>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><pre><code>2
+1
+1100
+</code></pre>
+<h2 id="数据规模-4"><a href="#数据规模-4" class="headerlink" title="数据规模"></a>数据规模</h2><p>​ 所有数据保证 1≤t≤10，4≤n≤40（n 是偶数），−106≤ai≤106，并且 n 的总和不超过100。</p>
+<p> 中文</p>
+<p>#include<iostream><br>using namespace std;<br>#include<vector><br>#include<algorithm><br>#include&lt;math.h&gt;<br>#include<set><br>#include<numeric><br>#include<string><br>#include&lt;string.h&gt;<br>#include<map><br>#include<unordered_map><br>#include<stack><br>#include<queue></p>
+<p>typedef long long ll;<br>typedef pair&lt;int, ll&gt;PII;<br>const int MOD &#x3D; 1e9 + 7;<br>const int N &#x3D; 1e5 + 10;<br>ll a[N], b[N], w[N], v[N], f[N];</p>
+<p>int main() {<br>    int t;<br>    cin &gt;&gt; t;<br>    while (t–)<br>    {<br>        int n, res &#x3D; 0, min_num &#x3D; 1e9,k&#x3D;-1;<br>        cin &gt;&gt; n;<br>        vector<int>v(n + 1);<br>        for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>        {<br>            cin &gt;&gt; v[i];<br>            min_num &#x3D; min(min_num, v[i]);<br>        }<br>        map&lt;int, int&gt;mymap;<br>        for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>        {<br>            if (v[i] !&#x3D; min_num)<br>            {<br>                int ans &#x3D; v[i] - min_num;<br>                for (int j &#x3D; 1; j * j &lt;&#x3D; ans; j++)<br>                {<br>                    if (ans % j &#x3D;&#x3D; 0)<br>                    {<br>                        mymap[j]++;<br>                        mymap[ans &#x2F; j]++;<br>                    }<br>                }<br>            }<br>            else<br>            {<br>                res++;<br>            }<br>        }<br>        for (auto i : mymap)<br>        {<br>            if (i.second &gt;&#x3D; n - res)k &#x3D; max(k, i.first);<br>        }<br>        cout &lt;&lt; k &lt;&lt; ‘\n’;<br>    }<br>    return 0;<br>}</p>
+<h1 id="01序列"><a href="#01序列" class="headerlink" title="01序列"></a>01序列</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=502">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/502#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>我们称一个字符串为好字符串，指这个字符串中只包含<code>0</code>和<code>1</code>。</p>
+<p>现在有一个好字符串，求这个字符串中<code>1</code>恰好出现k次的子串有多少个。</p>
+<h4 id="输入格式-5"><a href="#输入格式-5" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行给出一个数字k，表示子串中<code>1</code>的个数。</p>
+<p>第二行给出好字符串。</p>
+<h4 id="输出格式-5"><a href="#输出格式-5" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示好字符串中有多少个符合条件的子串</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>0≤k≤106, |s|≤106</p>
+<h4 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>1
+1010
+</code></pre>
+<h4 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>6
+</code></pre>
+<h4 id="样例输入2"><a href="#样例输入2" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>2
+01010
+</code></pre>
+<h4 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>4
+</code></pre>
+<p>#include<iostream><br>using namespace std;<br>#include<vector><br>#include<algorithm><br>#include&lt;math.h&gt;<br>#include<set><br>#include<numeric><br>#include<string><br>#include<map><br>#include<unordered_map><br>#include<stack><br>#include<queue></p>
+<p>typedef long long ll;<br>typedef pair&lt;int, int&gt;PII;<br>const int MOD &#x3D; 1e9 + 7;<br>const int N &#x3D; 100100;</p>
+<p>int main()<br>{<br>    ios_base::sync_with_stdio(false);<br>    cin.tie(nullptr);<br>    cout.tie(nullptr);<br>    int k, l &#x3D; 0;<br>    cin &gt;&gt; k;<br>    string str;<br>    cin &gt;&gt; str;<br>    int n &#x3D; str.size();<br>    map&lt;int, ll&gt;mymap;<br>    mymap[0]++;<br>    ll res &#x3D; 0;<br>    vector<int>v(n + 1), sum(n + 1);<br>    if (k &#x3D;&#x3D; 0)<br>    {<br>        ll ans &#x3D; 0;<br>        str +&#x3D; ‘1’;<br>        n++;<br>        for (int i &#x3D; 0; i &lt; n; i++)<br>        {<br>            if (str[i] &#x3D;&#x3D; ‘0’)ans++;<br>            else<br>            {<br>                res +&#x3D; (ans + 1) * ans &#x2F; 2;<br>                ans &#x3D; 0;<br>            }<br>        }<br>    }<br>    else<br>    {<br>        for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>        {<br>            v[i] &#x3D; str[i - 1] - ‘0’;<br>            sum[i] &#x3D; v[i] + sum[i - 1];<br>            mymap[sum[i]]++;<br>        }<br>        int ans &#x3D; 0;<br>        while (mymap[ans + k] !&#x3D; 0)<br>        {<br>            res +&#x3D; mymap[ans] * mymap[ans + k];<br>            ans++;<br>        }<br>    }<br>    cout &lt;&lt; res &lt;&lt; endl;<br>    return 0;<br>}</p>
+<h1 id="出栈序列判断"><a href="#出栈序列判断" class="headerlink" title="出栈序列判断"></a>出栈序列判断</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=55">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/55/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/55#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/55#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/55#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>现在有一个栈，有 n 个元素，分别为 1,2,…,n。我们可以通过 <code>push</code> 和 <code>pop</code> 操作，将这 n 个元素依次放入栈中，然后从栈中弹出，依次把出栈的元素写下来得到的序列就是出栈序列。</p>
+<p>比如 n&#x3D;3，如果执行 <code>push 1, push 2, pop, push 3, pop, pop</code>，那么我们 <code>pop</code> 操作得到的元素依次是 2,3,1。也就是说出栈序列就是 2,3,1。</p>
+<p>现在给定一个合法的出栈序列，请输出一个合法的由 <code>push</code> 和 <code>pop</code> 操作构成的操作序列。这里要求 <code>push</code> 操作一定是按 1,2,…,n 的顺序。</p>
+<h4 id="输入格式-6"><a href="#输入格式-6" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个整数 n。接下来一行 n 个整数，表示出栈序列。</p>
+<h4 id="输出格式-6"><a href="#输出格式-6" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出 2n 行，每行一个 <code>push</code> 或 <code>pop</code> 操作，可以证明一个出栈序列对应的操作序列是唯一的。</p>
+<h4 id="样例输入1-1"><a href="#样例输入1-1" class="headerlink" title="样例输入1"></a>样例输入1</h4><pre><code>3
+2 3 1
+</code></pre>
+<h4 id="样例输出1-1"><a href="#样例输出1-1" class="headerlink" title="样例输出1"></a>样例输出1</h4><pre><code>push 1
+push 2
+pop
+push 3
+pop
+pop
+</code></pre>
+<h4 id="样例输入2-1"><a href="#样例输入2-1" class="headerlink" title="样例输入2"></a>样例输入2</h4><pre><code>5
+1 3 5 4 2
+</code></pre>
+<h4 id="样例输出2-1"><a href="#样例输出2-1" class="headerlink" title="样例输出2"></a>样例输出2</h4><pre><code>push 1
+pop
+push 2
+push 3
+pop
+push 4
+push 5
+pop
+pop
+pop
+</code></pre>
+<h4 id="数据规模-5"><a href="#数据规模-5" class="headerlink" title="数据规模"></a>数据规模</h4><p>对于 100% 的数据，保证 1≤n≤100000，输入一定是个合法的出栈序列。</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <stack></p>
+<p>using namespace std;<br>int n;<br>int s[100001];<br>int top &#x3D; 0;<br>int l &#x3D; 0;<br>int main() {<br>    scanf(“%d”, &amp;n);<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++) {<br>        int x;<br>        scanf(“%d”, &amp;x);<br>        if(s[top] !&#x3D; x) {&#x2F;&#x2F;因为我是从1开始的，而我们的数字里面必定没有0，所以第一次进入循环的时候是必定是不相等的<br>            for(int j &#x3D; l + 1; j &lt;&#x3D; x; j++) {<br>                printf(“push %d\n”, j);<br>                s[++top] &#x3D; j;<br>            }<br>            l &#x3D; x;<br>        }<br>        printf(“pop\n”);<br>        top–;<br>    }<br>    return 0;<br>}</p>
+<h1 id="序列维护"><a href="#序列维护" class="headerlink" title="序列维护"></a>序列维护</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=57">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/57/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/57#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/57#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/57#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>你有一个序列，现在你要支持几种操作：</p>
+<ul>
+<li><p><code>insert x y</code>，在从前往后的第x个元素后面插入y这个数。如果x&#x3D;0，那么就在开头插入。</p>
+</li>
+<li><p><code>delete x</code>，删除从前往后的第x个元素。</p>
+</li>
+<li><p><code>query k</code>，询问从前往后数第k个元素是多少。</p>
+</li>
+</ul>
+<h4 id="输入格式-7"><a href="#输入格式-7" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个整数m，表示操作个数。</p>
+<p>接下来m行，每行一个上面所述的操作。</p>
+<h4 id="输出格式-7"><a href="#输出格式-7" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出若干行，对于每个查询操作，输出答案。</p>
+<h4 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>10
+insert 0 1
+insert 1 2
+query 1
+query 2
+insert 0 3
+query 1
+delete 1
+query 1
+insert 1 4 
+query 2
+</code></pre>
+<h4 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>1
+2
+3
+1
+4
+</code></pre>
+<h4 id="数据规模-6"><a href="#数据规模-6" class="headerlink" title="数据规模"></a>数据规模</h4><p>对于100%的数据，保证m≤103。</p>
+<p>对于insert操作，保证1≤y≤109。</p>
+<p>对于所有操作，保证位置不会超出当前序列的长度。</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;</p>
+<p>using namespace std;</p>
+<p>typedef pair&lt;int, int&gt; pii;<br>typedef long long ll;<br>typedef vector<int> vi;<br>&#x2F;&#x2F;#define int long long<br>#define fir first<br>#define sec second<br>#define all(x) (x).begin(), (x).end()<br>#define sz(x) (int)x.size()<br>#define rep(i, l, r) for (int i &#x3D; l; i &lt;&#x3D; r; ++i)<br>#define repd(i, l, r) for (int i &#x3D; l; i &gt;&#x3D; r; –i)<br>#define pb push_back</p>
+<p>const int N&#x3D;1e3+10;<br>int a[N];<br>vector<int>v;</p>
+<p>int main() {<br>    ios_base::sync_with_stdio(false);<br>    cin.tie(NULL);<br>    int n;<br>    cin&gt;&gt;n;<br>    string s;<br>    int start,val;<br>    while(n–)<br>    {<br>        cin&gt;&gt;s;<br>        if(s&#x3D;&#x3D;”insert”)<br>        {<br>            cin&gt;&gt;start&gt;&gt;val;<br>            v.insert(v.begin()+start,val);<br>        }<br>        else if(s&#x3D;&#x3D;”delete”)<br>        {<br>            cin&gt;&gt;start;<br>            v.erase(v.begin()+start-1);<br>        }<br>        else if(s&#x3D;&#x3D;”query”)<br>        {<br>            cin&gt;&gt;start;<br>            cout&lt;&lt;v[start-1]&lt;&lt;endl;<br>        }<br>    }<br>    return 0;<br>}</p>
+<h1 id="网格判断"><a href="#网格判断" class="headerlink" title="网格判断"></a>网格判断</h1><p> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/download.php?type=problem&id=551">附加文件</a> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/551/statistics">统计</a></p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/551#tab-statement">描述</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/551#tab-submit-answer">提交</a></li>
+<li> <a target="_blank" rel="noopener" href="http://oj.daimayuan.top/course/11/problem/551#tab-custom-test">自定义测试</a></li>
+</ul>
+<p>您将获得一个 n×n 的网格，网格中每个正方形的颜色为黑色或白色。如果满足以下所有条件，则网格是正确的：</p>
+<ul>
+<li><p>每行的黑色方块数与白色方块数相同。</p>
+</li>
+<li><p>每列的黑色正方形数与白色方块数相同。</p>
+</li>
+<li><p>没有行或列具有 3 个及以上相同颜色的连续正方形。</p>
+</li>
+</ul>
+<p>给定网格，确定它是否正确。</p>
+<h4 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行一个数字 n（2≤n≤24)， 并且数字 n 是偶数。</p>
+<p>接下来 n 行，每行包含一个长度为n的由字符<code>B</code>和<code>W</code>组成的字符串，代表网格正方形的颜色。</p>
+<h4 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h4><p>如果网格正确，请打印数字 1 在一行上。否则，请打印数字 0 在一行上。</p>
+<h4 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code>4
+WBBW
+WBWB
+BWWB
+BWBW
+</code></pre>
+<h4 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code>1
+</code></pre>
+<p> #include <iostream><br>#include <string><br>using namespace std;<br>const int max_n &#x3D; 24;</p>
+<p>int n;<br>int row_sum, row_seq, row_status &#x3D; -1;<br>int col_sum[max_n], col_seq[max_n], col_status[max_n];</p>
+<p>int main() {<br>    for (int i &#x3D; 0; i &lt; max_n; i++) col_status[i] &#x3D; -1;<br>    cin &gt;&gt; n; cin.ignore();<br>    string str;<br>    bool ans &#x3D; true, c;<br>    for (int i &#x3D; 0; i &lt; n; i++) {<br>        getline(cin, str);<br>        int len &#x3D; str.size();</p>
+<pre><code>    if (ans) &#123;
+        for (int j = 0; j &lt; len; j++) &#123;
+            if (str[j] == &#39;B&#39;) c = 1;
+            else c = 0;
+
+            row_sum += c;
+            if (row_status == c) &#123;
+                row_seq++;
+                if (row_seq == 3) &#123;
+                    ans = false;
+                    break;
+                &#125;
+            &#125;
+            else &#123;
+                row_seq = 1;
+                row_status = c;
+            &#125;
+
+            col_sum[j] += c;
+            if (col_status[j] == c) &#123;
+                col_seq[j]++;
+                if (col_seq[j] == 3) &#123;
+                    ans = false;
+                    break;
+                &#125;
+            &#125;
+            else &#123;
+                col_seq[j] = 1;
+                col_status[j] = c;
+            &#125;
+        &#125;
+
+        if (row_sum != n / 2) ans = false;
+        row_sum = 0;
+        row_seq = 0;
+        row_status = -1;
+    &#125;
+&#125;
+
+if (ans) &#123;
+    for (int i = 0; i &lt; n; i++)
+        if (col_sum[i] != n / 2) &#123;
+            ans = false;
+            break;
+        &#125;
+&#125;
+
+cout &lt;&lt; ans &lt;&lt; endl;
+return 0;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/" data-id="clfxmwkfu000oesw1do39cnnt" data-title="第二周" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第三周
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/21/first/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">first</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/">第二周</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/21/first/">first</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/">建栈链表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
