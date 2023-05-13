@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>week15 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1、快快变大题目描述给定一个长度为 n 的数组 a1,a2,…,an，接下来进行 n−1 次操作。每次选择一个下标 x ，将 ax 和 ax+1 合并成 ax×ax+1mod1000003 ，并且你会获得 (ax−ax+1)2 的分数。 所以每次操作后，数组的长度将会减 1，当最后只剩下一个元素时停止操作。输出最终能获得的最大分数。 输入格式第一行一个数字 n。接下来一行 n 个整数 a1,a2,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="week15">
+<meta property="og:url" content="http://example.com/2023/05/13/week15/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、快快变大题目描述给定一个长度为 n 的数组 a1,a2,…,an，接下来进行 n−1 次操作。每次选择一个下标 x ，将 ax 和 ax+1 合并成 ax×ax+1mod1000003 ，并且你会获得 (ax−ax+1)2 的分数。 所以每次操作后，数组的长度将会减 1，当最后只剩下一个元素时停止操作。输出最终能获得的最大分数。 输入格式第一行一个数字 n。接下来一行 n 个整数 a1,a2,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-13T02:33:45.000Z">
+<meta property="article:modified_time" content="2023-05-13T02:37:22.469Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-week15" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week15/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:45.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      week15
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、快快变大<br>题目描述<br>给定一个长度为 n 的数组 a1,a2,…,an，接下来进行 n−1 次操作。每次选择一个下标 x ，将 ax 和 ax+1 合并成 ax×ax+1mod1000003 ，并且你会获得 (ax−ax+1)2 的分数。</p>
+<p>所以每次操作后，数组的长度将会减 1，当最后只剩下一个元素时停止操作。输出最终能获得的最大分数。</p>
+<p>输入格式<br>第一行一个数字 n。<br>接下来一行 n 个整数 a1,a2,…,an。</p>
+<p>输出格式<br>一个数，表示答案。</p>
+<p>样例输入<br>3<br>1 2 3<br>样例输出<br>26<br>数据规模<br>所有数据保证 1≤n≤300,1≤ai≤106。</p>
+<p>思路：<br>这题是区间dp题</p>
+<p>但是，这题在对求从 a[i] 到 a[j] 的乘积时有一点要讲究的地方。若用sum[k]表示从a[1]乘到a[k]，我们能想到从 a[i] 到 a[j] 的乘积就是sum[j]&#x2F;sum[i-1]，但事实上数据太大我们可能无法用sum[j]来存储（注意先取余再整除是错误的），所以必须用sum[i][j]来表示从a[i]一直乘到a[j]。</p>
+<p>#include<iostream><br>using namespace std;<br>#include<vector><br>#include<algorithm><br>#include&lt;math.h&gt;<br>#include<set><br>#include<numeric><br>#include<string><br>#include&lt;string.h&gt;<br>#include<map><br>#include<unordered_map><br>#include<stack><br>#include<list><br>#include<queue></p>
+<p>#pragma GCC optimize(1)<br>#pragma GCC optimize(2)<br>#pragma GCC optimize(3,”Ofast”,”inline”)</p>
+<p>typedef long long ll;<br>typedef pair&lt;ll, ll&gt;PII;<br>const int N &#x3D; 1010, MOD &#x3D; 1000003;<br>ll f[N][N], s[N][N],v[N];</p>
+<p>int main()<br>{<br>    int n;<br>    cin &gt;&gt; n;<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        cin &gt;&gt; v[i];<br>    }<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        s[i][i] &#x3D; 1;<br>        s[i][i-1] &#x3D; 1;<br>        for (int j &#x3D; i; j &lt;&#x3D; n; j++)<br>        {<br>            s[i][j] &#x3D; (v[j] * s[i][j - 1]) % MOD;<br>        }<br>    }<br>    for (int len &#x3D; 2; len &lt;&#x3D; n; len++)<br>    {<br>        for (int i &#x3D; 1; i + len - 1 &lt;&#x3D; n; i++)<br>        {<br>            int j &#x3D; i + len - 1;<br>            for (int k &#x3D; i; k &lt; j; k++)<br>            {<br>                f[i][j] &#x3D; max(f[i][j], f[i][k] + f[k + 1][j] + (s[i][k]-s[k+1][j])* (s[i][k] - s[k + 1][j]));<br>            }<br>        }<br>    }<br>    cout &lt;&lt; f[1][n] &lt;&lt; endl;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>2、饿饿 饭饭2<br>题目描述<br>接着《饿饿 饭饭》 的故事，在两天后，食堂的工作人员回来了，整个食堂又回到了原来井井有条的状态。</p>
+<p>两个月后，由于天气越来越热，大家的胃口越来越小了，作为食堂管理员的CC非常担心孩子们的身体健康，所以他决定开展一个活动来调动孩子们吃饭的积极性，顺便考验一下孩子们的数学水平。活动内容如下：</p>
+<p>先让每一个孩子都抽一个球，每一个球上有一个数字， 然后给这个孩子n个数字，每一个孩子都有无数次操作机会，每一次都会选中一个数将它乘上2，或者乘上3，请问这个孩子可以通过上面的操作将这n个数都变成相同的吗？</p>
+<p>如果回答正确，这个回答正确的孩子就可以得到一份免费的午餐，但是这对于孩子们来说是在是太困难了，但是他们都想吃到免费的午餐，所以他们都想请你告诉他们正确的答案，让他们都迟到免费的午餐。</p>
+<p>输入格式<br>第1行给定一个数T，表示有T个小孩子请你告诉他正确的答案。</p>
+<p>第2到T+1行，第1个数是每个孩子抽到的数字n，第2到n+1个数是对应的n个数字。</p>
+<p>输出格式<br>如果可以变成相同的，输出YES。如果不能变成相同的，输出NO。</p>
+<p>数据规模<br>1≤T≤100,1≤n≤2×105,1≤ai≤109<br>数据保证∑T（i&#x3D;1）n≤2×105<br>样例输入<br>2<br>4 75 150 75 50<br>3 100 150 250<br>样例输出<br>YES<br>NO</p>
+<p>#include<iostream><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>ll a[200001];<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    cin&gt;&gt;t;<br>    while(t–)<br>    {<br>        int n;<br>        bool flag&#x3D;0;<br>        cin&gt;&gt;n;<br>        for(int i&#x3D;1;i&lt;&#x3D;n;i++)cin&gt;&gt;a[i];<br>        for(int i&#x3D;1;i&lt;n;i++)<br>        {<br>            ll x&#x3D;a[i]<em>a[i+1]&#x2F;__gcd(a[i],a[i+1]);    &#x2F;&#x2F;最小公倍数<br>            ll x1&#x3D;x&#x2F;a[i];<br>            ll x2&#x3D;x&#x2F;a[i+1];<br>            ll record_x1&#x3D;-1,record_x2&#x3D;-1;<br>            while(x1&gt;0||x2&gt;0)<br>            {<br>                if(x1&#x2F;2</em>2&#x3D;&#x3D;x1)x1&#x2F;&#x3D;2;                &#x2F;&#x2F;能被2整除则除以2<br>                if(x1&#x2F;3<em>3&#x3D;&#x3D;x1)x1&#x2F;&#x3D;3;                &#x2F;&#x2F;能被3整除则除以3<br>                if(x2&#x2F;2</em>2&#x3D;&#x3D;x2)x2&#x2F;&#x3D;2;<br>                if(x2&#x2F;3*3&#x3D;&#x3D;x2)x2&#x2F;&#x3D;3;<br>                if(record_x1&#x3D;&#x3D;x1&amp;&amp;record_x2&#x3D;&#x3D;x2)break;<br>                record_x1&#x3D;x1;<br>                record_x2&#x3D;x2;<br>            }<br>            if(x1!&#x3D;1||x2!&#x3D;1)                        &#x2F;&#x2F;若因子只含有2和3则结果一定均为1<br>            {<br>                cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>                flag&#x3D;1;<br>                break;<br>            }<br>        }<br>        if(flag&#x3D;&#x3D;0)cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>3、子串分值和<br>题目描述<br>对于一个字符串 S ，我们定义 f(S) 为 S 中出现的不同的字符个数。<br>例如 f(aba)&#x3D;2,f(abc)&#x3D;3,f(aaa)&#x3D;1。<br>现在给定一个字符串 S (假设长度为 len)，请你计算 ∑i&#x3D;0len−1∑j&#x3D;ilen−1f(S[i:j]) 。</p>
+<p>输入格式<br>输入一行包含一个由小写字母组成的字符串 S 。</p>
+<p>输出格式<br>输出一个整数表示答案。</p>
+<p>样例输入<br>ababc<br>样例输出<br>28<br>数据规模<br>所有数据保证字符串长度 len≤1000000，字符串下标从 0 到 len−1。思路：<br>题目是需要求出每个子串中小写字母的种类数之和，即对于每一个小写字母，含有该小写字母的子串数之和。即题目所求可转化为：含a的子串数+含b的子串数+……+含z的子串数。而含有某个字母的子串数不太好求，我们又可以将其转化为：总子串数 - 不含该字母的子串数。</p>
+<p>#include<iostream><br>#include<vector><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    string s;<br>    long long len;<br>    long long res&#x3D;0;<br>    long long sum&#x3D;0;<br>    cin&gt;&gt;s;<br>    len&#x3D;s.length();<br>    sum&#x3D;(len+1)*len&#x2F;2;        &#x2F;&#x2F;总的子串数<br>    for(char i&#x3D;’a’;i&lt;&#x3D;’z’;i++)<br>    {<br>        long long s1&#x3D;0;        &#x2F;&#x2F;不含该小写字母的子串数<br>        long long k&#x3D;0;<br>        for(int j&#x3D;0;j&lt;len;j++)<br>        {<br>            if(s[j]!&#x3D;i)k++;<br>            else<br>            {<br>                s1+&#x3D;(k+1)*k&#x2F;2;<br>                k&#x3D;0;<br>            }<br>        }<br>        s1+&#x3D;(k+1)*k&#x2F;2;<br>        res+&#x3D;sum-s1;<br>    }<br>    cout&lt;&lt;res;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>4、蒟蒻<br>题目描述<br>便利蜂的货架上摆了一排蒟蒻果冻，搞得鶸尛鱻眼花缭乱…</p>
+<p>对于每个果冻，都有一个价格 w 和口感 t。鶸尛鱻有一个购物篮子，在挑选蒟蒻果冻的时候，他有以下几种操作：</p>
+<p>操作 1：把一个价格为 w，口感为 t 的果冻放入篮子。<br>操作 2：拿出篮子中 最为廉价 的果冻。<br>操作 3：拿出篮子中 口感最差 的果冻。（t 越小，口感越差）鶸尛鱻不喜欢重复，当操作 1 的 价格或口感 与篮中已有果冻重复时，他会立刻将其放回货架。</p>
+<p>经过 n 次操作后，鶸尛鱻确定了要购买的若干果冻，请你帮他求出篮子里果冻的总价格。</p>
+<p>输入格式<br>第 1 行一个正整数 n，代表操作次数。</p>
+<p>第 2 行至第 (n+1) 行，每行 一个或三个 整数，分别表示 op，w，t。</p>
+<p>w 和 t 当且仅当 op&#x3D;1 时存在。</p>
+<p>输出格式<br>输出一个整数，表示篮子里果冻的总价格。</p>
+<p>样例输入<br>6<br>1 1 1<br>1 2 5<br>2<br>1 3 3<br>3<br>1 5 2<br>样例输出<br>7<br>数据规模<br>所有数据保证 1≤n≤105，1≤w,t≤106，且保证输入合法。</p>
+<p>模拟。</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>const int N&#x3D;100001;<br>struct dd<br>{<br>    ll w;<br>    ll t;<br>};<br>bool temp_w(dd x,dd y)    &#x2F;&#x2F;按w升序<br>{<br>    return x.w&lt;y.w;<br>}<br>bool temp_t(dd x,dd y)    &#x2F;&#x2F;按t升序<br>{<br>    return x.t&lt;y.t;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n;<br>    ll res&#x3D;0;<br>    vector<dd>a;<br>    cin&gt;&gt;n;<br>    while(n–)<br>    {<br>        int op;<br>        int w,t;<br>        cin&gt;&gt;op;<br>        if(op&#x3D;&#x3D;1)<br>        {<br>            cin&gt;&gt;w&gt;&gt;t;<br>            dd x&#x3D;{w,t};<br>            int flag&#x3D;0;<br>            for(int i&#x3D;0;i&lt;a.size();i++)<br>            {<br>                if(a[i].w&#x3D;&#x3D;w||a[i].t&#x3D;&#x3D;t)<br>                {<br>                    flag&#x3D;1;<br>                    break;<br>                }<br>            }<br>            if(flag&#x3D;&#x3D;0)a.push_back(x);<br>        }<br>        else if(op&#x3D;&#x3D;2)<br>        {<br>            sort(a.begin(),a.begin()+a.size(),temp_w);&#x2F;&#x2F;按价格升序后再删掉价格最小的第一个元素<br>            a.erase(a.begin());<br>        }<br>        else if(op&#x3D;&#x3D;3)<br>        {<br>            sort(a.begin(),a.begin()+a.size(),temp_t);&#x2F;&#x2F;按口感升序后再删掉口感最小的第一个元素<br>            a.erase(a.begin());<br>        }<br>    }<br>    for(int i&#x3D;0;i&lt;a.size();i++)res+&#x3D;a[i].w;<br>    cout&lt;&lt;res;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>5、锦标赛<br>题目描述<br>有n个玩家参加比赛，他们分别有能力值a1,a2,…,an。需要进行n−1轮比赛，每一轮在剩下的玩家里任选两个玩家i,j。如果|ai−aj|&gt;K，那么其中能力值高的玩家会获胜，能力值低的玩家会被淘汰。如果|ai−aj|≤K，那么两个玩家都有可能获胜，另一个玩家被淘汰。</p>
+<p>n−1轮比赛之后，只剩下一个玩家。问有多少个玩家可能是最后获胜的玩家。</p>
+<p>输入格式<br>第一行，两个整数n,K，表示玩家的总人数，和获胜条件中的参数。</p>
+<p>接下来一行n个整数a1,a2,…,an，表示玩家的能力值。</p>
+<p>输出格式<br>一个整数，表示最后可能获胜的玩家个数。</p>
+<p>样例输入1<br>5 3<br>1 5 9 6 3<br>样例输出1<br>5</p>
+<p>数据规模<br>共10组数据。</p>
+<p>测试点1<br>满足n≤5。</p>
+<p>测试点2<br>满足n≤10。</p>
+<p>测试点3,4,5<br>满足n≤1000。</p>
+<p>对于100%的数据，满足n≤105,1≤ai,K≤109。</p>
+<p>#include<iostream><br>#include<algorithm><br>#include<cmath><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n;<br>    int flag&#x3D;0;<br>    ll k;<br>    ll a[100001];<br>    cin&gt;&gt;n&gt;&gt;k;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        cin&gt;&gt;a[i];<br>    }<br>    sort(a+1,a+1+n);<br>    for(int i&#x3D;1;i&lt;n;i++)<br>    {<br>        if(abs(a[i]-a[i+1])&gt;k)flag&#x3D;i;<br>    }<br>    cout&lt;&lt;n-flag;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>6、可重排列<br>题目描述<br>请按字典序从小到大的顺序输出所有序列，满足序列中有 p1 个 1, p2 个 2, …, pn 个 n。</p>
+<p>输入格式<br>第一行一个整数 n。</p>
+<p>第二行 n 个整数 p1,p2,…,pn。</p>
+<p>输出格式<br>按字典序从小到大的顺序一行一行输出所有满足条件的序列，每行一个序列，相邻两个数字需要用空格隔开。</p>
+<p>样例输入<br>3<br>1 2 2<br>样例输出<br>1 2 2 3 3<br>1 2 3 2 3<br>1 2 3 3 2<br>1 3 2 2 3<br>1 3 2 3 2<br>1 3 3 2 2<br>2 1 2 3 3<br>2 1 3 2 3<br>2 1 3 3 2<br>2 2 1 3 3<br>2 2 3 1 3<br>2 2 3 3 1<br>2 3 1 2 3<br>2 3 1 3 2<br>2 3 2 1 3<br>2 3 2 3 1<br>2 3 3 1 2<br>2 3 3 2 1<br>3 1 2 2 3<br>3 1 2 3 2<br>3 1 3 2 2<br>3 2 1 2 3<br>3 2 1 3 2<br>3 2 2 1 3<br>3 2 2 3 1<br>3 2 3 1 2<br>3 2 3 2 1<br>3 3 1 2 2<br>3 3 2 1 2<br>3 3 2 2 1<br>数据规模<br>对于 100% 的数据，保证 1≤n≤9,1≤pi≤9，保证满足条件的序列个数不超过 105 个。</p>
+<p>#include<iostream><br>using namespace std;<br>int n;<br>long long sum&#x3D;0;<br>const int N1&#x3D;10;<br>const int N2&#x3D;90;<br>int a[N1],b[N2];<br>void dfs(int i)<br>{<br>    if(i&#x3D;&#x3D;sum+1)    &#x2F;&#x2F;已经选完一行的数了就开始输出，然后再重新选<br>    {<br>        for(int j&#x3D;1;j&lt;&#x3D;sum;j++)<br>        {<br>            cout&lt;&lt;b[j]&lt;&lt;’ ‘;<br>        }<br>        cout&lt;&lt;’\n’;<br>    }<br>    for(int j&#x3D;1;j&lt;&#x3D;n;j++)<br>    {<br>        if(a[j])        &#x2F;&#x2F;如果j还没选完就选一个j<br>        {<br>            b[i]&#x3D;j;<br>            a[j]–;        &#x2F;&#x2F;已选了一个j<br>            dfs(i+1);    &#x2F;&#x2F;继续选下一个数<br>            a[j]++;<br>        }<br>    }</p>
+<p>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        cin&gt;&gt;a[i];    &#x2F;&#x2F;有a[i]个i<br>        sum+&#x3D;a[i];    &#x2F;&#x2F;sum表示输出中一行有多少个数<br>    }<br>    dfs(1);<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>7、进制转换<br>题目描述<br>让我看看是谁不会进制转换，哦原来是我</p>
+<p>以不同进制的形式输入 n 个非负整数，求出它们的和并以 m 进制的形式输出。</p>
+<p>使用大写字母 A ~ Z 依次代表 10 ~ 35， 小写字母 a ~ z 依次代表 36 ~ 61。</p>
+<p>输入格式<br>第一行输入两个整数 1≤n≤10 ， 2≤m≤62 。</p>
+<p>接下来 n 行，每行输入一个整数 2≤t≤62， 一个 t进制数 0≤x≤109。</p>
+<p>输出格式<br>一个 m 进制数，为最终的结果</p>
+<p>输入样例1<br>2 2<br>2 1<br>6 10<br>输出样例1<br>111<br>输入样例2<br>1 10<br>52 aA0<br>输出样例2<br>97864<br>输入样例3<br>2 52<br>36 AMD<br>52 YES<br>输出样例3<br>dJD</p>
+<p>#include<iostream><br>#include<cstring><br>#include<cmath><br>#define ll long long<br>using namespace std;<br>const int N&#x3D;100001;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n,m;<br>    ll sum&#x3D;0;<br>    char a[N];<br>    char res[N];<br>    int r&#x3D;0;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)        &#x2F;&#x2F;均转化为10进制并相加<br>    {<br>        int t;<br>        cin&gt;&gt;t&gt;&gt;a;<br>        int len&#x3D;strlen(a);<br>        for(int j&#x3D;len-1,k&#x3D;0;j&gt;&#x3D;0;j–,k++)<br>        {<br>            int num;<br>            if(a[j]&gt;&#x3D;’0’&amp;&amp;a[j]&lt;&#x3D;’9’)num&#x3D;a[j]-‘0’;<br>            else if(a[j]&gt;&#x3D;’A’&amp;&amp;a[j]&lt;&#x3D;’Z’)num&#x3D;a[j]-‘A’+10;<br>            else num&#x3D;a[j]-‘a’+36;<br>            sum+&#x3D;num*pow(t,k);<br>        }<br>    }<br>    while(sum&gt;0)<br>    {<br>        int num&#x3D;sum%m;            &#x2F;&#x2F;辗转除m<br>        if(num&gt;&#x3D;0&amp;&amp;num&lt;&#x3D;9)res[r]&#x3D;’0’+num;<br>        else if(num&gt;&#x3D;10&amp;&amp;num&lt;&#x3D;35)res[r]&#x3D;’A’+num-10;<br>        else res[r]&#x3D;’a’+num-36;<br>        sum&#x2F;&#x3D;m;<br>        r++;<br>    }</p>
+<pre><code>for(int k=r-1;k&gt;=0;k--)cout&lt;&lt;res[k];    //倒序输出
+return 0;
+</code></pre>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>8、循环子串<br>题目描述<br>一个字符串S是另一字符串T的循环子串当且仅当存在k, T所有字符循环右移k位后得到的新串T′，满足S是T′的子串。</p>
+<p>例如: abc 是 cefab的循环子串。 (cefab循环右移2位得到abcef, abc是abcef的子串)</p>
+<p>一个串P是完全循环串当且仅当对于它的任一子串H, 都有Hreverse是P的循环子串 (Hreverse 为 H的倒转, 如abc reverse后 为cba)。</p>
+<p>给一个长度为n的字符串, 判断它是不是完全循环串。</p>
+<p>输入格式<br>第一行一个正整数t, 表示测试数据组数。</p>
+<p>对于每一组数据，第一行一个正整数n, 表示字符串的长度。接下来一行一个长度为n的字符串. 仅包含小写字母。</p>
+<p>输出格式<br>对于每组测试数据，如果这个串是完全循环串, 输出YES，否则输出NO。每组测试数据之间输出换行。</p>
+<p>数据范围<br>对于所有数据 有 1≤t≤100, 1≤n≤103, ∑n≤103。</p>
+<p>样例输入<br>2<br>4<br>ccca<br>11<br>eeaafbddfaa<br>样例输出<br>YES<br>NO<br>提示 选中可以查看</p>
+<p>本道题目只需要语法知识就可以解决。</p>
+<p>任意子串是什么意思呢？</p>
+<p>如果一个子串包含另一个子串，那么我们是不是只需要求出大子串的合法情况，就可以推出小子串的合法情况。</p>
+<p>从大的子串向小的子串考虑 最大的子串是什么呢？</p>
+<p>#include<iostream><br>#include<algorithm><br>using namespace std;<br>bool check(string s,int n)<br>{<br>    string s1&#x3D;s;<br>    string s2&#x3D;s+s;<br>    reverse(s1.begin(),s1.end());&#x2F;&#x2F;即判断s1是否为s2的子串<br>    int k&#x3D;s2.find(s1,0);<br>    if(k&gt;&#x3D;0)return 1;<br>    else return 0;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    cin&gt;&gt;t;<br>    while(t–)<br>    {<br>        int n;<br>        string s;<br>        cin&gt;&gt;n&gt;&gt;s;<br>        if(check(s,n))cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>        else cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>9、饿饿 饭饭之暑假大狂欢<br>题目描述<br>故事接着《饿饿 饭饭 2》，又过了几个月，暑假来啦！！！</p>
+<p>这天，cc和他的小伙伴们决定一起去游乐园玩，他们一天将游乐园的所有设施玩了个遍，甚至大摆锤，过山车他们还去了很多次，愉快的时间总是很短暂的，很快时间就来到了晚上，但是你以为一天的娱乐时光就这样结束了吗，那你就猜错啦。</p>
+<p>晚上，游乐园晚上的party就开始啦，其中有一个游戏环节，赢的人可以得到免费的西瓜，饿到不行的cc和他的小伙伴非常希望得到这个西瓜。</p>
+<p>包括cc和他的小伙伴，有t个玩家参与了这个游戏，每个玩家都有一张带有数字的卡片。第i张卡片上有ni个数字，分别是m1,m2,…mn。</p>
+<p>游戏过程中，主持人从袋子里一个一个地取出编号的球。 他用洪亮而清晰的声音大声念出球的编号，然后把球收起来。 如果玩家的卡片上有对应的数字，就可以将它划掉。 最先从他的卡片上划掉所有数字的人获胜。 如果多人同时从他们的卡片上划掉所有数字，那么这些人都不能赢得比赛。 在游戏开始时，袋子里有 100 个球，编号从 1 到 100，所有球的编号都是不同的。</p>
+<p>cc偷偷知道了每个玩家的数字。 想请你确定每个玩家是否可以在最有利于他的情况下赢得比赛。</p>
+<p>输入格式<br>第一行给出一个数t，代表t个玩家。</p>
+<p>接下来第二行到t+1行，每行第一个数为ni，代表这个人手中有n个卡片，接下来给出序列a1…an表示这个人所拥有的卡片的数字。</p>
+<p>输出格式<br>输出t行，每一行给出第i个人在最有利的情况下是否能赢得比赛，可以输出YES, 不可以输出NO。</p>
+<p>数据范围<br>1≤t≤100,1≤n≤100,1≤mi≤100<br>样例输入<br>3<br>1 1<br>3 2 4 1<br>2 10 11<br>样例输出<br>YES<br>NO<br>YES</p>
+<p>。</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    bool ans[101]&#x3D;{false};<br>    vector&lt;vector<int> &gt;a(101);<br>    cin&gt;&gt;t;<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>    {<br>        int len;<br>        cin&gt;&gt;len;<br>        for(int j&#x3D;1;j&lt;&#x3D;len;j++)<br>        {<br>            int x;<br>            cin&gt;&gt;x;<br>            a[i].push_back(x);<br>        }<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>    {<br>        bool flag1&#x3D;0;        &#x2F;&#x2F;判断是否进入过以下循环<br>        for(int j&#x3D;1;j&lt;&#x3D;t;j++)&#x2F;&#x2F;遍历所有的序列,判断序列a[j]是不是a[i]的子序列<br>        {<br>            if(j&#x3D;&#x3D;i||a[j].size()&gt;a[i].size())continue;<br>            bool flag&#x3D;0;&#x2F;&#x2F;若是子序列,则flag&#x3D;0<br>            for(int k&#x3D;0;k&lt;a[j].size();k++)&#x2F;&#x2F;判断a[j]中的每一个元素是否都能在a[i]中找到<br>            {<br>                if(find(a[i].begin(),a[i].end(),a[j][k])&#x3D;&#x3D;a[i].end())&#x2F;&#x2F;有一个元素没找到(则一定不是子序列)<br>                {<br>                    flag&#x3D;1;<br>                    flag1&#x3D;1;<br>                    break;<br>                }<br>            }<br>            if(flag&#x3D;&#x3D;0)    &#x2F;&#x2F;是子序列<br>            {<br>                flag1&#x3D;1;<br>                ans[i]&#x3D;false;<br>                break;<br>            }<br>            else<br>            {<br>                flag1&#x3D;1;<br>                ans[i]&#x3D;true;<br>            }<br>        }<br>        if(flag1&#x3D;&#x3D;0)ans[i]&#x3D;true;<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>        if(ans[i]&#x3D;&#x3D;true)<br>            cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>        else<br>            cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>10、RSA<br>题目描述<br>RSA算法选择两个不同质数的积作为模数。现在有两个正整数 A,B，如果它们是不同的质数，则判定为 full credit；否则，如果A⋅B不是任意大于1的整数的平方的整数倍，则判定 partial credit；否则判定为no credit。</p>
+<p>输入格式<br>一行两个正整数 A,B<br>。</p>
+<p>输出格式<br>full credit 或 partial credit 或 no credit。</p>
+<p>样例1输入<br>13 23<br>样例1输出<br>full credit<br>样例2输入<br>3 3<br>样例2输出<br>no credit<br>数据规模<br>所有数据保证 2≤A,B≤1012。</p>
+<p>！<br>#include<iostream><br>#include<cmath><br>#include<map><br>using namespace std;<br>bool isprime(long long x)    &#x2F;&#x2F;判断是不是质数<br>{<br>    if(x&#x3D;&#x3D;1)return 0;<br>    for(int i&#x3D;2;i&lt;&#x3D;sqrt(x);i++)<br>    {<br>        if(x%i&#x3D;&#x3D;0)return 0;<br>    }<br>    return 1;<br>}<br>bool flag&#x3D;0;<br>map&lt;long long,int&gt;mymap;<br>bool check(long long a)<br>{<br>    for(int i&#x3D;2;i&lt;&#x3D;sqrt(a);i++)<br>    {<br>        if(a%i&#x3D;&#x3D;0)<br>        {<br>            mymap[i]++;<br>            mymap[a&#x2F;i]++;<br>            if(mymap[i]&gt;&#x3D;2||mymap[a&#x2F;i]&gt;&#x3D;2)<br>            {<br>                flag&#x3D;1;        &#x2F;&#x2F;标记是否有重复的因数出现<br>                return 1;<br>            }<br>        }<br>    }<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    long long a,b;<br>    cin&gt;&gt;a&gt;&gt;b;<br>    if(a&#x3D;&#x3D;b)    &#x2F;&#x2F;相等则A<em>B就是一个平方数<br>    {<br>        cout&lt;&lt;”no credit”;<br>        return 0;<br>    }<br>    if(isprime(a)&amp;&amp;isprime(b))<br>    {<br>        cout&lt;&lt;”full credit”;<br>        return 0;<br>    }<br>    check(a);<br>    check(b);<br>    if(flag&#x3D;&#x3D;1)&#x2F;&#x2F;a</em>b是任意大于1的整数的平方的整数倍<br>    {<br>        cout&lt;&lt;”no credit”;<br>    }<br>    else<br>    {<br>        cout&lt;&lt;”partial credit”;<br>    }<br>    return 0;</p>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week15/" data-id="clhle0zp40000a4w12990blxh" data-title="week15" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/13/week16/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          week16
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">双周赛一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/13/week17/">week17</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week16/">week16</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week15/">week15</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>week17 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="01序列2原题链接：01序列2  思路：用前缀和算出每一位的前面所有构造方法数量的和 代码： #include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int n, k, dp[1000005], sum[1000005];const int mod &#x3D; 1e9 + 7;int main(){    cin &gt;&gt; n &amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="week17">
+<meta property="og:url" content="http://example.com/2023/05/13/week17/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="01序列2原题链接：01序列2  思路：用前缀和算出每一位的前面所有构造方法数量的和 代码： #include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int n, k, dp[1000005], sum[1000005];const int mod &#x3D; 1e9 + 7;int main(){    cin &gt;&gt; n &amp;g">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-13T02:33:59.000Z">
+<meta property="article:modified_time" content="2023-05-13T02:40:52.863Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-week17" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week17/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:59.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      week17
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol start="602">
+<li>01序列2<br>原题链接：01序列2</li>
+</ol>
+<p>思路：用前缀和算出每一位的前面所有构造方法数量的和</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n, k, dp[1000005], sum[1000005];<br>const int mod &#x3D; 1e9 + 7;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; k;<br>    sum[0] &#x3D; 1;<br>    for(int i &#x3D; 1; i &lt;&#x3D; k + 1; i++){<br>        sum[i] &#x3D; (sum[i - 1] + 1) % mod;<br>    }<br>    for(int i &#x3D; k + 2; i &lt;&#x3D; n; i++){<br>        dp[i] &#x3D; (dp[i] + sum[i - k - 1]) % mod;<br>        sum[i] &#x3D; (dp[i] + sum[i - 1]) % mod;<br>    }<br>    cout &lt;&lt; sum[n];<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>603. 整除光棍<br>原题链接：整除光棍</p>
+<p>思路：模拟</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int x, sum, tmp, num[100005], indexx;<br>int main(){<br>    cin &gt;&gt; x;<br>    while(tmp &lt; x){<br>        tmp &#x3D; tmp * 10 + 1;<br>        sum++;<br>    }<br>    while(tmp % x !&#x3D; 0){<br>        num[indexx++] &#x3D; tmp &#x2F; x;<br>        tmp %&#x3D; x;<br>        tmp &#x3D; tmp * 10 + 1;<br>        sum++;<br>    }<br>    num[indexx++] &#x3D; tmp &#x2F; x;<br>    for(int i &#x3D; 0; i &lt; indexx; i++){<br>        cout &lt;&lt; num[i];<br>    }<br>    cout &lt;&lt; “ “ &lt;&lt; sum;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>604. 碰撞2<br>原题链接：碰撞2</p>
+<p>思路：用map储存点的位置和移动方向</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n;<br>string s;<br>bool flag;<br>struct point{<br>    int x, y;<br>    char dir;<br>} p[200005];<br>map&lt;int, set<point> &gt; mp;<br>bool operator&lt;(point a, point b){<br>    return a.x &lt; b.x;<br>}<br>int main(){<br>    cin &gt;&gt; n;<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        cin &gt;&gt; p[i].x &gt;&gt; p[i].y;<br>    }<br>    cin &gt;&gt; s;<br>    for(int i &#x3D; 0; i &lt; s.size(); i++){<br>        p[i + 1].dir &#x3D; s[i];<br>    }<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        mp[p[i].y].insert(p[i]);<br>    }<br>    for(auto i : mp){<br>        bool isR &#x3D; false;<br>        for(auto j : i.second){<br>            if(j.dir &#x3D;&#x3D; ‘L’ &amp;&amp; isR){<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else{<br>                if(j.dir &#x3D;&#x3D; ‘L’) isR &#x3D; false;<br>                else isR &#x3D; true;<br>            }<br>        }<br>        if(flag) break;<br>    }<br>    if(flag) cout &lt;&lt; “Yes”;<br>    else cout &lt;&lt; “No”;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>605. 优美！最长上升子序列<br>原题链接：优美！最长上升子序列</p>
+<p>思路：直接依次遍历1~n的整数倍，判断是否是上升序列</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int t, n, a[1000005], dp[1000005], maxx;<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int k &#x3D; 0; k &lt; t; k++){<br>        maxx &#x3D; 1;<br>        cin &gt;&gt; n;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++) cin &gt;&gt; a[i], dp[i] &#x3D; 1;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            for(int j &#x3D; i * 2; j &lt;&#x3D; n; j +&#x3D; i){<br>                if(a[j] &gt; a[i]) dp[j] &#x3D; max(dp[j], dp[i] + 1), maxx &#x3D; max(maxx, dp[j]);<br>            }<br>        }<br>        cout &lt;&lt; maxx &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>606. 巨大的牛棚<br>原题链接：巨大的牛棚</p>
+<p>思路：动态规划</p>
+<p>dp[i][j] &#x3D; min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1</p>
+<p>找出最大的dp[i][j]即可。</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n, t, dp[1005][1005], v[1005][1005], maxx;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; t;<br>    for(int i &#x3D; 0; i &lt; t; i++){<br>        int x, y;<br>        cin &gt;&gt; x &gt;&gt; y;<br>        v[x][y] &#x3D; true;<br>    }<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        for(int j &#x3D; 1; j &lt;&#x3D; n; j++){<br>            if(!v[i][j]) dp[i][j] &#x3D; min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1, maxx &#x3D; max(maxx, dp[i][j]);<br>        }<br>    }<br>    cout &lt;&lt; maxx;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>607. 高利贷<br>原题链接：高利贷</p>
+<p>思路：二分查找p的值</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>double n, m, k, mid;<br>bool check(double p){<br>    double sum &#x3D; 0;<br>    for(int i &#x3D; 1; i &lt;&#x3D; k; i++){<br>        sum +&#x3D; m &#x2F; pow(1 + p, i);<br>    }<br>    if(sum &gt;&#x3D; n) return true;<br>    else return false;<br>}<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;<br>    double st &#x3D; 0, ed &#x3D; 10;<br>    while(st &lt; ed){<br>        mid &#x3D; (st + ed) &#x2F; 2;<br>        if(ed - st &lt; 1e-6) break;<br>        if(check(mid)) st &#x3D; mid;<br>        else ed &#x3D; mid;<br>    }<br>    cout &lt;&lt; fixed &lt;&lt; setprecision(6) &lt;&lt; mid;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>701. 背包<br>原题链接：背包</p>
+<p>思路：依次遍历每一个物品</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>long long t, n, w, a[200005];<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int i &#x3D; 0; i &lt; t; i++){<br>        cin &gt;&gt; n &gt;&gt; w;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            cin &gt;&gt; a[i];<br>        }<br>        long long sum &#x3D; 0;<br>        bool flag &#x3D; false;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            if(2 * a[i] &gt;&#x3D; w &amp;&amp; a[i] &lt;&#x3D; w){<br>                cout &lt;&lt; “YES\n”;<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else if(a[i] &lt; w){<br>                sum +&#x3D; a[i];<br>            }<br>            if(2 * sum &gt;&#x3D; w &amp;&amp; sum &lt;&#x3D; w){<br>                cout &lt;&lt; “YES\n”;<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else if(sum &gt; w){<br>                sum &#x3D; 0;<br>            }<br>        }<br>        if(!flag) cout &lt;&lt; “NO\n”;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>702. 三回文序列<br>原题链接：三回文序列</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int t, n, a[200005], sum[30], tmp[30], ans;<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int k &#x3D; 0; k &lt; t; k++){<br>        cin &gt;&gt; n;<br>        ans &#x3D; 0;<br>        memset(sum, 0, sizeof(sum));<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++) cin &gt;&gt; a[i], sum[a[i]]++;<br>        for(int i &#x3D; 1; i &lt;&#x3D; 26; i++){<br>            int cnt &#x3D; 0, maxlen &#x3D; sum[a[i]];<br>            for(int j &#x3D; 1; j &lt;&#x3D; 26; j++) tmp[j] &#x3D; sum[j];<br>            int l &#x3D; 1, r &#x3D; n;<br>            while(l &lt; r){<br>                while(a[l] !&#x3D; i &amp;&amp; l &lt; r){<br>                    tmp[a[l]]–;<br>                    l++;<br>                }<br>                while(a[r] !&#x3D; i &amp;&amp; l &lt; r){<br>                    tmp[a[r]]–;<br>                    r–;<br>                }<br>                cnt +&#x3D; min(2, tmp[i]);<br>                tmp[i] &#x3D; max(0, tmp[i] - 2);<br>                for(int j &#x3D; 1; j &lt;&#x3D; 26; j++) maxlen &#x3D; max(maxlen, cnt + tmp[j]);<br>                l++, r–;<br>            }<br>            ans &#x3D; max(ans, maxlen);<br>        }<br>        cout &lt;&lt; ans &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>703. 简单的异或问题<br>原题链接：简单的异或问题</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>long long n, m;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; m;<br>    if(m &#x3D;&#x3D; 1 &amp;&amp; n &#x3D;&#x3D; 0) cout &lt;&lt; 1;<br>    else if(m &#x3D;&#x3D; 1 &amp;&amp; n &#x3D;&#x3D; 1) cout &lt;&lt; 2;<br>    else if(n !&#x3D; 0) cout &lt;&lt; (long long)pow(2, m) - 1;<br>    else cout &lt;&lt; (long long)pow(2, m);<br>    return 0;<br>}<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>704. 子串的循环挪动<br>原题链接：子串的循环挪动</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>string s;<br>int m, l, r, k;<br>int main(){<br>    cin &gt;&gt; s &gt;&gt; m;<br>    s &#x3D; “ “ + s;<br>    for(int i &#x3D; 0; i &lt; m; i++){<br>        cin &gt;&gt; l &gt;&gt; r &gt;&gt; k;<br>        int dis &#x3D; k % (r - l + 1);<br>        while(dis–){<br>        char tmp &#x3D; s[r];<br>            for(int j &#x3D; r; j &gt; l; j–){<br>                s[j] &#x3D; s[j - 1];<br>            }<br>            s[l] &#x3D; tmp;<br>        }<br>    }<br>    s.erase(0, 1);<br>    cout &lt;&lt; s;<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week17/" data-id="clhle0zpe0002a4w11izg5da9" data-title="week17" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/13/week16/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">week16</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/13/week17/">week17</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week16/">week16</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week15/">week15</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

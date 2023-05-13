@@ -71,6 +71,302 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-week17" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week17/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:59.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/05/13/week17/">week17</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol start="602">
+<li>01序列2<br>原题链接：01序列2</li>
+</ol>
+<p>思路：用前缀和算出每一位的前面所有构造方法数量的和</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n, k, dp[1000005], sum[1000005];<br>const int mod &#x3D; 1e9 + 7;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; k;<br>    sum[0] &#x3D; 1;<br>    for(int i &#x3D; 1; i &lt;&#x3D; k + 1; i++){<br>        sum[i] &#x3D; (sum[i - 1] + 1) % mod;<br>    }<br>    for(int i &#x3D; k + 2; i &lt;&#x3D; n; i++){<br>        dp[i] &#x3D; (dp[i] + sum[i - k - 1]) % mod;<br>        sum[i] &#x3D; (dp[i] + sum[i - 1]) % mod;<br>    }<br>    cout &lt;&lt; sum[n];<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>603. 整除光棍<br>原题链接：整除光棍</p>
+<p>思路：模拟</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int x, sum, tmp, num[100005], indexx;<br>int main(){<br>    cin &gt;&gt; x;<br>    while(tmp &lt; x){<br>        tmp &#x3D; tmp * 10 + 1;<br>        sum++;<br>    }<br>    while(tmp % x !&#x3D; 0){<br>        num[indexx++] &#x3D; tmp &#x2F; x;<br>        tmp %&#x3D; x;<br>        tmp &#x3D; tmp * 10 + 1;<br>        sum++;<br>    }<br>    num[indexx++] &#x3D; tmp &#x2F; x;<br>    for(int i &#x3D; 0; i &lt; indexx; i++){<br>        cout &lt;&lt; num[i];<br>    }<br>    cout &lt;&lt; “ “ &lt;&lt; sum;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>604. 碰撞2<br>原题链接：碰撞2</p>
+<p>思路：用map储存点的位置和移动方向</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n;<br>string s;<br>bool flag;<br>struct point{<br>    int x, y;<br>    char dir;<br>} p[200005];<br>map&lt;int, set<point> &gt; mp;<br>bool operator&lt;(point a, point b){<br>    return a.x &lt; b.x;<br>}<br>int main(){<br>    cin &gt;&gt; n;<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        cin &gt;&gt; p[i].x &gt;&gt; p[i].y;<br>    }<br>    cin &gt;&gt; s;<br>    for(int i &#x3D; 0; i &lt; s.size(); i++){<br>        p[i + 1].dir &#x3D; s[i];<br>    }<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        mp[p[i].y].insert(p[i]);<br>    }<br>    for(auto i : mp){<br>        bool isR &#x3D; false;<br>        for(auto j : i.second){<br>            if(j.dir &#x3D;&#x3D; ‘L’ &amp;&amp; isR){<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else{<br>                if(j.dir &#x3D;&#x3D; ‘L’) isR &#x3D; false;<br>                else isR &#x3D; true;<br>            }<br>        }<br>        if(flag) break;<br>    }<br>    if(flag) cout &lt;&lt; “Yes”;<br>    else cout &lt;&lt; “No”;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>605. 优美！最长上升子序列<br>原题链接：优美！最长上升子序列</p>
+<p>思路：直接依次遍历1~n的整数倍，判断是否是上升序列</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int t, n, a[1000005], dp[1000005], maxx;<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int k &#x3D; 0; k &lt; t; k++){<br>        maxx &#x3D; 1;<br>        cin &gt;&gt; n;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++) cin &gt;&gt; a[i], dp[i] &#x3D; 1;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            for(int j &#x3D; i * 2; j &lt;&#x3D; n; j +&#x3D; i){<br>                if(a[j] &gt; a[i]) dp[j] &#x3D; max(dp[j], dp[i] + 1), maxx &#x3D; max(maxx, dp[j]);<br>            }<br>        }<br>        cout &lt;&lt; maxx &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>606. 巨大的牛棚<br>原题链接：巨大的牛棚</p>
+<p>思路：动态规划</p>
+<p>dp[i][j] &#x3D; min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1</p>
+<p>找出最大的dp[i][j]即可。</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int n, t, dp[1005][1005], v[1005][1005], maxx;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; t;<br>    for(int i &#x3D; 0; i &lt; t; i++){<br>        int x, y;<br>        cin &gt;&gt; x &gt;&gt; y;<br>        v[x][y] &#x3D; true;<br>    }<br>    for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>        for(int j &#x3D; 1; j &lt;&#x3D; n; j++){<br>            if(!v[i][j]) dp[i][j] &#x3D; min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1, maxx &#x3D; max(maxx, dp[i][j]);<br>        }<br>    }<br>    cout &lt;&lt; maxx;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>607. 高利贷<br>原题链接：高利贷</p>
+<p>思路：二分查找p的值</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>double n, m, k, mid;<br>bool check(double p){<br>    double sum &#x3D; 0;<br>    for(int i &#x3D; 1; i &lt;&#x3D; k; i++){<br>        sum +&#x3D; m &#x2F; pow(1 + p, i);<br>    }<br>    if(sum &gt;&#x3D; n) return true;<br>    else return false;<br>}<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;<br>    double st &#x3D; 0, ed &#x3D; 10;<br>    while(st &lt; ed){<br>        mid &#x3D; (st + ed) &#x2F; 2;<br>        if(ed - st &lt; 1e-6) break;<br>        if(check(mid)) st &#x3D; mid;<br>        else ed &#x3D; mid;<br>    }<br>    cout &lt;&lt; fixed &lt;&lt; setprecision(6) &lt;&lt; mid;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>701. 背包<br>原题链接：背包</p>
+<p>思路：依次遍历每一个物品</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>long long t, n, w, a[200005];<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int i &#x3D; 0; i &lt; t; i++){<br>        cin &gt;&gt; n &gt;&gt; w;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            cin &gt;&gt; a[i];<br>        }<br>        long long sum &#x3D; 0;<br>        bool flag &#x3D; false;<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++){<br>            if(2 * a[i] &gt;&#x3D; w &amp;&amp; a[i] &lt;&#x3D; w){<br>                cout &lt;&lt; “YES\n”;<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else if(a[i] &lt; w){<br>                sum +&#x3D; a[i];<br>            }<br>            if(2 * sum &gt;&#x3D; w &amp;&amp; sum &lt;&#x3D; w){<br>                cout &lt;&lt; “YES\n”;<br>                flag &#x3D; true;<br>                break;<br>            }<br>            else if(sum &gt; w){<br>                sum &#x3D; 0;<br>            }<br>        }<br>        if(!flag) cout &lt;&lt; “NO\n”;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>702. 三回文序列<br>原题链接：三回文序列</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>int t, n, a[200005], sum[30], tmp[30], ans;<br>int main(){<br>    cin &gt;&gt; t;<br>    for(int k &#x3D; 0; k &lt; t; k++){<br>        cin &gt;&gt; n;<br>        ans &#x3D; 0;<br>        memset(sum, 0, sizeof(sum));<br>        for(int i &#x3D; 1; i &lt;&#x3D; n; i++) cin &gt;&gt; a[i], sum[a[i]]++;<br>        for(int i &#x3D; 1; i &lt;&#x3D; 26; i++){<br>            int cnt &#x3D; 0, maxlen &#x3D; sum[a[i]];<br>            for(int j &#x3D; 1; j &lt;&#x3D; 26; j++) tmp[j] &#x3D; sum[j];<br>            int l &#x3D; 1, r &#x3D; n;<br>            while(l &lt; r){<br>                while(a[l] !&#x3D; i &amp;&amp; l &lt; r){<br>                    tmp[a[l]]–;<br>                    l++;<br>                }<br>                while(a[r] !&#x3D; i &amp;&amp; l &lt; r){<br>                    tmp[a[r]]–;<br>                    r–;<br>                }<br>                cnt +&#x3D; min(2, tmp[i]);<br>                tmp[i] &#x3D; max(0, tmp[i] - 2);<br>                for(int j &#x3D; 1; j &lt;&#x3D; 26; j++) maxlen &#x3D; max(maxlen, cnt + tmp[j]);<br>                l++, r–;<br>            }<br>            ans &#x3D; max(ans, maxlen);<br>        }<br>        cout &lt;&lt; ans &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>703. 简单的异或问题<br>原题链接：简单的异或问题</p>
+<p>代码：</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>long long n, m;<br>int main(){<br>    cin &gt;&gt; n &gt;&gt; m;<br>    if(m &#x3D;&#x3D; 1 &amp;&amp; n &#x3D;&#x3D; 0) cout &lt;&lt; 1;<br>    else if(m &#x3D;&#x3D; 1 &amp;&amp; n &#x3D;&#x3D; 1) cout &lt;&lt; 2;<br>    else if(n !&#x3D; 0) cout &lt;&lt; (long long)pow(2, m) - 1;<br>    else cout &lt;&lt; (long long)pow(2, m);<br>    return 0;<br>}<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>704. 子串的循环挪动<br>原题链接：子串的循环挪动</p>
+<p>#include &lt;bits&#x2F;stdc++.h&gt;<br>using namespace std;<br>string s;<br>int m, l, r, k;<br>int main(){<br>    cin &gt;&gt; s &gt;&gt; m;<br>    s &#x3D; “ “ + s;<br>    for(int i &#x3D; 0; i &lt; m; i++){<br>        cin &gt;&gt; l &gt;&gt; r &gt;&gt; k;<br>        int dis &#x3D; k % (r - l + 1);<br>        while(dis–){<br>        char tmp &#x3D; s[r];<br>            for(int j &#x3D; r; j &gt; l; j–){<br>                s[j] &#x3D; s[j - 1];<br>            }<br>            s[l] &#x3D; tmp;<br>        }<br>    }<br>    s.erase(0, 1);<br>    cout &lt;&lt; s;<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week17/" data-id="clhle0zpe0002a4w11izg5da9" data-title="week17" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-week16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week16/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:55.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/05/13/week16/">week16</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、数组操作</p>
+<p>我们每次操作都是把最数组最后的相邻的x的个数乘2 。</p>
+<p>例如：一个数组{1,2,3,4,5,6,7,8}<br>-&gt; {1,2,3,4,5,6,8,8}<br>-&gt;{1,2,3,4,8,8,8,8}<br>-&gt;{8,8,8,8,8,8,8,8}<br>8的个数依次为1-&gt;2-&gt;4-&gt;8</p>
+<p>#include<iostream><br>using namespace std;<br>#include<vector></p>
+<p>#pragma GCC optimize(1)<br>#pragma GCC optimize(2)<br>#pragma GCC optimize(3,”Ofast”,”inline”)</p>
+<p>#define endl ‘\n’;<br>typedef long long ll;<br>const int N &#x3D; 110;</p>
+<p>int main() {<br>    ios_base::sync_with_stdio(false);<br>    cin.tie(nullptr);<br>    cout.tie(nullptr);<br>    int t;<br>    cin &gt;&gt; t;<br>    while (t–)<br>    {<br>        int n;<br>        cin &gt;&gt; n;<br>        vector<int>v(n);<br>        for (int i &#x3D; n-1; i &gt;&#x3D;0 ; i–)<br>            cin &gt;&gt; v[i];<br>        int num &#x3D; v[0], res &#x3D; 0, ans &#x3D; 1;<br>        while (ans &lt; n)<br>        {<br>            if (v[ans] &#x3D;&#x3D; num)ans++;<br>            else<br>            {<br>                res++;<br>                ans *&#x3D; 2;<br>            }<br>        }<br>        cout &lt;&lt; res &lt;&lt; endl;<br>    }<br>    return 0;</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>2、A-B 数对</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#include<map><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n,c;<br>    int ans&#x3D;0;<br>    vector<int>v;<br>    map&lt;int,int&gt;mymap;<br>    cin&gt;&gt;n&gt;&gt;c;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        int x;<br>        cin&gt;&gt;x;<br>        mymap[x]++;<br>        v.push_back(x);<br>    }<br>    sort(v.begin(),v.end());<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        ans+&#x3D;mymap[v[i]+1];<br>    }<br>    cout&lt;&lt;ans;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>数位计算</p>
+<p>#include<iostream><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int mod&#x3D;998244353;<br>    ll a;<br>    ll sum&#x3D;0;<br>    ll i&#x3D;1;<br>    cin&gt;&gt;a;<br>    if(a&lt;&#x3D;9)<br>    {<br>        cout&lt;&lt;(a+1)<em>a&#x2F;2;<br>        return 0;<br>    }<br>    while(a&gt;&#x3D;i)<br>    {<br>        ll x&#x3D;(1+i</em>10-i)%mod;<br>        ll y&#x3D;(i<em>10-i)%mod;<br>        ll xx&#x3D;(2+a-i)%mod;<br>        ll yy&#x3D;(a-i+1)%mod;<br>        if(a&gt;&#x3D;i</em>10)sum+&#x3D;(x<em>y&#x2F;2)%mod;<br>        else sum+&#x3D;(xx</em>yy&#x2F;2)%mod;<br>        i*&#x3D;10;<br>    }</p>
+<pre><code>cout&lt;&lt;sum%mod;
+return 0;
+</code></pre>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>4、新国王游戏</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>struct h<br>{<br>    ll a,b;<br>};<br>bool temp(h x,h y)<br>{<br>    return (x.a-1)<em>y.b&gt;(y.a-1)<em>x.b;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int mod&#x3D;1000000007;<br>    ll n;<br>    ll ans&#x3D;0,sum_a&#x3D;1;<br>    vector<h> v;<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        int x,y;<br>        cin&gt;&gt;x&gt;&gt;y;<br>        v.push_back((h){x,y});<br>    }<br>    sort(v.begin(),v.end(),temp);<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        ans+&#x3D;sum_a</em>v[i].b%mod;<br>        ans%&#x3D;mod;<br>        sum_a</em>&#x3D;v[i].a;<br>        sum_a%&#x3D;mod;<br>    }<br>    cout&lt;&lt;ans%mod;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>5、完美数</p>
+<p>#include<iostream><br>#define ll long long<br>using namespace std;<br>const int mod&#x3D;1e9+7;<br>const int N&#x3D;1e6+1;<br>int a,b;<br>ll fact[N];    &#x2F;&#x2F;fact[i]表示i的阶乘<br>ll infact[N];    &#x2F;&#x2F;infact[i]表示i的阶乘的逆元<br>bool check(ll x)<br>{<br>    while(x&gt;0)<br>    {<br>        if(x%10!&#x3D;a&amp;&amp;x%10!&#x3D;b)<br>        {<br>            return 0;<br>        }<br>        x&#x2F;&#x3D;10;<br>    }<br>    return 1;<br>}<br>int qmi(int a,int b)    &#x2F;&#x2F;求a的b次方对mod求模的结果<br>{<br>    ll res&#x3D;1;<br>    while(b)<br>    {<br>        if(b&amp;1)res&#x3D;res<em>a%mod;<br>        a&#x3D;a</em>(ll)a%mod;<br>        b&gt;&gt;&#x3D;1;<br>    }<br>    return res;<br>}<br>void rr()        &#x2F;&#x2F;求阶乘及阶乘的逆元<br>{<br>    fact[0]&#x3D;1;<br>    for(int i&#x3D;1;i&lt;N;i++)<br>    {<br>        fact[i]&#x3D;fact[i-1]<em>i%mod;<br>    }<br>    infact[N-1]&#x3D;qmi(fact[N-1],mod-2);<br>    for(int i&#x3D;N-2;i&gt;&#x3D;0;i–)<br>    {<br>        infact[i]&#x3D;infact[i+1]</em>(i+1)%mod;<br>    }</p>
+<p>}</p>
+<p>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    ll m;<br>    ll res&#x3D;0;<br>    cin&gt;&gt;a&gt;&gt;b&gt;&gt;m;<br>    rr();<br>    if(a&#x3D;&#x3D;b)<br>    {<br>        cout&lt;&lt;0;<br>        return 0;<br>    }<br>    if(a&gt;b)swap(a,b);    &#x2F;&#x2F;a作为小一点的数<br>    for(ll i&#x3D;0;i&lt;&#x3D;m;i++)<br>    {<br>        ll s&#x3D;i*a+(m-i)*b;<br>        if(check(s))<br>        {    &#x2F;&#x2F;将i个a和(m-i)个b组合成一个好数即可<br>            ll i2&#x3D;min(i,m-i);        &#x2F;&#x2F;c(m)(i)&#x3D;&#x3D;c(m)(m-i)<br>            res&#x3D;(res+fact[m]<em>infact[i2]%mod</em>infact[m-i2]%mod)%mod;&#x2F;&#x2F;即排列组合，共有C(m)(i2)种组合<br>        }<br>    }<br>    cout&lt;&lt;res%mod;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>66<br>67<br>68<br>69<br>70<br>71<br>72<br>73<br>74<br>75<br>76<br>77<br>6、Lusir的游戏</p>
+<p>#include<iostream><br>#include<cmath><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int N&#x3D;1e5+1;<br>    int n;<br>    int a[N];<br>    double ans&#x3D;0;<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)cin&gt;&gt;a[i];<br>    for(int i&#x3D;n;i&gt;&#x3D;1;i–)<br>    {<br>        ans&#x3D;(ans+a[i])&#x2F;2;<br>    }<br>    cout&lt;&lt;ceil(ans);<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>7、BFS练习1</p>
+<p>#include<iostream><br>#include<queue><br>#include<cmath><br>using namespace std;<br>const int N&#x3D;1e5+55;<br>int a,q;<br>int b[N];<br>int ans[N]&#x3D;{0};<br>int js;<br>void bfs(int n)        &#x2F;&#x2F;把n变成x<br>{<br>    js&#x3D;0;<br>    bool vis[N]&#x3D;{0};<br>    queue<int>s;<br>    s.push(n);<br>    vis[n]&#x3D;1;<br>    while(!s.empty())<br>    {<br>        int len&#x3D;s.size();<br>        for(int i&#x3D;1;i&lt;&#x3D;len;i++)<br>        {<br>            int nn&#x3D;s.front();<br>            s.pop();<br>            if(ans[nn]&#x3D;&#x3D;-1)<br>            {<br>                ans[nn]&#x3D;js;<br>            }<br>            if(nn+1&lt;1e5+50&amp;&amp;vis[nn+1]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn+1);<br>                vis[nn+1]&#x3D;1;<br>            }<br>            if(nn*2&lt;1e5+50&amp;&amp;vis[nn*2]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn*2);<br>                vis[nn*2]&#x3D;1;<br>            }<br>            if(nn*3&lt;1e5+50&amp;&amp;vis[nn*3]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn*3);<br>                vis[nn*3]&#x3D;1;<br>            }<br>            if(nn-1&gt;0&amp;&amp;vis[nn-1]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn-1);<br>                vis[nn-1]&#x3D;1;<br>            }<br>        }<br>        js++;<br>    }</p>
+<p>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    cin&gt;&gt;a&gt;&gt;q;<br>    for(int i&#x3D;1;i&lt;&#x3D;q;i++)<br>    {<br>        cin&gt;&gt;b[i];<br>        ans[b[i]]&#x3D;-1;<br>    }<br>    bfs(a);<br>    for(int i&#x3D;1;i&lt;&#x3D;q;i++)<br>    {<br>        cout&lt;&lt;ans[b[i]]&lt;&lt;’ ‘;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>66<br>67<br>68<br>69<br>70<br>71<br>72<br>8、01序列2</p>
+<p>dp[i]&#x3D;dp[1]+dp[2]+……+dp[i-k-1]+1<br>#include<iostream><br>#include<vector><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int N&#x3D;1e6+5;<br>    const int mod&#x3D;1e9+7;<br>    int n,k;<br>    vector<ll> dp(N);<br>    vector<ll> sum(N,0);    &#x2F;&#x2F;sum[i]表示dp[1]+dp[2]+…dp[i]<br>    cin&gt;&gt;n&gt;&gt;k;<br>    sum[0]&#x3D;0;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        &#x2F;<em>ll sum&#x3D;0;<br>        for(int j&#x3D;i-1;j&gt;&#x3D;1;j–)<br>            sum+&#x3D;dp[j];</em>&#x2F;<br>        &#x2F;&#x2F;这样做时间复杂度为o(n^2),考虑进行前缀和优化<br>        if(i-k-1&gt;0)dp[i]&#x3D;(sum[i-k-1]+1)%mod;<br>        else dp[i]&#x3D;1;<br>        sum[i]&#x3D;(sum[i-1]+dp[i])%mod;<br>    }</p>
+<pre><code>cout&lt;&lt;sum[n]+1;
+return 0;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week16/" data-id="clhle0zpc0001a4w16umf29ne" data-title="week16" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-week15" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week15/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:45.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/05/13/week15/">week15</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、快快变大<br>题目描述<br>给定一个长度为 n 的数组 a1,a2,…,an，接下来进行 n−1 次操作。每次选择一个下标 x ，将 ax 和 ax+1 合并成 ax×ax+1mod1000003 ，并且你会获得 (ax−ax+1)2 的分数。</p>
+<p>所以每次操作后，数组的长度将会减 1，当最后只剩下一个元素时停止操作。输出最终能获得的最大分数。</p>
+<p>输入格式<br>第一行一个数字 n。<br>接下来一行 n 个整数 a1,a2,…,an。</p>
+<p>输出格式<br>一个数，表示答案。</p>
+<p>样例输入<br>3<br>1 2 3<br>样例输出<br>26<br>数据规模<br>所有数据保证 1≤n≤300,1≤ai≤106。</p>
+<p>思路：<br>这题是区间dp题</p>
+<p>但是，这题在对求从 a[i] 到 a[j] 的乘积时有一点要讲究的地方。若用sum[k]表示从a[1]乘到a[k]，我们能想到从 a[i] 到 a[j] 的乘积就是sum[j]&#x2F;sum[i-1]，但事实上数据太大我们可能无法用sum[j]来存储（注意先取余再整除是错误的），所以必须用sum[i][j]来表示从a[i]一直乘到a[j]。</p>
+<p>#include<iostream><br>using namespace std;<br>#include<vector><br>#include<algorithm><br>#include&lt;math.h&gt;<br>#include<set><br>#include<numeric><br>#include<string><br>#include&lt;string.h&gt;<br>#include<map><br>#include<unordered_map><br>#include<stack><br>#include<list><br>#include<queue></p>
+<p>#pragma GCC optimize(1)<br>#pragma GCC optimize(2)<br>#pragma GCC optimize(3,”Ofast”,”inline”)</p>
+<p>typedef long long ll;<br>typedef pair&lt;ll, ll&gt;PII;<br>const int N &#x3D; 1010, MOD &#x3D; 1000003;<br>ll f[N][N], s[N][N],v[N];</p>
+<p>int main()<br>{<br>    int n;<br>    cin &gt;&gt; n;<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        cin &gt;&gt; v[i];<br>    }<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        s[i][i] &#x3D; 1;<br>        s[i][i-1] &#x3D; 1;<br>        for (int j &#x3D; i; j &lt;&#x3D; n; j++)<br>        {<br>            s[i][j] &#x3D; (v[j] * s[i][j - 1]) % MOD;<br>        }<br>    }<br>    for (int len &#x3D; 2; len &lt;&#x3D; n; len++)<br>    {<br>        for (int i &#x3D; 1; i + len - 1 &lt;&#x3D; n; i++)<br>        {<br>            int j &#x3D; i + len - 1;<br>            for (int k &#x3D; i; k &lt; j; k++)<br>            {<br>                f[i][j] &#x3D; max(f[i][j], f[i][k] + f[k + 1][j] + (s[i][k]-s[k+1][j])* (s[i][k] - s[k + 1][j]));<br>            }<br>        }<br>    }<br>    cout &lt;&lt; f[1][n] &lt;&lt; endl;<br>    return 0;<br>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>2、饿饿 饭饭2<br>题目描述<br>接着《饿饿 饭饭》 的故事，在两天后，食堂的工作人员回来了，整个食堂又回到了原来井井有条的状态。</p>
+<p>两个月后，由于天气越来越热，大家的胃口越来越小了，作为食堂管理员的CC非常担心孩子们的身体健康，所以他决定开展一个活动来调动孩子们吃饭的积极性，顺便考验一下孩子们的数学水平。活动内容如下：</p>
+<p>先让每一个孩子都抽一个球，每一个球上有一个数字， 然后给这个孩子n个数字，每一个孩子都有无数次操作机会，每一次都会选中一个数将它乘上2，或者乘上3，请问这个孩子可以通过上面的操作将这n个数都变成相同的吗？</p>
+<p>如果回答正确，这个回答正确的孩子就可以得到一份免费的午餐，但是这对于孩子们来说是在是太困难了，但是他们都想吃到免费的午餐，所以他们都想请你告诉他们正确的答案，让他们都迟到免费的午餐。</p>
+<p>输入格式<br>第1行给定一个数T，表示有T个小孩子请你告诉他正确的答案。</p>
+<p>第2到T+1行，第1个数是每个孩子抽到的数字n，第2到n+1个数是对应的n个数字。</p>
+<p>输出格式<br>如果可以变成相同的，输出YES。如果不能变成相同的，输出NO。</p>
+<p>数据规模<br>1≤T≤100,1≤n≤2×105,1≤ai≤109<br>数据保证∑T（i&#x3D;1）n≤2×105<br>样例输入<br>2<br>4 75 150 75 50<br>3 100 150 250<br>样例输出<br>YES<br>NO</p>
+<p>#include<iostream><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>ll a[200001];<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    cin&gt;&gt;t;<br>    while(t–)<br>    {<br>        int n;<br>        bool flag&#x3D;0;<br>        cin&gt;&gt;n;<br>        for(int i&#x3D;1;i&lt;&#x3D;n;i++)cin&gt;&gt;a[i];<br>        for(int i&#x3D;1;i&lt;n;i++)<br>        {<br>            ll x&#x3D;a[i]<em>a[i+1]&#x2F;__gcd(a[i],a[i+1]);    &#x2F;&#x2F;最小公倍数<br>            ll x1&#x3D;x&#x2F;a[i];<br>            ll x2&#x3D;x&#x2F;a[i+1];<br>            ll record_x1&#x3D;-1,record_x2&#x3D;-1;<br>            while(x1&gt;0||x2&gt;0)<br>            {<br>                if(x1&#x2F;2</em>2&#x3D;&#x3D;x1)x1&#x2F;&#x3D;2;                &#x2F;&#x2F;能被2整除则除以2<br>                if(x1&#x2F;3<em>3&#x3D;&#x3D;x1)x1&#x2F;&#x3D;3;                &#x2F;&#x2F;能被3整除则除以3<br>                if(x2&#x2F;2</em>2&#x3D;&#x3D;x2)x2&#x2F;&#x3D;2;<br>                if(x2&#x2F;3*3&#x3D;&#x3D;x2)x2&#x2F;&#x3D;3;<br>                if(record_x1&#x3D;&#x3D;x1&amp;&amp;record_x2&#x3D;&#x3D;x2)break;<br>                record_x1&#x3D;x1;<br>                record_x2&#x3D;x2;<br>            }<br>            if(x1!&#x3D;1||x2!&#x3D;1)                        &#x2F;&#x2F;若因子只含有2和3则结果一定均为1<br>            {<br>                cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>                flag&#x3D;1;<br>                break;<br>            }<br>        }<br>        if(flag&#x3D;&#x3D;0)cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>3、子串分值和<br>题目描述<br>对于一个字符串 S ，我们定义 f(S) 为 S 中出现的不同的字符个数。<br>例如 f(aba)&#x3D;2,f(abc)&#x3D;3,f(aaa)&#x3D;1。<br>现在给定一个字符串 S (假设长度为 len)，请你计算 ∑i&#x3D;0len−1∑j&#x3D;ilen−1f(S[i:j]) 。</p>
+<p>输入格式<br>输入一行包含一个由小写字母组成的字符串 S 。</p>
+<p>输出格式<br>输出一个整数表示答案。</p>
+<p>样例输入<br>ababc<br>样例输出<br>28<br>数据规模<br>所有数据保证字符串长度 len≤1000000，字符串下标从 0 到 len−1。思路：<br>题目是需要求出每个子串中小写字母的种类数之和，即对于每一个小写字母，含有该小写字母的子串数之和。即题目所求可转化为：含a的子串数+含b的子串数+……+含z的子串数。而含有某个字母的子串数不太好求，我们又可以将其转化为：总子串数 - 不含该字母的子串数。</p>
+<p>#include<iostream><br>#include<vector><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    string s;<br>    long long len;<br>    long long res&#x3D;0;<br>    long long sum&#x3D;0;<br>    cin&gt;&gt;s;<br>    len&#x3D;s.length();<br>    sum&#x3D;(len+1)*len&#x2F;2;        &#x2F;&#x2F;总的子串数<br>    for(char i&#x3D;’a’;i&lt;&#x3D;’z’;i++)<br>    {<br>        long long s1&#x3D;0;        &#x2F;&#x2F;不含该小写字母的子串数<br>        long long k&#x3D;0;<br>        for(int j&#x3D;0;j&lt;len;j++)<br>        {<br>            if(s[j]!&#x3D;i)k++;<br>            else<br>            {<br>                s1+&#x3D;(k+1)*k&#x2F;2;<br>                k&#x3D;0;<br>            }<br>        }<br>        s1+&#x3D;(k+1)*k&#x2F;2;<br>        res+&#x3D;sum-s1;<br>    }<br>    cout&lt;&lt;res;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>4、蒟蒻<br>题目描述<br>便利蜂的货架上摆了一排蒟蒻果冻，搞得鶸尛鱻眼花缭乱…</p>
+<p>对于每个果冻，都有一个价格 w 和口感 t。鶸尛鱻有一个购物篮子，在挑选蒟蒻果冻的时候，他有以下几种操作：</p>
+<p>操作 1：把一个价格为 w，口感为 t 的果冻放入篮子。<br>操作 2：拿出篮子中 最为廉价 的果冻。<br>操作 3：拿出篮子中 口感最差 的果冻。（t 越小，口感越差）鶸尛鱻不喜欢重复，当操作 1 的 价格或口感 与篮中已有果冻重复时，他会立刻将其放回货架。</p>
+<p>经过 n 次操作后，鶸尛鱻确定了要购买的若干果冻，请你帮他求出篮子里果冻的总价格。</p>
+<p>输入格式<br>第 1 行一个正整数 n，代表操作次数。</p>
+<p>第 2 行至第 (n+1) 行，每行 一个或三个 整数，分别表示 op，w，t。</p>
+<p>w 和 t 当且仅当 op&#x3D;1 时存在。</p>
+<p>输出格式<br>输出一个整数，表示篮子里果冻的总价格。</p>
+<p>样例输入<br>6<br>1 1 1<br>1 2 5<br>2<br>1 3 3<br>3<br>1 5 2<br>样例输出<br>7<br>数据规模<br>所有数据保证 1≤n≤105，1≤w,t≤106，且保证输入合法。</p>
+<p>模拟。</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>const int N&#x3D;100001;<br>struct dd<br>{<br>    ll w;<br>    ll t;<br>};<br>bool temp_w(dd x,dd y)    &#x2F;&#x2F;按w升序<br>{<br>    return x.w&lt;y.w;<br>}<br>bool temp_t(dd x,dd y)    &#x2F;&#x2F;按t升序<br>{<br>    return x.t&lt;y.t;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n;<br>    ll res&#x3D;0;<br>    vector<dd>a;<br>    cin&gt;&gt;n;<br>    while(n–)<br>    {<br>        int op;<br>        int w,t;<br>        cin&gt;&gt;op;<br>        if(op&#x3D;&#x3D;1)<br>        {<br>            cin&gt;&gt;w&gt;&gt;t;<br>            dd x&#x3D;{w,t};<br>            int flag&#x3D;0;<br>            for(int i&#x3D;0;i&lt;a.size();i++)<br>            {<br>                if(a[i].w&#x3D;&#x3D;w||a[i].t&#x3D;&#x3D;t)<br>                {<br>                    flag&#x3D;1;<br>                    break;<br>                }<br>            }<br>            if(flag&#x3D;&#x3D;0)a.push_back(x);<br>        }<br>        else if(op&#x3D;&#x3D;2)<br>        {<br>            sort(a.begin(),a.begin()+a.size(),temp_w);&#x2F;&#x2F;按价格升序后再删掉价格最小的第一个元素<br>            a.erase(a.begin());<br>        }<br>        else if(op&#x3D;&#x3D;3)<br>        {<br>            sort(a.begin(),a.begin()+a.size(),temp_t);&#x2F;&#x2F;按口感升序后再删掉口感最小的第一个元素<br>            a.erase(a.begin());<br>        }<br>    }<br>    for(int i&#x3D;0;i&lt;a.size();i++)res+&#x3D;a[i].w;<br>    cout&lt;&lt;res;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>5、锦标赛<br>题目描述<br>有n个玩家参加比赛，他们分别有能力值a1,a2,…,an。需要进行n−1轮比赛，每一轮在剩下的玩家里任选两个玩家i,j。如果|ai−aj|&gt;K，那么其中能力值高的玩家会获胜，能力值低的玩家会被淘汰。如果|ai−aj|≤K，那么两个玩家都有可能获胜，另一个玩家被淘汰。</p>
+<p>n−1轮比赛之后，只剩下一个玩家。问有多少个玩家可能是最后获胜的玩家。</p>
+<p>输入格式<br>第一行，两个整数n,K，表示玩家的总人数，和获胜条件中的参数。</p>
+<p>接下来一行n个整数a1,a2,…,an，表示玩家的能力值。</p>
+<p>输出格式<br>一个整数，表示最后可能获胜的玩家个数。</p>
+<p>样例输入1<br>5 3<br>1 5 9 6 3<br>样例输出1<br>5</p>
+<p>数据规模<br>共10组数据。</p>
+<p>测试点1<br>满足n≤5。</p>
+<p>测试点2<br>满足n≤10。</p>
+<p>测试点3,4,5<br>满足n≤1000。</p>
+<p>对于100%的数据，满足n≤105,1≤ai,K≤109。</p>
+<p>#include<iostream><br>#include<algorithm><br>#include<cmath><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n;<br>    int flag&#x3D;0;<br>    ll k;<br>    ll a[100001];<br>    cin&gt;&gt;n&gt;&gt;k;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        cin&gt;&gt;a[i];<br>    }<br>    sort(a+1,a+1+n);<br>    for(int i&#x3D;1;i&lt;n;i++)<br>    {<br>        if(abs(a[i]-a[i+1])&gt;k)flag&#x3D;i;<br>    }<br>    cout&lt;&lt;n-flag;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>6、可重排列<br>题目描述<br>请按字典序从小到大的顺序输出所有序列，满足序列中有 p1 个 1, p2 个 2, …, pn 个 n。</p>
+<p>输入格式<br>第一行一个整数 n。</p>
+<p>第二行 n 个整数 p1,p2,…,pn。</p>
+<p>输出格式<br>按字典序从小到大的顺序一行一行输出所有满足条件的序列，每行一个序列，相邻两个数字需要用空格隔开。</p>
+<p>样例输入<br>3<br>1 2 2<br>样例输出<br>1 2 2 3 3<br>1 2 3 2 3<br>1 2 3 3 2<br>1 3 2 2 3<br>1 3 2 3 2<br>1 3 3 2 2<br>2 1 2 3 3<br>2 1 3 2 3<br>2 1 3 3 2<br>2 2 1 3 3<br>2 2 3 1 3<br>2 2 3 3 1<br>2 3 1 2 3<br>2 3 1 3 2<br>2 3 2 1 3<br>2 3 2 3 1<br>2 3 3 1 2<br>2 3 3 2 1<br>3 1 2 2 3<br>3 1 2 3 2<br>3 1 3 2 2<br>3 2 1 2 3<br>3 2 1 3 2<br>3 2 2 1 3<br>3 2 2 3 1<br>3 2 3 1 2<br>3 2 3 2 1<br>3 3 1 2 2<br>3 3 2 1 2<br>3 3 2 2 1<br>数据规模<br>对于 100% 的数据，保证 1≤n≤9,1≤pi≤9，保证满足条件的序列个数不超过 105 个。</p>
+<p>#include<iostream><br>using namespace std;<br>int n;<br>long long sum&#x3D;0;<br>const int N1&#x3D;10;<br>const int N2&#x3D;90;<br>int a[N1],b[N2];<br>void dfs(int i)<br>{<br>    if(i&#x3D;&#x3D;sum+1)    &#x2F;&#x2F;已经选完一行的数了就开始输出，然后再重新选<br>    {<br>        for(int j&#x3D;1;j&lt;&#x3D;sum;j++)<br>        {<br>            cout&lt;&lt;b[j]&lt;&lt;’ ‘;<br>        }<br>        cout&lt;&lt;’\n’;<br>    }<br>    for(int j&#x3D;1;j&lt;&#x3D;n;j++)<br>    {<br>        if(a[j])        &#x2F;&#x2F;如果j还没选完就选一个j<br>        {<br>            b[i]&#x3D;j;<br>            a[j]–;        &#x2F;&#x2F;已选了一个j<br>            dfs(i+1);    &#x2F;&#x2F;继续选下一个数<br>            a[j]++;<br>        }<br>    }</p>
+<p>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        cin&gt;&gt;a[i];    &#x2F;&#x2F;有a[i]个i<br>        sum+&#x3D;a[i];    &#x2F;&#x2F;sum表示输出中一行有多少个数<br>    }<br>    dfs(1);<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>7、进制转换<br>题目描述<br>让我看看是谁不会进制转换，哦原来是我</p>
+<p>以不同进制的形式输入 n 个非负整数，求出它们的和并以 m 进制的形式输出。</p>
+<p>使用大写字母 A ~ Z 依次代表 10 ~ 35， 小写字母 a ~ z 依次代表 36 ~ 61。</p>
+<p>输入格式<br>第一行输入两个整数 1≤n≤10 ， 2≤m≤62 。</p>
+<p>接下来 n 行，每行输入一个整数 2≤t≤62， 一个 t进制数 0≤x≤109。</p>
+<p>输出格式<br>一个 m 进制数，为最终的结果</p>
+<p>输入样例1<br>2 2<br>2 1<br>6 10<br>输出样例1<br>111<br>输入样例2<br>1 10<br>52 aA0<br>输出样例2<br>97864<br>输入样例3<br>2 52<br>36 AMD<br>52 YES<br>输出样例3<br>dJD</p>
+<p>#include<iostream><br>#include<cstring><br>#include<cmath><br>#define ll long long<br>using namespace std;<br>const int N&#x3D;100001;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n,m;<br>    ll sum&#x3D;0;<br>    char a[N];<br>    char res[N];<br>    int r&#x3D;0;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)        &#x2F;&#x2F;均转化为10进制并相加<br>    {<br>        int t;<br>        cin&gt;&gt;t&gt;&gt;a;<br>        int len&#x3D;strlen(a);<br>        for(int j&#x3D;len-1,k&#x3D;0;j&gt;&#x3D;0;j–,k++)<br>        {<br>            int num;<br>            if(a[j]&gt;&#x3D;’0’&amp;&amp;a[j]&lt;&#x3D;’9’)num&#x3D;a[j]-‘0’;<br>            else if(a[j]&gt;&#x3D;’A’&amp;&amp;a[j]&lt;&#x3D;’Z’)num&#x3D;a[j]-‘A’+10;<br>            else num&#x3D;a[j]-‘a’+36;<br>            sum+&#x3D;num*pow(t,k);<br>        }<br>    }<br>    while(sum&gt;0)<br>    {<br>        int num&#x3D;sum%m;            &#x2F;&#x2F;辗转除m<br>        if(num&gt;&#x3D;0&amp;&amp;num&lt;&#x3D;9)res[r]&#x3D;’0’+num;<br>        else if(num&gt;&#x3D;10&amp;&amp;num&lt;&#x3D;35)res[r]&#x3D;’A’+num-10;<br>        else res[r]&#x3D;’a’+num-36;<br>        sum&#x2F;&#x3D;m;<br>        r++;<br>    }</p>
+<pre><code>for(int k=r-1;k&gt;=0;k--)cout&lt;&lt;res[k];    //倒序输出
+return 0;
+</code></pre>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>8、循环子串<br>题目描述<br>一个字符串S是另一字符串T的循环子串当且仅当存在k, T所有字符循环右移k位后得到的新串T′，满足S是T′的子串。</p>
+<p>例如: abc 是 cefab的循环子串。 (cefab循环右移2位得到abcef, abc是abcef的子串)</p>
+<p>一个串P是完全循环串当且仅当对于它的任一子串H, 都有Hreverse是P的循环子串 (Hreverse 为 H的倒转, 如abc reverse后 为cba)。</p>
+<p>给一个长度为n的字符串, 判断它是不是完全循环串。</p>
+<p>输入格式<br>第一行一个正整数t, 表示测试数据组数。</p>
+<p>对于每一组数据，第一行一个正整数n, 表示字符串的长度。接下来一行一个长度为n的字符串. 仅包含小写字母。</p>
+<p>输出格式<br>对于每组测试数据，如果这个串是完全循环串, 输出YES，否则输出NO。每组测试数据之间输出换行。</p>
+<p>数据范围<br>对于所有数据 有 1≤t≤100, 1≤n≤103, ∑n≤103。</p>
+<p>样例输入<br>2<br>4<br>ccca<br>11<br>eeaafbddfaa<br>样例输出<br>YES<br>NO<br>提示 选中可以查看</p>
+<p>本道题目只需要语法知识就可以解决。</p>
+<p>任意子串是什么意思呢？</p>
+<p>如果一个子串包含另一个子串，那么我们是不是只需要求出大子串的合法情况，就可以推出小子串的合法情况。</p>
+<p>从大的子串向小的子串考虑 最大的子串是什么呢？</p>
+<p>#include<iostream><br>#include<algorithm><br>using namespace std;<br>bool check(string s,int n)<br>{<br>    string s1&#x3D;s;<br>    string s2&#x3D;s+s;<br>    reverse(s1.begin(),s1.end());&#x2F;&#x2F;即判断s1是否为s2的子串<br>    int k&#x3D;s2.find(s1,0);<br>    if(k&gt;&#x3D;0)return 1;<br>    else return 0;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    cin&gt;&gt;t;<br>    while(t–)<br>    {<br>        int n;<br>        string s;<br>        cin&gt;&gt;n&gt;&gt;s;<br>        if(check(s,n))cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>        else cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>9、饿饿 饭饭之暑假大狂欢<br>题目描述<br>故事接着《饿饿 饭饭 2》，又过了几个月，暑假来啦！！！</p>
+<p>这天，cc和他的小伙伴们决定一起去游乐园玩，他们一天将游乐园的所有设施玩了个遍，甚至大摆锤，过山车他们还去了很多次，愉快的时间总是很短暂的，很快时间就来到了晚上，但是你以为一天的娱乐时光就这样结束了吗，那你就猜错啦。</p>
+<p>晚上，游乐园晚上的party就开始啦，其中有一个游戏环节，赢的人可以得到免费的西瓜，饿到不行的cc和他的小伙伴非常希望得到这个西瓜。</p>
+<p>包括cc和他的小伙伴，有t个玩家参与了这个游戏，每个玩家都有一张带有数字的卡片。第i张卡片上有ni个数字，分别是m1,m2,…mn。</p>
+<p>游戏过程中，主持人从袋子里一个一个地取出编号的球。 他用洪亮而清晰的声音大声念出球的编号，然后把球收起来。 如果玩家的卡片上有对应的数字，就可以将它划掉。 最先从他的卡片上划掉所有数字的人获胜。 如果多人同时从他们的卡片上划掉所有数字，那么这些人都不能赢得比赛。 在游戏开始时，袋子里有 100 个球，编号从 1 到 100，所有球的编号都是不同的。</p>
+<p>cc偷偷知道了每个玩家的数字。 想请你确定每个玩家是否可以在最有利于他的情况下赢得比赛。</p>
+<p>输入格式<br>第一行给出一个数t，代表t个玩家。</p>
+<p>接下来第二行到t+1行，每行第一个数为ni，代表这个人手中有n个卡片，接下来给出序列a1…an表示这个人所拥有的卡片的数字。</p>
+<p>输出格式<br>输出t行，每一行给出第i个人在最有利的情况下是否能赢得比赛，可以输出YES, 不可以输出NO。</p>
+<p>数据范围<br>1≤t≤100,1≤n≤100,1≤mi≤100<br>样例输入<br>3<br>1 1<br>3 2 4 1<br>2 10 11<br>样例输出<br>YES<br>NO<br>YES</p>
+<p>。</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int t;<br>    bool ans[101]&#x3D;{false};<br>    vector&lt;vector<int> &gt;a(101);<br>    cin&gt;&gt;t;<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>    {<br>        int len;<br>        cin&gt;&gt;len;<br>        for(int j&#x3D;1;j&lt;&#x3D;len;j++)<br>        {<br>            int x;<br>            cin&gt;&gt;x;<br>            a[i].push_back(x);<br>        }<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>    {<br>        bool flag1&#x3D;0;        &#x2F;&#x2F;判断是否进入过以下循环<br>        for(int j&#x3D;1;j&lt;&#x3D;t;j++)&#x2F;&#x2F;遍历所有的序列,判断序列a[j]是不是a[i]的子序列<br>        {<br>            if(j&#x3D;&#x3D;i||a[j].size()&gt;a[i].size())continue;<br>            bool flag&#x3D;0;&#x2F;&#x2F;若是子序列,则flag&#x3D;0<br>            for(int k&#x3D;0;k&lt;a[j].size();k++)&#x2F;&#x2F;判断a[j]中的每一个元素是否都能在a[i]中找到<br>            {<br>                if(find(a[i].begin(),a[i].end(),a[j][k])&#x3D;&#x3D;a[i].end())&#x2F;&#x2F;有一个元素没找到(则一定不是子序列)<br>                {<br>                    flag&#x3D;1;<br>                    flag1&#x3D;1;<br>                    break;<br>                }<br>            }<br>            if(flag&#x3D;&#x3D;0)    &#x2F;&#x2F;是子序列<br>            {<br>                flag1&#x3D;1;<br>                ans[i]&#x3D;false;<br>                break;<br>            }<br>            else<br>            {<br>                flag1&#x3D;1;<br>                ans[i]&#x3D;true;<br>            }<br>        }<br>        if(flag1&#x3D;&#x3D;0)ans[i]&#x3D;true;<br>    }<br>    for(int i&#x3D;1;i&lt;&#x3D;t;i++)<br>        if(ans[i]&#x3D;&#x3D;true)<br>            cout&lt;&lt;”YES”&lt;&lt;’\n’;<br>        else<br>            cout&lt;&lt;”NO”&lt;&lt;’\n’;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>10、RSA<br>题目描述<br>RSA算法选择两个不同质数的积作为模数。现在有两个正整数 A,B，如果它们是不同的质数，则判定为 full credit；否则，如果A⋅B不是任意大于1的整数的平方的整数倍，则判定 partial credit；否则判定为no credit。</p>
+<p>输入格式<br>一行两个正整数 A,B<br>。</p>
+<p>输出格式<br>full credit 或 partial credit 或 no credit。</p>
+<p>样例1输入<br>13 23<br>样例1输出<br>full credit<br>样例2输入<br>3 3<br>样例2输出<br>no credit<br>数据规模<br>所有数据保证 2≤A,B≤1012。</p>
+<p>！<br>#include<iostream><br>#include<cmath><br>#include<map><br>using namespace std;<br>bool isprime(long long x)    &#x2F;&#x2F;判断是不是质数<br>{<br>    if(x&#x3D;&#x3D;1)return 0;<br>    for(int i&#x3D;2;i&lt;&#x3D;sqrt(x);i++)<br>    {<br>        if(x%i&#x3D;&#x3D;0)return 0;<br>    }<br>    return 1;<br>}<br>bool flag&#x3D;0;<br>map&lt;long long,int&gt;mymap;<br>bool check(long long a)<br>{<br>    for(int i&#x3D;2;i&lt;&#x3D;sqrt(a);i++)<br>    {<br>        if(a%i&#x3D;&#x3D;0)<br>        {<br>            mymap[i]++;<br>            mymap[a&#x2F;i]++;<br>            if(mymap[i]&gt;&#x3D;2||mymap[a&#x2F;i]&gt;&#x3D;2)<br>            {<br>                flag&#x3D;1;        &#x2F;&#x2F;标记是否有重复的因数出现<br>                return 1;<br>            }<br>        }<br>    }<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    long long a,b;<br>    cin&gt;&gt;a&gt;&gt;b;<br>    if(a&#x3D;&#x3D;b)    &#x2F;&#x2F;相等则A<em>B就是一个平方数<br>    {<br>        cout&lt;&lt;”no credit”;<br>        return 0;<br>    }<br>    if(isprime(a)&amp;&amp;isprime(b))<br>    {<br>        cout&lt;&lt;”full credit”;<br>        return 0;<br>    }<br>    check(a);<br>    check(b);<br>    if(flag&#x3D;&#x3D;1)&#x2F;&#x2F;a</em>b是任意大于1的整数的平方的整数倍<br>    {<br>        cout&lt;&lt;”no credit”;<br>    }<br>    else<br>    {<br>        cout&lt;&lt;”partial credit”;<br>    }<br>    return 0;</p>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week15/" data-id="clhle0zp40000a4w12990blxh" data-title="week15" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-双周赛一" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/" class="article-date">
@@ -2278,345 +2574,6 @@ int main()&#123;
 
 
   
-    <article id="post-pair知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-01-10T03:30:29.000Z" itemprop="datePublished">2023-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>C++ pair型<br>pair 是 一种模版类型。每个pair 可以存储两个值。</p>
-<p>如果一个函数有两个返回值并且是不同类型，一种方法是写个struct ，但为了方便可以使用 c++ 自带的pair型 ，返回一个pair 。</p>
-<p>另外，在一个对象有多个属性时 ，一般使用struct ，但是如果只有两个属性的时候，就可以用pair 进行操作。。。</p>
-<p>如果有三个属性的话，其实也是可以用pair 。。。。</p>
-<p> pair&lt;int ,pair&lt;int ,int &gt; &gt; a;<br>1<br>（后边的两个 &gt; &gt; 要有空格，否则就会是 &gt;&gt; 位移运算符）</p>
-<p>生成方法有两种：</p>
-<p>pair&lt;int ,int &gt;p (5,6);<br>pair&lt;int ,int &gt; p1&#x3D; make_pair(5,6);<br>1<br>2<br>对于取值，每个pair 都有两个属性值 first 和second</p>
-<p> cout &lt;&lt; p1.first &lt;&lt; p1.second;<br>1<br>可以理解为struct的两个变量</p>
-<p>对于排序函数sort ，pair自带属性为first优先进行升序排序，其次为second进行升序排序，代码举例：</p>
-<p>#include<iostream><br>#include<cstdio><br>#include<cstring><br>#include<algorithm><br>#define mmm(a,b) memset(a,b,sizeof(a))<br>#define mk make_pair<br>#define fi first<br>#define se second<br>#define pill pair&lt;int, int&gt;<br>using namespace std; </p>
-<p>int main()<br>{<br>    pill a[200];<br>    mmm(a,0);<br>    for(int i&#x3D;1;i&lt;&#x3D;10;i++){<br>        a[i]&#x3D;mk(20-i,i);<br>    }</p>
-<pre><code>for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;cout&lt;&lt;endl;
-
-sort(a+1,a+11);
-for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;cout&lt;&lt;endl;
-
-a[2].first=10;
-sort(a+1,a+11);
-cout&lt;&lt;&quot;11 9 change to 10 9&quot;&lt;&lt;endl&lt;&lt;endl;
-for(int i=1;i&lt;=10;i++)&#123;
-    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
-&#125;
-</code></pre>
-<p>}<br>————————————————<br>版权声明：本文为CSDN博主「JK Chen」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jk_chen_acmer/article/details/79268165">https://blog.csdn.net/jk_chen_acmer/article/details/79268165</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsuq1f0008u4w19auo3zyf" data-title="pair知识点" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-堆的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-01-10T03:26:22.000Z" itemprop="datePublished">2023-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">堆的知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>前言<br>最近在刷算法题的时候遇到了需要使用堆来解决的问题(尤其是TOP k 问题)，所以想把这些方法总结一下，防止后面忘记了还得到处找资料。希望能帮助到大家<br>参考链接1<br>参考链接2</p>
-<p>堆(heap)的介绍<br>对通常是一个可以被看做一棵树的数组对象，满足两个条件：1，堆中的某个结点的值总是不大于或者不小于其父结点的值 2，堆是一颗完全二叉树<br>根结点最大的数叫做大根堆，最小的叫做小根堆。<br>堆排序中建堆的时间复杂度为O(n)<br>在C++ STL中没有堆的数据结构，所以借助其中的 priority_queue(默认是大根堆)</p>
-<p>priority_queue<br>常用的方法如下：</p>
-<p>priority_queue, 优先队列，默认是大根堆<br>    size()<br>    empty()<br>    push()  插入一个元素<br>    top()  返回堆顶元素<br>    pop()  弹出堆顶元素<br>    定义成小根堆的方式：priority_queue&lt;int, vector<int>, greater<int>&gt; q;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>priority_queue使用<br>定义：priority_queue&lt;Type, Container, Functional&gt; ，priority_queue属于是容器适配器，需要指定底层的容器，所以第一个参数Type是queue里面存的数据的类型，第二个参数Container是要使用的底层容器(一般是vector)，Functional 就是比较的方式（准确来说应该是比较方式的类型）.<br>当数据是基本数据类型时可以使用默认的比较方式，使用如下：<br>&#x2F;&#x2F;升序队列<br>priority_queue &lt;int,vector<int>,greater<int> &gt; q;<br>&#x2F;&#x2F;降序队列<br>priority_queue &lt;int,vector<int>,less<int> &gt;q;<br>&#x2F;&#x2F;greater和less是std实现的两个仿函数（就是使一个类的使用看上去像一个函数。<br>&#x2F;&#x2F;其实现就是类中实现一个operator()，这个类就有了类似函数的行为，就是一个仿函数类了）<br>1<br>2<br>3<br>4<br>5<br>6<br>当使用自定的数据类型时，比较方式的写法<br>lambda函数（如果有不清楚的可以参考我的这篇文章：c++11新特性）<br>auto cmp &#x3D; [](pair&lt;int, int&gt; left, pair&lt;int, int&gt; right) -&gt; bool { return left.second &gt; right.second; };<br>priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, decltype(cmp)&gt;  pri_que(cmp);<br>1<br>2<br>仿函数实现(最常用)<br>class mycomparison {<br>public:<br>    bool operator()(const pair&lt;int, int&gt;&amp; left, const pair&lt;int, int&gt;&amp; right) {<br>        return left.second &gt; right.second;<br>    }<br>};<br>priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int, int&gt;&gt;,mycomparison&gt; pri_que2;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>在自定义类型的类或者结构体中，重载运算符</p>
-<p>struct tmp1 &#x2F;&#x2F;运算符重载&lt;<br>{<br>    int x;<br>    tmp1(int a) {x &#x3D; a;}<br>    bool operator&lt;(const tmp1&amp; a) const<br>    {<br>        return x &lt; a.x; &#x2F;&#x2F;大顶堆<br>    }<br>}<br>priority_queue<tmp1> pri_que3;<br>————————————————</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43964318/article/details/125879319">https://blog.csdn.net/qq_43964318/article/details/125879319</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsuq1j000hu4w1c9xm2mct" data-title="堆的知识点" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-week12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/01/10/week12/" class="article-date">
-  <time class="dt-published" datetime="2023-01-10T02:00:46.000Z" itemprop="datePublished">2023-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/01/10/week12/">week12</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="宝物筛选"><a href="#宝物筛选" class="headerlink" title="宝物筛选"></a>宝物筛选</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>终于，破解了千年的难题。小 FF 找到了王室的宝物室，里面堆满了无数价值连城的宝物。</p>
-<p>这下小 FF 可发财了，嘎嘎。但是这里的宝物实在是太多了，小 FF 的采集车似乎装不下那么多宝物。看来小 FF 只能含泪舍弃其中的一部分宝物了。</p>
-<p>小 FF 对洞穴里的宝物进行了整理，他发现每样宝物都有一件或者多件。他粗略估算了下每样宝物的价值，之后开始了宝物筛选工作：小 FF 有一个最大载重为 $W$ 的采集车，洞穴里总共有 $n$ 种宝物，每种宝物的价值为 $v_i$，重量为 $w_i$，每种宝物有 $m_i$ 件。小 FF 希望在采集车不超载的前提下，选择一些宝物装进采集车，使得它们的价值和最大。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行为一个整数 $n$ 和 $W$，分别表示宝物种数和采集车的最大载重。</p>
-<p>接下来 $n$ 行每行三个整数 $v_i,w_i,m_i$。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅一个整数，表示在采集车不超载的情况下收集的宝物的最大价值。</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 20</span><br><span class="line">3 9 3</span><br><span class="line">5 9 1</span><br><span class="line">9 4 2</span><br><span class="line">8 1 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">47</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 $30%$ 的数据，$n\leq \sum m_i\leq 10^4$，$0\le W\leq 10^3$。</p>
-<p>对于 $100%$ 的数据，$n\leq \sum m_i \leq 10^5$，$0\le W\leq 4\times 10^4$，$1\leq n\le 100$。<img src="https://cdn.luogu.com.cn/upload/pic/652.png"></p>
-<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>唯一的问题就是数量实在是太多了</p>
-<p>直接写模板的话肯定会超时</p>
-<p>那么就需要用到优化了</p>
-<p>这里用到的是二进制优化</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int n,m,ans,cnt=1;
-int f[1000005];
-int w[1000005],v[1000005];//记得将数组开大
-int main()
-&#123;
-    int a,b,c;
-    cin&gt;&gt;n;
-    cin&gt;&gt;m;
-    
-    for(int i=1;i&lt;=n;++i)
-    &#123;
-        cin&gt;&gt;a;
-        cin&gt;&gt;b;
-        cin&gt;&gt;c;
-        for(int j=1;j&lt;=c;j&lt;&lt;=1)
-        &#123;
-            v[++cnt]=j*a,w[cnt]=j*b;
-            c-=j;
-        &#125;
-        if(c) v[++cnt]=a*c,w[cnt]=b*c;
-        
-    &#125;
-    
-    for(int i=1;i&lt;=cnt;++i)
-     for(int j=m;j&gt;=w[i];--j)
-      f[j]=max(f[j],f[j-w[i]]+v[i]);
-    //简单的多重背包 
-    cout&lt;&lt;f[m];
-    return 0;
-&#125;
-</code></pre>
-<h1 id="尴尬的数字"><a href="#尴尬的数字" class="headerlink" title="尴尬的数字"></a>尴尬的数字</h1><h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>Bessie 刚刚学会了不同进制数之间的转换，但是她总是犯错误，因为她的两个前蹄不能轻松的握住钢笔。</p>
-<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>每当 Bessie 将一个数转换成新的进制时，她总会写错一位数字。例如，她将 14 转化成 2 进制数，正确的结果是 1110，但她可能会写成 0110 或 1111。Bessie 从不会意外的增加或删减数字，所以她可能会写出以 0 开头的错误数字。</p>
-<p>给出 Bessie 转换后 $N$ 的 2 进制形式和 3 进制形式，请计算出 $N$ 的正确数值（用十进制表示）。$N$ 可能会达到 $10^9$，输入数据保证解的存在唯一性。</p>
-<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行，$N$ 的 2 进制表示（有一位是错误的数字）。</p>
-<p>第二行，$N$ 的 3 进制表示（有一位是错误的数字）。</p>
-<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>$N$ 的正确值。</p>
-<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1010</span><br><span class="line">212</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">14</span><br></pre></td></tr></table></figure>
-
-<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>注意到本题n仅为10^9^，那位数就不会很多了 二进制大概30位，三进制会更少些 所以可以直接暴力搜索有问题的位。</p>
-<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int l1,l2;
-long long sum1;
-char s1[10000],s2[10000];
-int n1[10000],n2[10000];
-void dfs(long long num,int tot,int pos)&#123;
-    if(tot==l2)&#123;
-        if(sum1==num)&#123;
-            cout&lt;&lt;sum1;
-            exit(0);
-        &#125;
-        return ;
-    &#125;
-    if(pos)    dfs(num+n2[tot]*pow(3,tot),tot+1,pos);
-    else&#123;
-        if(n2[tot]!=0&amp;&amp;tot!=l2-1)    dfs(num,tot+1,1);
-        else dfs(num,tot+1,pos);
-        if(n2[tot]!=1)    dfs(num+pow(3,tot),tot+1,1);
-        else dfs(num+pow(3,tot),tot+1,pos);
-        if(n2[tot]!=2)    dfs(num+2*pow(3,tot),tot+1,1);
-        else dfs(num+2*pow(3,tot),tot+1,pos);
-    &#125;
-&#125;
-int main()&#123;
-    cin&gt;&gt;s1;
-    cin&gt;&gt;s2;
-    l1=strlen(s1);
-    l2=strlen(s2);
-    if(s1[0]==&#39;0&#39;)&#123;
-        for(int i=0;i&lt;l1;i++)
-            sum1+=pow(2,i)*(s1[l1-1-i]-&#39;0&#39;);
-        long long x=pow(2,l1-1);
-        cout&lt;&lt;sum1+x;
-        return 0;
-    &#125;
-    if(s2[0]==&#39;0&#39;)&#123;
-        for(int i=0;i&lt;l2;i++)
-            sum1+=pow(3,i)*(s2[l2-1-i]-&#39;0&#39;);
-        long long x=pow(3,l2-1);
-        cout&lt;&lt;sum1+x;
-        return 0;
-    &#125;
-    for(int i=0;i&lt;l1;i++)    n1[i]=s1[l1-1-i]-&#39;0&#39;;
-    for(int i=0;i&lt;l2;i++)    n2[i]=s2[l2-1-i]-&#39;0&#39;;
-    for(int i=0;i&lt;l1;i++)    sum1+=pow(2,i)*n1[i];
-    for(int i=0;i&lt;l1;i++)&#123;
-        if(n1[i]&amp;&amp;i!=l1-1)    sum1-=pow(2,i);
-        else sum1+=pow(2,i);
-        dfs(0,0,0);
-        if(n1[i]&amp;&amp;i!=l1-1)    sum1+=pow(2,i);
-        else sum1-=pow(2,i);
-    &#125;
-&#125;
-</code></pre>
-<h1 id="传智杯-4-初赛-小卡和质数"><a href="#传智杯-4-初赛-小卡和质数" class="headerlink" title="[传智杯 #4 初赛] 小卡和质数"></a>[传智杯 #4 初赛] 小卡和质数</h1><h2 id="题目背景-1"><a href="#题目背景-1" class="headerlink" title="题目背景"></a>题目背景</h2><p>小卡最近迷上了质数，所以他想到了一个和质数有关的问题来考考你。</p>
-<p>质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。</p>
-<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>小卡有 $T(1\le T\le 10^5)$ 组询问。每次询问给你两个正整数 $x,y(1\le x,y\le 10^9)$。</p>
-<p>小卡想知道，第 $x$ 个质数和第 $y$ 个质数是否满足 $p_x \oplus p_y &#x3D;1$，即第 $x$ 个质数和第 $y$ 个质数的异或值是否是$1$。</p>
-<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行一个正整数 $T$，表示询问的数量。</p>
-<p>接下来 $T$ 行，每行两个正整数 $x,y$，表示询问的是第 $x$ 个质数和第 $y$ 个质数。</p>
-<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>$T$ 行，每行一个字符串<code>Yes</code>或<code>No</code>，分别表示两个质数的异或值是 $1$ 或不是 $1$。</p>
-<h2 id="样例-1-2"><a href="#样例-1-2" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 2</span><br><span class="line">23 145</span><br><span class="line">66 2</span><br><span class="line">1 14</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">No</span><br><span class="line">No</span><br></pre></td></tr></table></figure>
-
-<h2 id="Analyse-2"><a href="#Analyse-2" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>偶数中只有 2 是质数，而易知在其它质数中，只有 3 和 2 的异或值为 1。最终得到：两个质数只能是 3 和 2。</p>
-<p>3 是第 2 个质数，2 是第一个质数，则 x 和 y 为 2 和 1。注意两数可能调换位置。</p>
-<h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int l1,l2;
-long long sum1;
-char s1[10000],s2[10000];
-int n1[10000],n2[10000];
-void dfs(long long num,int tot,int pos)&#123;
-    if(tot==l2)&#123;
-        if(sum1==num)&#123;
-            cout&lt;&lt;sum1;
-            exit(0);
-        &#125;
-        return ;
-    &#125;
-    if(pos)    dfs(num+n2[tot]*pow(3,tot),tot+1,pos);
-    else&#123;
-        if(n2[tot]!=0&amp;&amp;tot!=l2-1)    dfs(num,tot+1,1);
-        else dfs(num,tot+1,pos);
-        if(n2[tot]!=1)    dfs(num+pow(3,tot),tot+1,1);
-        else dfs(num+pow(3,tot),tot+1,pos);
-        if(n2[tot]!=2)    dfs(num+2*pow(3,tot),tot+1,1);
-        else dfs(num+2*pow(3,tot),tot+1,pos);
-    &#125;
-&#125;
-int main()&#123;
-    cin&gt;&gt;s1;
-    cin&gt;&gt;s2;
-    l1=strlen(s1);
-    l2=strlen(s2);
-    if(s1[0]==&#39;0&#39;)&#123;
-        for(int i=0;i&lt;l1;i++)
-            sum1+=pow(2,i)*(s1[l1-1-i]-&#39;0&#39;);
-        long long x=pow(2,l1-1);
-        cout&lt;&lt;sum1+x;
-        return 0;
-    &#125;
-    if(s2[0]==&#39;0&#39;)&#123;
-        for(int i=0;i&lt;l2;i++)
-            sum1+=pow(3,i)*(s2[l2-1-i]-&#39;0&#39;);
-        long long x=pow(3,l2-1);
-        cout&lt;&lt;sum1+x;
-        return 0;
-    &#125;
-    for(int i=0;i&lt;l1;i++)    n1[i]=s1[l1-1-i]-&#39;0&#39;;
-    for(int i=0;i&lt;l2;i++)    n2[i]=s2[l2-1-i]-&#39;0&#39;;
-    for(int i=0;i&lt;l1;i++)    sum1+=pow(2,i)*n1[i];
-    for(int i=0;i&lt;l1;i++)&#123;
-        if(n1[i]&amp;&amp;i!=l1-1)    sum1-=pow(2,i);
-        else sum1+=pow(2,i);
-        dfs(0,0,0);
-        if(n1[i]&amp;&amp;i!=l1-1)    sum1+=pow(2,i);
-        else sum1-=pow(2,i);
-    &#125;
-&#125;
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/01/10/week12/" data-id="clfxsuq1f0009u4w1g5sf8p5b" data-title="week12" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -2640,7 +2597,7 @@ int main()&#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
     </div>
   </div>
 
@@ -2653,23 +2610,23 @@ int main()&#123;
       <ul>
         
           <li>
+            <a href="/2023/05/13/week17/">week17</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week16/">week16</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week15/">week15</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
           </li>
         
           <li>
             <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/">第二周</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/21/first/">first</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/">建栈链表</a>
           </li>
         
       </ul>

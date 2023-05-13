@@ -71,6 +71,345 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pair知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2023-01-10T03:30:29.000Z" itemprop="datePublished">2023-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/">pair知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>C++ pair型<br>pair 是 一种模版类型。每个pair 可以存储两个值。</p>
+<p>如果一个函数有两个返回值并且是不同类型，一种方法是写个struct ，但为了方便可以使用 c++ 自带的pair型 ，返回一个pair 。</p>
+<p>另外，在一个对象有多个属性时 ，一般使用struct ，但是如果只有两个属性的时候，就可以用pair 进行操作。。。</p>
+<p>如果有三个属性的话，其实也是可以用pair 。。。。</p>
+<p> pair&lt;int ,pair&lt;int ,int &gt; &gt; a;<br>1<br>（后边的两个 &gt; &gt; 要有空格，否则就会是 &gt;&gt; 位移运算符）</p>
+<p>生成方法有两种：</p>
+<p>pair&lt;int ,int &gt;p (5,6);<br>pair&lt;int ,int &gt; p1&#x3D; make_pair(5,6);<br>1<br>2<br>对于取值，每个pair 都有两个属性值 first 和second</p>
+<p> cout &lt;&lt; p1.first &lt;&lt; p1.second;<br>1<br>可以理解为struct的两个变量</p>
+<p>对于排序函数sort ，pair自带属性为first优先进行升序排序，其次为second进行升序排序，代码举例：</p>
+<p>#include<iostream><br>#include<cstdio><br>#include<cstring><br>#include<algorithm><br>#define mmm(a,b) memset(a,b,sizeof(a))<br>#define mk make_pair<br>#define fi first<br>#define se second<br>#define pill pair&lt;int, int&gt;<br>using namespace std; </p>
+<p>int main()<br>{<br>    pill a[200];<br>    mmm(a,0);<br>    for(int i&#x3D;1;i&lt;&#x3D;10;i++){<br>        a[i]&#x3D;mk(20-i,i);<br>    }</p>
+<pre><code>for(int i=1;i&lt;=10;i++)&#123;
+    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
+&#125;cout&lt;&lt;endl;
+
+sort(a+1,a+11);
+for(int i=1;i&lt;=10;i++)&#123;
+    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
+&#125;cout&lt;&lt;endl;
+
+a[2].first=10;
+sort(a+1,a+11);
+cout&lt;&lt;&quot;11 9 change to 10 9&quot;&lt;&lt;endl&lt;&lt;endl;
+for(int i=1;i&lt;=10;i++)&#123;
+    cout&lt;&lt;a[i].fi&lt;&lt;&#39; &#39;&lt;&lt;a[i].se&lt;&lt;endl;
+&#125;
+</code></pre>
+<p>}<br>————————————————<br>版权声明：本文为CSDN博主「JK Chen」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jk_chen_acmer/article/details/79268165">https://blog.csdn.net/jk_chen_acmer/article/details/79268165</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/10/pair%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsuq1f0008u4w19auo3zyf" data-title="pair知识点" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-堆的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2023-01-10T03:26:22.000Z" itemprop="datePublished">2023-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">堆的知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>前言<br>最近在刷算法题的时候遇到了需要使用堆来解决的问题(尤其是TOP k 问题)，所以想把这些方法总结一下，防止后面忘记了还得到处找资料。希望能帮助到大家<br>参考链接1<br>参考链接2</p>
+<p>堆(heap)的介绍<br>对通常是一个可以被看做一棵树的数组对象，满足两个条件：1，堆中的某个结点的值总是不大于或者不小于其父结点的值 2，堆是一颗完全二叉树<br>根结点最大的数叫做大根堆，最小的叫做小根堆。<br>堆排序中建堆的时间复杂度为O(n)<br>在C++ STL中没有堆的数据结构，所以借助其中的 priority_queue(默认是大根堆)</p>
+<p>priority_queue<br>常用的方法如下：</p>
+<p>priority_queue, 优先队列，默认是大根堆<br>    size()<br>    empty()<br>    push()  插入一个元素<br>    top()  返回堆顶元素<br>    pop()  弹出堆顶元素<br>    定义成小根堆的方式：priority_queue&lt;int, vector<int>, greater<int>&gt; q;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>priority_queue使用<br>定义：priority_queue&lt;Type, Container, Functional&gt; ，priority_queue属于是容器适配器，需要指定底层的容器，所以第一个参数Type是queue里面存的数据的类型，第二个参数Container是要使用的底层容器(一般是vector)，Functional 就是比较的方式（准确来说应该是比较方式的类型）.<br>当数据是基本数据类型时可以使用默认的比较方式，使用如下：<br>&#x2F;&#x2F;升序队列<br>priority_queue &lt;int,vector<int>,greater<int> &gt; q;<br>&#x2F;&#x2F;降序队列<br>priority_queue &lt;int,vector<int>,less<int> &gt;q;<br>&#x2F;&#x2F;greater和less是std实现的两个仿函数（就是使一个类的使用看上去像一个函数。<br>&#x2F;&#x2F;其实现就是类中实现一个operator()，这个类就有了类似函数的行为，就是一个仿函数类了）<br>1<br>2<br>3<br>4<br>5<br>6<br>当使用自定的数据类型时，比较方式的写法<br>lambda函数（如果有不清楚的可以参考我的这篇文章：c++11新特性）<br>auto cmp &#x3D; [](pair&lt;int, int&gt; left, pair&lt;int, int&gt; right) -&gt; bool { return left.second &gt; right.second; };<br>priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, decltype(cmp)&gt;  pri_que(cmp);<br>1<br>2<br>仿函数实现(最常用)<br>class mycomparison {<br>public:<br>    bool operator()(const pair&lt;int, int&gt;&amp; left, const pair&lt;int, int&gt;&amp; right) {<br>        return left.second &gt; right.second;<br>    }<br>};<br>priority_queue&lt;pair&lt;int,int&gt;,vector&lt;pair&lt;int, int&gt;&gt;,mycomparison&gt; pri_que2;<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>在自定义类型的类或者结构体中，重载运算符</p>
+<p>struct tmp1 &#x2F;&#x2F;运算符重载&lt;<br>{<br>    int x;<br>    tmp1(int a) {x &#x3D; a;}<br>    bool operator&lt;(const tmp1&amp; a) const<br>    {<br>        return x &lt; a.x; &#x2F;&#x2F;大顶堆<br>    }<br>}<br>priority_queue<tmp1> pri_que3;<br>————————————————</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43964318/article/details/125879319">https://blog.csdn.net/qq_43964318/article/details/125879319</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/10/%E5%A0%86%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clfxsuq1j000hu4w1c9xm2mct" data-title="堆的知识点" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-week12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/10/week12/" class="article-date">
+  <time class="dt-published" datetime="2023-01-10T02:00:46.000Z" itemprop="datePublished">2023-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/10/week12/">week12</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="宝物筛选"><a href="#宝物筛选" class="headerlink" title="宝物筛选"></a>宝物筛选</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>终于，破解了千年的难题。小 FF 找到了王室的宝物室，里面堆满了无数价值连城的宝物。</p>
+<p>这下小 FF 可发财了，嘎嘎。但是这里的宝物实在是太多了，小 FF 的采集车似乎装不下那么多宝物。看来小 FF 只能含泪舍弃其中的一部分宝物了。</p>
+<p>小 FF 对洞穴里的宝物进行了整理，他发现每样宝物都有一件或者多件。他粗略估算了下每样宝物的价值，之后开始了宝物筛选工作：小 FF 有一个最大载重为 $W$ 的采集车，洞穴里总共有 $n$ 种宝物，每种宝物的价值为 $v_i$，重量为 $w_i$，每种宝物有 $m_i$ 件。小 FF 希望在采集车不超载的前提下，选择一些宝物装进采集车，使得它们的价值和最大。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行为一个整数 $n$ 和 $W$，分别表示宝物种数和采集车的最大载重。</p>
+<p>接下来 $n$ 行每行三个整数 $v_i,w_i,m_i$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅一个整数，表示在采集车不超载的情况下收集的宝物的最大价值。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 20</span><br><span class="line">3 9 3</span><br><span class="line">5 9 1</span><br><span class="line">9 4 2</span><br><span class="line">8 1 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">47</span><br></pre></td></tr></table></figure>
+
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 $30%$ 的数据，$n\leq \sum m_i\leq 10^4$，$0\le W\leq 10^3$。</p>
+<p>对于 $100%$ 的数据，$n\leq \sum m_i \leq 10^5$，$0\le W\leq 4\times 10^4$，$1\leq n\le 100$。<img src="https://cdn.luogu.com.cn/upload/pic/652.png"></p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>唯一的问题就是数量实在是太多了</p>
+<p>直接写模板的话肯定会超时</p>
+<p>那么就需要用到优化了</p>
+<p>这里用到的是二进制优化</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int n,m,ans,cnt=1;
+int f[1000005];
+int w[1000005],v[1000005];//记得将数组开大
+int main()
+&#123;
+    int a,b,c;
+    cin&gt;&gt;n;
+    cin&gt;&gt;m;
+    
+    for(int i=1;i&lt;=n;++i)
+    &#123;
+        cin&gt;&gt;a;
+        cin&gt;&gt;b;
+        cin&gt;&gt;c;
+        for(int j=1;j&lt;=c;j&lt;&lt;=1)
+        &#123;
+            v[++cnt]=j*a,w[cnt]=j*b;
+            c-=j;
+        &#125;
+        if(c) v[++cnt]=a*c,w[cnt]=b*c;
+        
+    &#125;
+    
+    for(int i=1;i&lt;=cnt;++i)
+     for(int j=m;j&gt;=w[i];--j)
+      f[j]=max(f[j],f[j-w[i]]+v[i]);
+    //简单的多重背包 
+    cout&lt;&lt;f[m];
+    return 0;
+&#125;
+</code></pre>
+<h1 id="尴尬的数字"><a href="#尴尬的数字" class="headerlink" title="尴尬的数字"></a>尴尬的数字</h1><h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>Bessie 刚刚学会了不同进制数之间的转换，但是她总是犯错误，因为她的两个前蹄不能轻松的握住钢笔。</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>每当 Bessie 将一个数转换成新的进制时，她总会写错一位数字。例如，她将 14 转化成 2 进制数，正确的结果是 1110，但她可能会写成 0110 或 1111。Bessie 从不会意外的增加或删减数字，所以她可能会写出以 0 开头的错误数字。</p>
+<p>给出 Bessie 转换后 $N$ 的 2 进制形式和 3 进制形式，请计算出 $N$ 的正确数值（用十进制表示）。$N$ 可能会达到 $10^9$，输入数据保证解的存在唯一性。</p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行，$N$ 的 2 进制表示（有一位是错误的数字）。</p>
+<p>第二行，$N$ 的 3 进制表示（有一位是错误的数字）。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>$N$ 的正确值。</p>
+<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1010</span><br><span class="line">212</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">14</span><br></pre></td></tr></table></figure>
+
+<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>注意到本题n仅为10^9^，那位数就不会很多了 二进制大概30位，三进制会更少些 所以可以直接暴力搜索有问题的位。</p>
+<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int l1,l2;
+long long sum1;
+char s1[10000],s2[10000];
+int n1[10000],n2[10000];
+void dfs(long long num,int tot,int pos)&#123;
+    if(tot==l2)&#123;
+        if(sum1==num)&#123;
+            cout&lt;&lt;sum1;
+            exit(0);
+        &#125;
+        return ;
+    &#125;
+    if(pos)    dfs(num+n2[tot]*pow(3,tot),tot+1,pos);
+    else&#123;
+        if(n2[tot]!=0&amp;&amp;tot!=l2-1)    dfs(num,tot+1,1);
+        else dfs(num,tot+1,pos);
+        if(n2[tot]!=1)    dfs(num+pow(3,tot),tot+1,1);
+        else dfs(num+pow(3,tot),tot+1,pos);
+        if(n2[tot]!=2)    dfs(num+2*pow(3,tot),tot+1,1);
+        else dfs(num+2*pow(3,tot),tot+1,pos);
+    &#125;
+&#125;
+int main()&#123;
+    cin&gt;&gt;s1;
+    cin&gt;&gt;s2;
+    l1=strlen(s1);
+    l2=strlen(s2);
+    if(s1[0]==&#39;0&#39;)&#123;
+        for(int i=0;i&lt;l1;i++)
+            sum1+=pow(2,i)*(s1[l1-1-i]-&#39;0&#39;);
+        long long x=pow(2,l1-1);
+        cout&lt;&lt;sum1+x;
+        return 0;
+    &#125;
+    if(s2[0]==&#39;0&#39;)&#123;
+        for(int i=0;i&lt;l2;i++)
+            sum1+=pow(3,i)*(s2[l2-1-i]-&#39;0&#39;);
+        long long x=pow(3,l2-1);
+        cout&lt;&lt;sum1+x;
+        return 0;
+    &#125;
+    for(int i=0;i&lt;l1;i++)    n1[i]=s1[l1-1-i]-&#39;0&#39;;
+    for(int i=0;i&lt;l2;i++)    n2[i]=s2[l2-1-i]-&#39;0&#39;;
+    for(int i=0;i&lt;l1;i++)    sum1+=pow(2,i)*n1[i];
+    for(int i=0;i&lt;l1;i++)&#123;
+        if(n1[i]&amp;&amp;i!=l1-1)    sum1-=pow(2,i);
+        else sum1+=pow(2,i);
+        dfs(0,0,0);
+        if(n1[i]&amp;&amp;i!=l1-1)    sum1+=pow(2,i);
+        else sum1-=pow(2,i);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="传智杯-4-初赛-小卡和质数"><a href="#传智杯-4-初赛-小卡和质数" class="headerlink" title="[传智杯 #4 初赛] 小卡和质数"></a>[传智杯 #4 初赛] 小卡和质数</h1><h2 id="题目背景-1"><a href="#题目背景-1" class="headerlink" title="题目背景"></a>题目背景</h2><p>小卡最近迷上了质数，所以他想到了一个和质数有关的问题来考考你。</p>
+<p>质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>小卡有 $T(1\le T\le 10^5)$ 组询问。每次询问给你两个正整数 $x,y(1\le x,y\le 10^9)$。</p>
+<p>小卡想知道，第 $x$ 个质数和第 $y$ 个质数是否满足 $p_x \oplus p_y &#x3D;1$，即第 $x$ 个质数和第 $y$ 个质数的异或值是否是$1$。</p>
+<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行一个正整数 $T$，表示询问的数量。</p>
+<p>接下来 $T$ 行，每行两个正整数 $x,y$，表示询问的是第 $x$ 个质数和第 $y$ 个质数。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>$T$ 行，每行一个字符串<code>Yes</code>或<code>No</code>，分别表示两个质数的异或值是 $1$ 或不是 $1$。</p>
+<h2 id="样例-1-2"><a href="#样例-1-2" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 2</span><br><span class="line">23 145</span><br><span class="line">66 2</span><br><span class="line">1 14</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">No</span><br><span class="line">No</span><br></pre></td></tr></table></figure>
+
+<h2 id="Analyse-2"><a href="#Analyse-2" class="headerlink" title="Analyse:"></a>Analyse:</h2><p>偶数中只有 2 是质数，而易知在其它质数中，只有 3 和 2 的异或值为 1。最终得到：两个质数只能是 3 和 2。</p>
+<p>3 是第 2 个质数，2 是第一个质数，则 x 和 y 为 2 和 1。注意两数可能调换位置。</p>
+<h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code:"></a>Code:</h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int l1,l2;
+long long sum1;
+char s1[10000],s2[10000];
+int n1[10000],n2[10000];
+void dfs(long long num,int tot,int pos)&#123;
+    if(tot==l2)&#123;
+        if(sum1==num)&#123;
+            cout&lt;&lt;sum1;
+            exit(0);
+        &#125;
+        return ;
+    &#125;
+    if(pos)    dfs(num+n2[tot]*pow(3,tot),tot+1,pos);
+    else&#123;
+        if(n2[tot]!=0&amp;&amp;tot!=l2-1)    dfs(num,tot+1,1);
+        else dfs(num,tot+1,pos);
+        if(n2[tot]!=1)    dfs(num+pow(3,tot),tot+1,1);
+        else dfs(num+pow(3,tot),tot+1,pos);
+        if(n2[tot]!=2)    dfs(num+2*pow(3,tot),tot+1,1);
+        else dfs(num+2*pow(3,tot),tot+1,pos);
+    &#125;
+&#125;
+int main()&#123;
+    cin&gt;&gt;s1;
+    cin&gt;&gt;s2;
+    l1=strlen(s1);
+    l2=strlen(s2);
+    if(s1[0]==&#39;0&#39;)&#123;
+        for(int i=0;i&lt;l1;i++)
+            sum1+=pow(2,i)*(s1[l1-1-i]-&#39;0&#39;);
+        long long x=pow(2,l1-1);
+        cout&lt;&lt;sum1+x;
+        return 0;
+    &#125;
+    if(s2[0]==&#39;0&#39;)&#123;
+        for(int i=0;i&lt;l2;i++)
+            sum1+=pow(3,i)*(s2[l2-1-i]-&#39;0&#39;);
+        long long x=pow(3,l2-1);
+        cout&lt;&lt;sum1+x;
+        return 0;
+    &#125;
+    for(int i=0;i&lt;l1;i++)    n1[i]=s1[l1-1-i]-&#39;0&#39;;
+    for(int i=0;i&lt;l2;i++)    n2[i]=s2[l2-1-i]-&#39;0&#39;;
+    for(int i=0;i&lt;l1;i++)    sum1+=pow(2,i)*n1[i];
+    for(int i=0;i&lt;l1;i++)&#123;
+        if(n1[i]&amp;&amp;i!=l1-1)    sum1-=pow(2,i);
+        else sum1+=pow(2,i);
+        dfs(0,0,0);
+        if(n1[i]&amp;&amp;i!=l1-1)    sum1+=pow(2,i);
+        else sum1-=pow(2,i);
+    &#125;
+&#125;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/10/week12/" data-id="clfxsuq1f0009u4w1g5sf8p5b" data-title="week12" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-week11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/01/10/week11/" class="article-date">
@@ -2063,479 +2402,6 @@ int main()&#123;
 
 
   
-    <article id="post-T1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/11/28/T1/" class="article-date">
-  <time class="dt-published" datetime="2022-11-28T13:29:09.000Z" itemprop="datePublished">2022-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/28/T1/">T1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>his is the 5th week.</p>
-<h3 id="蓝桥杯-2013-国-C-危险系数"><a href="#蓝桥杯-2013-国-C-危险系数" class="headerlink" title="[蓝桥杯 2013 国 C] 危险系数"></a>[蓝桥杯 2013 国 C] 危险系数</h3><h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>抗日战争时期，冀中平原的地道战曾发挥重要作用。</p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>地道的多个站点间有通道连接，形成了庞大的网络。但也有隐患，当敌人发现了某个站点后，其它站点间可能因此会失去联系。</p>
-<p>我们来定义一个危险系数 $DF(x,y)$：</p>
-<p>对于两个站点 $x$ 和 $y(x\neq y),$ 如果能找到一个站点 $z$，当 $z$ 被敌人破坏后，$x$ 和 $y$ 不连通，那么我们称 $z$ 为关于 $x,y$ 的关键点。相应的，对于任意一对站点 $x$ 和 $y$，危险系数 $DF(x,y)$ 就表示为这两点之间的关键点个数。</p>
-<p>本题的任务是：已知网络结构，求两站点之间的危险系数。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入数据第一行包含 $2$ 个整数 $n(2 \le n \le 1000)$，$m(0 \le m \le 2000)$，分别代表站点数，通道数。</p>
-<p>接下来 $m$ 行，每行两个整数 $u,v(1 \le u,v \le n,u\neq v)$ 代表一条通道。</p>
-<p>最后 $1$ 行，两个数 $u,v$，代表询问两点之间的危险系数 $DF(u,v)$。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个整数，如果询问的两点不连通则输出 $-1$。</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7 6</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">3 5</span><br><span class="line">4 5</span><br><span class="line">5 6</span><br><span class="line">1 6</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>时限 1 秒, 64M。蓝桥杯 2013 年第四届国赛</p>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>定每次的速度而且要根据后面的敌人的距离不断的切换速度，</p>
-<p>这样会影响到前面的时间，因为他的换弹速度是一定的，所以可以用二分来猜答案。</p>
-<p>二分猜测换弹时间</p>
-<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;iostream&gt;
-#include&lt;cstring&gt;
-using namespace std;
-bool g[1001][1001];
-int count[1001];
-int m,n;
-int u,v;
-int sum=0;
-bool vis[1001];
-
-int dfs(int beg)
-&#123;
-if(beg==v)
-&#123;
-return 1;
-&#125;
-int flag=0;bool bo=1;
-for(int i=1;i&lt;=n;i++)
-&#123;
-if(i!=beg&amp;&amp;vis[i]==false&amp;&amp;g[beg][i])
-&#123;bo=0;
-vis[i]=true;
-flag+=dfs(i);
-vis[i]=false;
-&#125;
-&#125;
-if(bo==1)return 0;
-count[beg]+=flag;
-return flag;
-&#125;
-int main()
-&#123;
-memset(g,sizeof(g),0);
-memset(vis,sizeof(vis),0);
-for(int i=0;i&lt;1001;i++)count[i]=0;
-cin&gt;&gt;n&gt;&gt;m;int i,j;
-while(m--)
-&#123;
-cin&gt;&gt;i&gt;&gt;j;
-g[i][j]=1;
-g[j][i]=1;
-&#125;
-cin&gt;&gt;u&gt;&gt;v;
-int sum=dfs(u);int k=0;
-if(sum==0) cout&lt;&lt;-1&lt;&lt;endl;
-else&#123;
-for(int i=1;i&lt;=n;i++)if(count[i]==sum&amp;&amp;i!=u&amp;&amp;i!=v)k++;
-cout&lt;&lt;k&lt;&lt;endl;
-&#125;
-return 0;
-&#125;
-</code></pre>
-<p>his is the 4th week.</p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="# 图的遍历"></a># 图的遍历</h2><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出 $N$ 个点，$M$ 条边的有向图，对于每个点 $v$，求 $A(v)$ 表示从点 $v$ 出发，能到达的编号最大的点。</p>
-<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第 $1$ 行 $2$ 个整数 $N,M$，表示点数和边数。</p>
-<p>接下来 $M$ 行，每行 $2$ 个整数 $U_i,V_i$，表示边 $(U_i,V_i)$。点用 $1,2,\dots,N$ 编号。</p>
-<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行 $N$ 个整数 $A(1),A(2),\dots,A(N)$。</p>
-<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4 3</span><br><span class="line">1 2</span><br><span class="line">2 4</span><br><span class="line">4 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 4 3 4</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><ul>
-<li>对于 $60%$ 的数据，$1 \leq N,M \leq 10^3$。</li>
-<li>对于 $100%$ 的数据，$1 \leq N,M \leq 10^5$。</li>
-</ul>
-<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><h3 id="存储每个位置的数字时-我们要注意字母与数字的转化-同样-在输出时也要注意输出数字若大于等于10-就要转化成字母"><a href="#存储每个位置的数字时-我们要注意字母与数字的转化-同样-在输出时也要注意输出数字若大于等于10-就要转化成字母" class="headerlink" title="存储每个位置的数字时,我们要注意字母与数字的转化.同样,在输出时也要注意输出数字若大于等于10,就要转化成字母."></a>存储每个位置的数字时,我们要注意字母与数字的转化.同样,在输出时也要注意输出数字若大于等于10,就要转化成字母.</h3><h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cstring&gt;
-#define rg register
-#define N 200010
-using namespace std;
-int n,m,tot,top,color,ans[N],last[N],col[N],mx[N],dfn[N],low[N],st[N],r[N][2];
-bool vis[N];
-struct edge&#123;int to,pre;&#125;e[N];
-inline int read()&#123;
-    int k=0,f=1;char c=getchar();
-    while(c&lt;&#39;0&#39;||c&gt;&#39;9&#39;)c==&#39;-&#39;&amp;&amp;(f=-1),c=getchar();
-    while(&#39;0&#39;&lt;=c&amp;&amp;c&lt;=&#39;9&#39;)k=k*10+c-&#39;0&#39;,c=getchar();
-    return k*f;
-&#125;
-inline void add(int x,int y)&#123;e[++tot]=(edge)&#123;y,last[x]&#125;; last[x]=tot;&#125;
-inline int max(int x,int y)&#123;return x&gt;y?x:y;&#125;
-void tarjan(int x)&#123;
-    dfn[st[++top]=x]=low[x]=++tot;
-    for(rg int i=last[x],to;i;i=e[i].pre)
-        if(!dfn[to=e[i].to]) tarjan(to),low[x]=min(low[x],low[to]);
-        else if(!col[to]) low[x]=min(low[x],dfn[to]);
-    if(dfn[x]==low[x]) 
-        for(color++;st[top+1]!=x;top--) col[st[top]]=color,mx[color]=max(mx[color],st[top]);
-&#125;
-void dfs(int x)&#123;
-    vis[x]=1;
-    for(rg int i=last[x],to;i;i=e[i].pre)&#123;
-        if(!vis[to=e[i].to]) dfs(to);
-        mx[x]=max(mx[x],mx[to]);
-    &#125;
-&#125;
-int main()&#123;
-    n=read(); m=read();
-    for(rg int i=1;i&lt;=m;i++) r[i][0]=read(),add(r[i][0],r[i][1]=read());
-    tot=0;
-    for(rg int i=1;i&lt;=n;i++) if(!dfn[i]) tarjan(i);
-    tot=0; memset(last,0,sizeof(last));
-    for(rg int i=1;i&lt;=m;i++)
-        if(col[r[i][0]]!=col[r[i][1]]) add(col[r[i][0]],col[r[i][1]]);
-    for(rg int i=1;i&lt;=color;i++) if(!vis[i]) dfs(i);
-    for(rg int i=1;i&lt;=n;i++) printf(&quot;%d &quot;,mx[col[i]]);
-    return 0;
-&#125;
-</code></pre>
-<p>his is the 4th week.</p>
-<h2 id="封锁阳光大学"><a href="#封锁阳光大学" class="headerlink" title="# 封锁阳光大学"></a># 封锁阳光大学</h2><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
-<p>阳光大学的校园是一张由 $n$ 个点构成的无向图，$n$ 个点之间由 $m$ 条道路连接。每只河蟹可以对一个点进行封锁，当某个点被封锁后，与这个点相连的道路就被封锁了，曹就无法在这些道路上刷街了。非常悲剧的一点是，河蟹是一种不和谐的生物，当两只河蟹封锁了相邻的两个点时，他们会发生冲突。</p>
-<p>询问：最少需要多少只河蟹，可以封锁所有道路并且不发生冲突。</p>
-<h2 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行两个正整数，表示节点数和边数。<br>接下来 $m$ 行，每行两个整数 $u,v$，表示点 $u$ 到点 $v$ 之间有道路相连。</p>
-<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>仅一行如果河蟹无法封锁所有道路，则输出 <code>Impossible</code>，否则输出一个整数，表示最少需要多少只河蟹。</p>
-<h2 id="样例-1-2"><a href="#样例-1-2" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-2"><a href="#样例输入-1-2" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1-2"><a href="#样例输出-1-2" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Impossible</span><br></pre></td></tr></table></figure>
-
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 #2"></a>样例 #2</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 #2"></a>样例输入 #2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 #2"></a>样例输出 #2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>【数据规模】<br>对于 $100%$ 的数据，$1\le n \le 10^4$，$1\le m \le 10^5$，保证没有重边。</p>
-<h3 id="Analyse：-2"><a href="#Analyse：-2" class="headerlink" title="Analyse："></a>Analyse：</h3><p>敌人到射程才能开始开枪.</p>
-<p>需要一个一个的来进行模拟</p>
-<h3 id="My-Code-2"><a href="#My-Code-2" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int n,m,sum;
-bool flag=1;//最大的判断条件，判断染色是否已经无法进行
-int col[100010];//记录点的颜色
-int cnt[2];//记录在每一张图上两种颜色的点分别有多少个
-bool judge[100010];//记录该点是否已经使用
-vector&lt;int&gt; house[100010];//用来存图的动态数组
-
-void dfs(int i,int f)
-&#123;
-    judge[i]=1;
-    if(col[i]==-1)
-    &#123;
-        col[i]=f,cnt[f]++;
-        for(int j=0;j&lt;house[i].size();j++)
-        &#123;
-            judge[house[i][j]]=1;
-            dfs(house[i][j],!f);//染上与原来点相反的颜色（1 and 0）
-        &#125;
-        return;
-    &#125;
-    else 
-    &#123;
-        if(f!=col[i])flag=0;//如果产生冲突说明染色无法进行，已经无解了
-        return;
-    &#125;
-
-&#125;
-
-int main()
-&#123;
-    int u,v;
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=m;i++)
-    &#123;
-        cin&gt;&gt;u&gt;&gt;v;
-        house[u].push_back(v);
-        house[v].push_back(u);
-    &#125;
-    memset(col,-1,sizeof col);//颜色数组赋-1
-    for(int i=1;i&lt;=n;i++)
-    &#123;
-        if(judge[i]==0)
-        &#123;
-            cnt[0]=0,cnt[1]=0;//每张单独的图都要重新记录颜色的数量
-            dfs(i,0);//没颜色的统一染上0
-            if(cnt[0]&gt;cnt[1])sum+=cnt[1];//取两种颜色中更少的来累加
-            else sum+=cnt[0];
-        &#125;
-    &#125;
-    if(flag)
-    &#123;
-        cout&lt;&lt;sum;
-    &#125;
-    else cout&lt;&lt;&quot;Impossible&quot;;
-
-    return 0;
-&#125;
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/28/T1/" data-id="clfxsuq1c0003u4w133bjbr9g" data-title="T1" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-马的" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/11/21/%E9%A9%AC%E7%9A%84/" class="article-date">
-  <time class="dt-published" datetime="2022-11-21T12:52:17.000Z" itemprop="datePublished">2022-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/21/%E9%A9%AC%E7%9A%84/">搜索</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>This is the 4th week.</p>
-<h2 id="P1443-马的遍历"><a href="#P1443-马的遍历" class="headerlink" title="P1443 马的遍历"></a>P1443 马的遍历</h2><h4 id="马的遍历"><a href="#马的遍历" class="headerlink" title="# 马的遍历"></a># 马的遍历</h4><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有一个 $n \times m$ 的棋盘，在某个点 $(x, y)$ 上有一个马，要求你计算出马到达棋盘上任意一个点最少要走几步。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入只有一行四个整数，分别为 $n, m, x, y$。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个 $n \times m$ 的矩阵，代表马到达某个点最少要走几步（不能到达则输出 $-1$）。</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 3 1 1</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0    3    2    </span><br><span class="line">3    -1   1    </span><br><span class="line">2    1    4</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于全部的测试点，保证 $1 \leq x \leq n \leq 400$，$1 \leq y \leq m \leq 400$。</p>
-<p>More info:<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1443">P1443 马的遍历 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a>](<a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704">https://pintia.cn/problem-sets/1584759265956864000/exam/problems/1584759731948232704</a>)</p>
-<h3 id="Analyse："><a href="#Analyse：" class="headerlink" title="Analyse："></a>Analyse：</h3><p>题目中，马走的是<strong>日字形</strong>。有八个方向</p>
-<p>用了queue:</p>
-<ol>
-<li><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/queue/4511093">queue</a>：先进先出的线性表。</p>
-<p>需要<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%A4%B4%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">头文件</a> <code>#include&lt;queue&gt;</code></p>
-<p>定义 <code>queue &lt;int&gt; q;</code></p>
-<p>入队 <code>q.push(x);</code></p>
-<p>出队 <code>q.pop();</code></p>
-<p>查询队列中元素个数 <code>q.size()</code></p>
-</li>
-</ol>
-<h3 id="My-Code"><a href="#My-Code" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;queue&gt;
-#include &lt;algorithm&gt;
-
-using namespace std;
-
-const int dx[10] = &#123;-2, -2, 2, 2, 1, -1, 1, -1&#125;;
-const int dy[10] = &#123;-1, 1, -1, 1, 2, -2, -2, 2&#125;;
-
-const int N = 500;
-
-typedef pair&lt;int, int&gt; PII;
-
-int n, m, x, y;
-int d[N][N];  // 是否走过
-PII q[N * N]; // 存储数据队列
-
-void bfs(int x, int y)
-&#123;
-
-    memset(d, -1, sizeof d); 
-    d[x][y] = 0;           
-
-    queue&lt;pair&lt;int, int&gt;&gt; q;
-    q.push(&#123;x, y&#125;); // 起始点入队
-
-    while (q.size())
-    &#123;
-        PII t = q.front(); 
-        q.pop();           
-
-
-        for (int i = 0; i &lt; 8; i++)
-        &#123;
-            int A = t.first + dx[i], B = t.second + dy[i];                
-            if (A &gt;= 1 &amp;&amp; A &lt;= n &amp;&amp; B &gt;= 1 &amp;&amp; B &lt;= m &amp;&amp; d[A][B] == -1) 
-            &#123;
-                d[A][B] = d[t.first][t.second] + 1; 
-                q.push(&#123;A, B&#125;);                     
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-int main()
-&#123;
-    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x &gt;&gt; y;
-
-    bfs(x, y);
-
-    for (int i = 1; i &lt;= n; i++)
-    &#123;
-        for (int j = 1; j &lt;= m; j++)
-            printf(&quot;%-5d&quot;, d[i][j]);
-        puts(&quot;&quot;);
-    &#125;
-
-
-    return 0;
-&#125;
-</code></pre>
-<p>模拟与高精度</p>
-<p>This is the 4th week.</p>
-<h2 id="P1443-马的遍历-1"><a href="#P1443-马的遍历-1" class="headerlink" title="P1443 马的遍历"></a>P1443 马的遍历</h2><h4 id="迷宫"><a href="#迷宫" class="headerlink" title="# 迷宫"></a># 迷宫</h4><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个 $N \times M$ 方格的迷宫，迷宫里有 $T$ 处障碍，障碍处不可通过。</p>
-<p>在迷宫中移动有上下左右四种方式，每次只能移动一个方格。数据保证起点上没有障碍。</p>
-<p>给定起点坐标和终点坐标，每个方格最多经过一次，问有多少种从起点坐标到终点坐标的方案。</p>
-<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行为三个正整数 $N,M,T$，分别表示迷宫的长宽和障碍总数。</p>
-<p>第二行为四个正整数 $SX,SY,FX,FY$，$SX,SY$ 代表起点坐标，$FX,FY$ 代表终点坐标。</p>
-<p>接下来 $T$ 行，每行两个正整数，表示障碍点的坐标。</p>
-<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出从起点坐标到终点坐标的方案总数。</p>
-<h2 id="样例-1-1"><a href="#样例-1-1" class="headerlink" title="样例 #1"></a>样例 #1</h2><h3 id="样例输入-1-1"><a href="#样例输入-1-1" class="headerlink" title="样例输入 #1"></a>样例输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 2 1</span><br><span class="line">1 1 2 2</span><br><span class="line">1 2</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1-1"><a href="#样例输出-1-1" class="headerlink" title="样例输出 #1"></a>样例输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>对于 $100%$ 的数据，$1 \le N,M \le 5$，$1 \le T \le 10$，$1 \le SX,FX \le n$，$1 \le SY,FY \le m$。</p>
-<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><h3 id="数据规模与约定-1"><a href="#数据规模与约定-1" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于全部的测试点，保证 $1 \leq x \leq n \leq 400$，$1 \leq y \leq m \leq 400$。</p>
-<p>More info:[<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1605">P1605 迷宫 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
-<h3 id="Analyse：-1"><a href="#Analyse：-1" class="headerlink" title="Analyse："></a>Analyse：</h3><ol>
-<li><p>查询队列中元素个数 <code>q.size()</code>使用自动选择方向来代替4个if判断（<del>使代码更加简洁</del>长度变短）；</p>
-<p>如果没有障碍并且不是自己走过的，就进一步搜索，把自己走过的路打上标记，返回时，再将标记还原；</p>
-<p>###注意：有些同学可能觉得就在地图map数组上打标记（自己走过的路）比较简单，走过的路和障碍可能引起混淆，</p>
-<p>这一题一看就知道一定要用<strong>dfs回溯</strong>。因为我们要枚举走的步数，以及走错路时抑制住自己的愤怒回来换下一条路。</p>
-</li>
-</ol>
-<h3 id="My-Code-1"><a href="#My-Code-1" class="headerlink" title="My Code:"></a>My Code:</h3><pre><code>#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int n, m, t;//n，m为行列，t障碍的数目
-int A, B, ex, ey;
-const int N = 15;
-//表示迷宫能不能走
-int  M[N][N];
-//表示有没有走过这个点
-bool st[N][N];
-int ans = 0;
-int dx[4] = &#123; -1,0,1,0 &#125;;
-int dy[4] = &#123; 0,1,0,-1 &#125;;
-void dfs(int A, int B) &#123;
-    if (A== ex &amp;&amp; B == ey) &#123;
-        ans++;
-        return;
-    &#125;
-    for (int i = 0; i &lt; 4; i++) &#123;
-        int hang = A + dx[i], lie = B + dy[i];
-        if (hang &gt;= 1 &amp;&amp; hang &lt;= n &amp;&amp; lie &gt;= 1 &amp;&amp; lie &lt;= m &amp;&amp; M[hang][lie] ==-1 &amp;&amp; st[hang][lie] == false) &#123;
-            st[hang][lie] = true;
-            dfs(hang, lie);
-            st[hang][lie] = false;
-        &#125;
-    &#125;
-&#125;
-int main() &#123;
-    cin &gt;&gt; n &gt;&gt; m &gt;&gt; t;
-    cin &gt;&gt; A &gt;&gt;B &gt;&gt;ex &gt;&gt; ey;
-    memset(M, -1, sizeof M);
-
-    M[A][B] = 0;
-    for (int i = 0; i &lt; t; i++) &#123;
-        int x, y;
-        cin &gt;&gt; x &gt;&gt; y;
-        M[x][y] = 0;
-    &#125;
-    dfs(A, B);
-    cout &lt;&lt; ans;
-    return 0;
-&#125;
-</code></pre>
-<p>sousuo</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/21/%E9%A9%AC%E7%9A%84/" data-id="clfxsuq1n000ou4w1fy9571kh" data-title="搜索" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/11/14/0/" class="article-date">
-  <time class="dt-published" datetime="2022-11-14T11:58:35.000Z" itemprop="datePublished">2022-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/14/0/">0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>hexo n “”</p>
-<p>hexo clean</p>
-<p>hexo g</p>
-<p>hexo d</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/14/0/" data-id="clfxsuq140000u4w1ft71fnqg" data-title="0" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -2559,7 +2425,7 @@ int main() &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
     </div>
   </div>
 
@@ -2572,23 +2438,23 @@ int main() &#123;
       <ul>
         
           <li>
+            <a href="/2023/05/13/week17/">week17</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week16/">week16</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week15/">week15</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
           </li>
         
           <li>
             <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/27/%E7%AC%AC%E4%BA%8C%E5%91%A8/">第二周</a>
-          </li>
-        
-          <li>
-            <a href="/2023/03/21/first/">first</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/13/%E5%BB%BA%E6%A0%88%E9%93%BE%E8%A1%A8/">建栈链表</a>
           </li>
         
       </ul>

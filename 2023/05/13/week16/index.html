@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>week16 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1、数组操作 我们每次操作都是把最数组最后的相邻的x的个数乘2 。 例如：一个数组{1,2,3,4,5,6,7,8}-&gt; {1,2,3,4,5,6,8,8}-&gt;{1,2,3,4,8,8,8,8}-&gt;{8,8,8,8,8,8,8,8}8的个数依次为1-&gt;2-&gt;4-&gt;8 #includeusing namespace std;#include #pragma GCC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="week16">
+<meta property="og:url" content="http://example.com/2023/05/13/week16/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、数组操作 我们每次操作都是把最数组最后的相邻的x的个数乘2 。 例如：一个数组{1,2,3,4,5,6,7,8}-&gt; {1,2,3,4,5,6,8,8}-&gt;{1,2,3,4,8,8,8,8}-&gt;{8,8,8,8,8,8,8,8}8的个数依次为1-&gt;2-&gt;4-&gt;8 #includeusing namespace std;#include #pragma GCC">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-13T02:33:55.000Z">
+<meta property="article:modified_time" content="2023-05-13T02:39:00.056Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-week16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/13/week16/" class="article-date">
+  <time class="dt-published" datetime="2023-05-13T02:33:55.000Z" itemprop="datePublished">2023-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      week16
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、数组操作</p>
+<p>我们每次操作都是把最数组最后的相邻的x的个数乘2 。</p>
+<p>例如：一个数组{1,2,3,4,5,6,7,8}<br>-&gt; {1,2,3,4,5,6,8,8}<br>-&gt;{1,2,3,4,8,8,8,8}<br>-&gt;{8,8,8,8,8,8,8,8}<br>8的个数依次为1-&gt;2-&gt;4-&gt;8</p>
+<p>#include<iostream><br>using namespace std;<br>#include<vector></p>
+<p>#pragma GCC optimize(1)<br>#pragma GCC optimize(2)<br>#pragma GCC optimize(3,”Ofast”,”inline”)</p>
+<p>#define endl ‘\n’;<br>typedef long long ll;<br>const int N &#x3D; 110;</p>
+<p>int main() {<br>    ios_base::sync_with_stdio(false);<br>    cin.tie(nullptr);<br>    cout.tie(nullptr);<br>    int t;<br>    cin &gt;&gt; t;<br>    while (t–)<br>    {<br>        int n;<br>        cin &gt;&gt; n;<br>        vector<int>v(n);<br>        for (int i &#x3D; n-1; i &gt;&#x3D;0 ; i–)<br>            cin &gt;&gt; v[i];<br>        int num &#x3D; v[0], res &#x3D; 0, ans &#x3D; 1;<br>        while (ans &lt; n)<br>        {<br>            if (v[ans] &#x3D;&#x3D; num)ans++;<br>            else<br>            {<br>                res++;<br>                ans *&#x3D; 2;<br>            }<br>        }<br>        cout &lt;&lt; res &lt;&lt; endl;<br>    }<br>    return 0;</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>2、A-B 数对</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#include<map><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    int n,c;<br>    int ans&#x3D;0;<br>    vector<int>v;<br>    map&lt;int,int&gt;mymap;<br>    cin&gt;&gt;n&gt;&gt;c;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        int x;<br>        cin&gt;&gt;x;<br>        mymap[x]++;<br>        v.push_back(x);<br>    }<br>    sort(v.begin(),v.end());<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        ans+&#x3D;mymap[v[i]+1];<br>    }<br>    cout&lt;&lt;ans;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>数位计算</p>
+<p>#include<iostream><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int mod&#x3D;998244353;<br>    ll a;<br>    ll sum&#x3D;0;<br>    ll i&#x3D;1;<br>    cin&gt;&gt;a;<br>    if(a&lt;&#x3D;9)<br>    {<br>        cout&lt;&lt;(a+1)<em>a&#x2F;2;<br>        return 0;<br>    }<br>    while(a&gt;&#x3D;i)<br>    {<br>        ll x&#x3D;(1+i</em>10-i)%mod;<br>        ll y&#x3D;(i<em>10-i)%mod;<br>        ll xx&#x3D;(2+a-i)%mod;<br>        ll yy&#x3D;(a-i+1)%mod;<br>        if(a&gt;&#x3D;i</em>10)sum+&#x3D;(x<em>y&#x2F;2)%mod;<br>        else sum+&#x3D;(xx</em>yy&#x2F;2)%mod;<br>        i*&#x3D;10;<br>    }</p>
+<pre><code>cout&lt;&lt;sum%mod;
+return 0;
+</code></pre>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>4、新国王游戏</p>
+<p>#include<iostream><br>#include<vector><br>#include<algorithm><br>#define ll long long<br>using namespace std;<br>struct h<br>{<br>    ll a,b;<br>};<br>bool temp(h x,h y)<br>{<br>    return (x.a-1)<em>y.b&gt;(y.a-1)<em>x.b;<br>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int mod&#x3D;1000000007;<br>    ll n;<br>    ll ans&#x3D;0,sum_a&#x3D;1;<br>    vector<h> v;<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        int x,y;<br>        cin&gt;&gt;x&gt;&gt;y;<br>        v.push_back((h){x,y});<br>    }<br>    sort(v.begin(),v.end(),temp);<br>    for(int i&#x3D;0;i&lt;n;i++)<br>    {<br>        ans+&#x3D;sum_a</em>v[i].b%mod;<br>        ans%&#x3D;mod;<br>        sum_a</em>&#x3D;v[i].a;<br>        sum_a%&#x3D;mod;<br>    }<br>    cout&lt;&lt;ans%mod;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>5、完美数</p>
+<p>#include<iostream><br>#define ll long long<br>using namespace std;<br>const int mod&#x3D;1e9+7;<br>const int N&#x3D;1e6+1;<br>int a,b;<br>ll fact[N];    &#x2F;&#x2F;fact[i]表示i的阶乘<br>ll infact[N];    &#x2F;&#x2F;infact[i]表示i的阶乘的逆元<br>bool check(ll x)<br>{<br>    while(x&gt;0)<br>    {<br>        if(x%10!&#x3D;a&amp;&amp;x%10!&#x3D;b)<br>        {<br>            return 0;<br>        }<br>        x&#x2F;&#x3D;10;<br>    }<br>    return 1;<br>}<br>int qmi(int a,int b)    &#x2F;&#x2F;求a的b次方对mod求模的结果<br>{<br>    ll res&#x3D;1;<br>    while(b)<br>    {<br>        if(b&amp;1)res&#x3D;res<em>a%mod;<br>        a&#x3D;a</em>(ll)a%mod;<br>        b&gt;&gt;&#x3D;1;<br>    }<br>    return res;<br>}<br>void rr()        &#x2F;&#x2F;求阶乘及阶乘的逆元<br>{<br>    fact[0]&#x3D;1;<br>    for(int i&#x3D;1;i&lt;N;i++)<br>    {<br>        fact[i]&#x3D;fact[i-1]<em>i%mod;<br>    }<br>    infact[N-1]&#x3D;qmi(fact[N-1],mod-2);<br>    for(int i&#x3D;N-2;i&gt;&#x3D;0;i–)<br>    {<br>        infact[i]&#x3D;infact[i+1]</em>(i+1)%mod;<br>    }</p>
+<p>}</p>
+<p>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    ll m;<br>    ll res&#x3D;0;<br>    cin&gt;&gt;a&gt;&gt;b&gt;&gt;m;<br>    rr();<br>    if(a&#x3D;&#x3D;b)<br>    {<br>        cout&lt;&lt;0;<br>        return 0;<br>    }<br>    if(a&gt;b)swap(a,b);    &#x2F;&#x2F;a作为小一点的数<br>    for(ll i&#x3D;0;i&lt;&#x3D;m;i++)<br>    {<br>        ll s&#x3D;i*a+(m-i)*b;<br>        if(check(s))<br>        {    &#x2F;&#x2F;将i个a和(m-i)个b组合成一个好数即可<br>            ll i2&#x3D;min(i,m-i);        &#x2F;&#x2F;c(m)(i)&#x3D;&#x3D;c(m)(m-i)<br>            res&#x3D;(res+fact[m]<em>infact[i2]%mod</em>infact[m-i2]%mod)%mod;&#x2F;&#x2F;即排列组合，共有C(m)(i2)种组合<br>        }<br>    }<br>    cout&lt;&lt;res%mod;<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>66<br>67<br>68<br>69<br>70<br>71<br>72<br>73<br>74<br>75<br>76<br>77<br>6、Lusir的游戏</p>
+<p>#include<iostream><br>#include<cmath><br>using namespace std;<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int N&#x3D;1e5+1;<br>    int n;<br>    int a[N];<br>    double ans&#x3D;0;<br>    cin&gt;&gt;n;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)cin&gt;&gt;a[i];<br>    for(int i&#x3D;n;i&gt;&#x3D;1;i–)<br>    {<br>        ans&#x3D;(ans+a[i])&#x2F;2;<br>    }<br>    cout&lt;&lt;ceil(ans);<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>7、BFS练习1</p>
+<p>#include<iostream><br>#include<queue><br>#include<cmath><br>using namespace std;<br>const int N&#x3D;1e5+55;<br>int a,q;<br>int b[N];<br>int ans[N]&#x3D;{0};<br>int js;<br>void bfs(int n)        &#x2F;&#x2F;把n变成x<br>{<br>    js&#x3D;0;<br>    bool vis[N]&#x3D;{0};<br>    queue<int>s;<br>    s.push(n);<br>    vis[n]&#x3D;1;<br>    while(!s.empty())<br>    {<br>        int len&#x3D;s.size();<br>        for(int i&#x3D;1;i&lt;&#x3D;len;i++)<br>        {<br>            int nn&#x3D;s.front();<br>            s.pop();<br>            if(ans[nn]&#x3D;&#x3D;-1)<br>            {<br>                ans[nn]&#x3D;js;<br>            }<br>            if(nn+1&lt;1e5+50&amp;&amp;vis[nn+1]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn+1);<br>                vis[nn+1]&#x3D;1;<br>            }<br>            if(nn*2&lt;1e5+50&amp;&amp;vis[nn*2]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn*2);<br>                vis[nn*2]&#x3D;1;<br>            }<br>            if(nn*3&lt;1e5+50&amp;&amp;vis[nn*3]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn*3);<br>                vis[nn*3]&#x3D;1;<br>            }<br>            if(nn-1&gt;0&amp;&amp;vis[nn-1]&#x3D;&#x3D;0)<br>            {<br>                s.push(nn-1);<br>                vis[nn-1]&#x3D;1;<br>            }<br>        }<br>        js++;<br>    }</p>
+<p>}<br>int main()<br>{<br>    std::ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    cin&gt;&gt;a&gt;&gt;q;<br>    for(int i&#x3D;1;i&lt;&#x3D;q;i++)<br>    {<br>        cin&gt;&gt;b[i];<br>        ans[b[i]]&#x3D;-1;<br>    }<br>    bfs(a);<br>    for(int i&#x3D;1;i&lt;&#x3D;q;i++)<br>    {<br>        cout&lt;&lt;ans[b[i]]&lt;&lt;’ ‘;<br>    }<br>    return 0;</p>
+<p>}</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>66<br>67<br>68<br>69<br>70<br>71<br>72<br>8、01序列2</p>
+<p>dp[i]&#x3D;dp[1]+dp[2]+……+dp[i-k-1]+1<br>#include<iostream><br>#include<vector><br>#define ll long long<br>using namespace std;<br>int main()<br>{<br>    ios::sync_with_stdio(false);<br>    cin.tie(0);<br>    cout.tie(0);<br>    const int N&#x3D;1e6+5;<br>    const int mod&#x3D;1e9+7;<br>    int n,k;<br>    vector<ll> dp(N);<br>    vector<ll> sum(N,0);    &#x2F;&#x2F;sum[i]表示dp[1]+dp[2]+…dp[i]<br>    cin&gt;&gt;n&gt;&gt;k;<br>    sum[0]&#x3D;0;<br>    for(int i&#x3D;1;i&lt;&#x3D;n;i++)<br>    {<br>        &#x2F;<em>ll sum&#x3D;0;<br>        for(int j&#x3D;i-1;j&gt;&#x3D;1;j–)<br>            sum+&#x3D;dp[j];</em>&#x2F;<br>        &#x2F;&#x2F;这样做时间复杂度为o(n^2),考虑进行前缀和优化<br>        if(i-k-1&gt;0)dp[i]&#x3D;(sum[i-k-1]+1)%mod;<br>        else dp[i]&#x3D;1;<br>        sum[i]&#x3D;(sum[i-1]+dp[i])%mod;<br>    }</p>
+<pre><code>cout&lt;&lt;sum[n]+1;
+return 0;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/13/week16/" data-id="clhle0zpc0001a4w16umf29ne" data-title="week16" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/13/week17/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          week17
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/13/week15/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">week15</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/13/week17/">week17</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week16/">week16</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/13/week15/">week15</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E5%8F%8C%E5%91%A8%E8%B5%9B%E4%B8%80/">双周赛一</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/01/%E7%AC%AC%E4%B8%89%E5%91%A8/">第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
